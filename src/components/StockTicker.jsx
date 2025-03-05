@@ -39,8 +39,8 @@ function StockTicker() {
                         console.error(`Error fetching data for ${symbol}:`, response.data);
                         return {
                             symbol,
-                            price: 'N/A',
-                            change: 'N/A',
+                            price: '0',
+                            change: '0',
                         };
                     }
                 })
