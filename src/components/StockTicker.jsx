@@ -9,7 +9,14 @@ const API_KEY = 'QTZHX19WPRAP39DH';
 
 function StockTicker() {
     const [stocks, setStocks] = useState([]);
+    const [lastFetchTime, setLastFetchTime] = useState(null);
 
+    const shouldFetchData = () => {
+        if (!lastFetchTime) return true;
+        const now = new Date();
+        const timeDiff = (now - new Date(lastFetchTime)) / (1000 * 60 * 60 * 24); // difference in days
+        return timeDiff >= 1;
+    };
     useEffect(() => {
         const fetchStockData = async () => {
             const stockData = await Promise.all(
