@@ -25,8 +25,8 @@ function StockTicker() {
                         const data = response.data['Global Quote'];
                         return {
                             symbol: data['01. symbol'],
-                            price: parseFloat(data['05. price'] || 0).toFixed(2),
-                            change: parseFloat(data['09. change'] || 0).toFixed(2),
+                            price: parseFloat(data['05. price'] || '0').toFixed(2),
+                            change: parseFloat(data['09. change'] || '0').toFixed(2),
                         };
                     } else {
                         console.error(`Error fetching data for ${symbol}:`, response.data);
