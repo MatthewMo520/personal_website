@@ -6,6 +6,7 @@ import Navbar from './components/NavBar';
 import { Element } from 'react-scroll';
 import TypingAnimation from './components/TypingAnimation';
 import StockTicker from './components/StockTicker';
+import News from './components/News'; // Import the News component
 
 function App() {
   return (
@@ -49,8 +50,9 @@ function App() {
         </Element>
         <Element name="news" className="mb-8">
           <section className="bg-white p-6 rounded-lg shadow-md">
-            <h2 className="text-3xl text-gray-800 mb-4 font-semibold">Latest News</h2>
-            <p className="text-gray-600">Stay informed with the latest news and analysis on the stock market. From market trends to economic indicators, our news section provides valuable insights to help you make informed investment decisions.</p>
+          <h2 className="text-3xl text-gray-800 mb-4 font-semibold">Latest News</h2>
+          <p className="text-gray-600 mb-6">Stay informed with the latest news and analysis on the stock market. From market trends to economic indicators, our news section provides valuable insights to help you make informed investment decisions.</p>
+            <News /> 
           </section>
         </Element>
         <Element name="contact-me" className="mb-8">
