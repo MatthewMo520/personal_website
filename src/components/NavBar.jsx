@@ -35,6 +35,11 @@ function Navbar() {
                         Contact Me
                     </Link>
                 </li>
+                <li>
+                    <Link to="finance-calculator" smooth={true} duration={500} className="text-white hover:text-green-400 cursor-pointer">
+                        Finance Calculator
+                    </Link>
+                </li>
             </ul>
         </nav>
     );

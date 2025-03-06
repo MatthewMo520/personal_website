@@ -1,55 +1,29 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
-const stockSymbols = ['AAPL', 'GOOGL', 'AMZN', 'TSLA', 'NVDA'];
-const API_KEY = 'QTZHX19WPRAP39DH';
-//'X86N96MX0ECYGIXT';
-
-//
-
 function StockTicker() {
     const [stocks, setStocks] = useState([]);
-    const [lastFetchTime, setLastFetchTime] = useState(null);
 
-    const shouldFetchData = () => {
-        if (!lastFetchTime) return true;
-        const now = new Date();
-        const timeDiff = (now - new Date(lastFetchTime)) / (1000 * 60 * 60 * 24); // difference in days
-        return timeDiff >= 1;
-    };
     useEffect(() => {
         const fetchStockData = async () => {
-            const stockData = await Promise.all(
-                stockSymbols.map(async (symbol) => {
-                    const response = await axios.get(`https://www.alphavantage.co/query`, {
-                        params: {
-                            function: 'GLOBAL_QUOTE',
-                            symbol,
-                            apikey: API_KEY,
-                        },
-                    });
-                    if (response.data && response.data['Global Quote']) {
-                        const data = response.data['Global Quote'];
-                        return {
-                            symbol: data['01. symbol'],
-                            price: parseFloat(data['05. price'] || '0').toFixed(2),
-                            change: parseFloat(data['09. change'] || '0').toFixed(2),
-                        };
-                    } else {
-                        console.error(`Error fetching data for ${symbol}:`, response.data);
-                        return {
-                            symbol,
-                            price: '0',
-                            change: '0',
-                        };
-                    }
-                })
-            );
-            setStocks(stockData);
+            try {
+                const response = await axios.get('http://localhost:5000/stocks');
+                setStocks(response.data);
+            } catch (error) {
+                console.error('Error fetching stock data:', error);
+                // Set default data in case of error
+                setStocks([
+                    { symbol: 'AAPL', price: '0.00', change: '0.00' },
+                    { symbol: 'GOOGL', price: '0.00', change: '0.00' },
+                    { symbol: 'AMZN', price: '0.00', change: '0.00' },
+                    { symbol: 'TSLA', price: '0.00', change: '0.00' },
+                    { symbol: 'NVDA', price: '0.00', change: '0.00' },
+                ]);
+            }
         };
 
         fetchStockData();
-        const interval = setInterval(fetchStockData, 60000); // Fetch data every minute
+        const interval = setInterval(fetchStockData, 3600000); // Fetch data every minute
 
         return () => clearInterval(interval);
     }, []);
