@@ -10,7 +10,7 @@ function News() {
                 const response = await axios.get('https://newsapi.org/v2/top-headlines', {
                     params: {
                         category: 'business',
-                        apiKey: 'c0bca591aab94f3ca71c8cc2cdf0a40c',
+                        apiKey: '',
                         pageSize: 3,
                     },
                 });

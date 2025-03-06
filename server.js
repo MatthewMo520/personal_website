@@ -5,7 +5,7 @@ import cors from 'cors';
 
 const app = express();
 const PORT = 5000;
-const API_KEY = 'QTZHX19WPRAP39DH';
+const API_KEY = '';
 const stockSymbols = ['AAPL', 'GOOGL', 'AMZN', 'TSLA', 'NVDA'];
 
 app.use(cors());
