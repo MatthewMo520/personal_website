@@ -43,8 +43,8 @@ function News() {
     return (
         <div className="news-section p-8 bg-white relative">
             {news.length > 0 ? (
-                <div className="flex items-center">
-                    <button onClick={handlePrevClick} className="absolute left-0 px-4 py-2 bg-gradient-to-r from-blue-500 to-purple-600 text-white font-semibold rounded-full shadow-md hover:from-blue-700 hover:to-purple-800 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75">
+                <div className="flex items-center justify-center">
+                    <button onClick={handlePrevClick} className="absolute left-0 transform -translate-y-1/2 top-1/2 px-4 py-2 bg-gradient-to-r from-blue-500 to-purple-600 text-white font-semibold rounded-full shadow-md hover:from-blue-700 hover:to-purple-800 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75">
                         <FaArrowLeft />
                     </button>
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mx-auto">
@@ -61,7 +61,7 @@ function News() {
                             </div>
                         ))}
                     </div>
-                    <button onClick={handleNextClick} className="absolute right-0 px-4 py-2 bg-gradient-to-r from-blue-500 to-purple-600 text-white font-semibold rounded-full shadow-md hover:from-blue-700 hover:to-purple-800 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75">
+                    <button onClick={handleNextClick} className="absolute right-0 transform -translate-y-1/2 top-1/2 px-4 py-2 bg-gradient-to-r from-blue-500 to-purple-600 text-white font-semibold rounded-full shadow-md hover:from-blue-700 hover:to-purple-800 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75">
                         <FaArrowRight />
                     </button>
                 </div>
