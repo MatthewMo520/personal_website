@@ -1,4 +1,5 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 import { Link } from 'react-scroll';
 
 function Navbar() {
@@ -6,9 +7,9 @@ function Navbar() {
         <nav className="bg-green-800 p-4 fixed w-full top-0 left-0 h-16 z-20">
             <ul className="flex justify-around">
                 <li>
-                    <Link to="home" smooth={true} duration={500} className="text-white hover:text-green-400 cursor-pointer">
+                    <NavLink to="/" className="text-white hover:text-green-400 cursor-pointer">
                         Home
-                    </Link>
+                    </NavLink>
                 </li>
                 <li>
                     <Link to="about-me" smooth={true} duration={500} className="text-white hover:text-green-400 cursor-pointer">
@@ -36,9 +37,9 @@ function Navbar() {
                     </Link>
                 </li>
                 <li>
-                    <Link to="finance-calculator" smooth={true} duration={500} className="text-white hover:text-green-400 cursor-pointer">
+                    <NavLink to="/finance-calculator" className="text-white hover:text-green-400 cursor-pointer">
                         Finance Calculator
-                    </Link>
+                    </NavLink>
                 </li>
             </ul>
         </nav>

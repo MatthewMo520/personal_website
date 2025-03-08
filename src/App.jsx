@@ -2,14 +2,16 @@ import { useState, useEffect } from 'react';
 import reactLogo from './assets/react.svg';
 import viteLogo from '/vite.svg';
 import './App.css';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Navbar from './components/NavBar';
 import { Element } from 'react-scroll';
 import TypingAnimation from './components/TypingAnimation';
 import StockTicker from './components/StockTicker';
 import News from './components/News'; 
 import ContactMe from './components/ContactMe';
+import FinanceCalculator from './components/FinanceCalculator';
 
-function App() {
+function Home() {
   return (
     <div className="app flex flex-col justify-center min-h-screen bg-gray-100">
       <Navbar />
@@ -64,6 +66,17 @@ function App() {
         </Element>
       </main>
     </div>
+  );
+}
+
+function App() {
+  return (
+    <Router>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/finance-calculator" element={<FinanceCalculator />} />
+      </Routes>
+    </Router>
   );
 }
 
