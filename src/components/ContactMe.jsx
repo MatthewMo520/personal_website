@@ -46,18 +46,21 @@ function ContactMe() {
 
     return (
         <div className="contact-me-section p-8 bg-white rounded-lg flex flex-col md:flex-row space-y-8 md:space-y-0 md:space-x-8">
-            <div className="w-full md:w-1/2 p-8 bg-gray-100 rounded-lg shadow-md">
+            <div className="w-full md:w-1/2 p-8 bg-gray-100 rounded-lg shadow-md flex flex-col items-center justify-center text-center">
+                <h2 className="text-2xl font-bold text-gray-800 mb-4">Contact Information</h2>
                 <p className="text-gray-600 mb-6">Feel free to reach out to me for any inquiries or collaboration opportunities. You can contact me via the following methods:</p>
                 <ul className="mb-6 space-y-4">
-                    <li className="flex items-center">
+                    <li className="flex items-center justify-center">
                         <FaEnvelope className="text-gray-700 mr-2" />
-                        <span className="font-semibold text-gray-700">Email:</span> mzmo@uwaterloo.ca
+                        <span className="font-semibold text-gray-700">Email:</span>
+                        <span className="ml-2 text-gray-700">mzmo@uwaterloo.ca</span>
                     </li>
-                    <li className="flex items-center">
+                    <li className="flex items-center justify-center">
                         <FaPhone className="text-gray-700 mr-2" />
-                        <span className="font-semibold text-gray-700">Phone:</span> (437) 982-6562
+                        <span className="font-semibold text-gray-700">Phone:</span>
+                        <span className="ml-2 text-gray-700">(437) 982-6562</span>
                     </li>
-                    <li className="flex items-center">
+                    <li className="flex items-center justify-center">
                         <FaLinkedin className="text-gray-700 mr-2" />
                         <span className="font-semibold text-gray-700">LinkedIn:</span>
                         <button
@@ -68,7 +71,7 @@ function ContactMe() {
                         </button>
                     </li>
                 </ul>
-                <a href="/resume.pdf" className="inline-block px-4 py-2 bg-gradient-to-r from-blue-500 to-purple-600 text-white font-semibold rounded-lg shadow-md hover:from-blue-700 hover:to-purple-800 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75 flex items-center">
+                <a href="/resume.pdf" className="inline-block px-4 py-2 bg-gradient-to-r from-blue-500 to-purple-600 text-white font-semibold rounded-lg shadow-md hover:from-blue-700 hover:to-purple-800 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75 flex items-center justify-center">
                     <FaFileDownload className="mr-2" /> Download Resume
                 </a>
             </div>
@@ -81,7 +84,7 @@ function ContactMe() {
                             name="name"
                             value={formData.name}
                             onChange={handleChange}
-                            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
+                            className="w-full px-4 py-2 border border-gray-300 rounded-lg bg-white focus:outline-none focus:ring-2 focus:ring-blue-400"
                             placeholder="Your Name"
                             required
                         />
@@ -93,7 +96,7 @@ function ContactMe() {
                             name="email"
                             value={formData.email}
                             onChange={handleChange}
-                            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
+                            className="w-full px-4 py-2 border border-gray-300 rounded-lg bg-white focus:outline-none focus:ring-2 focus:ring-blue-400"
                             placeholder="Your Email"
                             required
                         />
@@ -104,7 +107,7 @@ function ContactMe() {
                             name="message"
                             value={formData.message}
                             onChange={handleChange}
-                            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
+                            className="w-full px-4 py-2 border border-gray-300 rounded-lg bg-white focus:outline-none focus:ring-2 focus:ring-blue-400"
                             rows="4"
                             placeholder="Your Message"
                             required
