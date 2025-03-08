@@ -1,8 +1,20 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import { Link } from 'react-scroll';
 
 function Navbar() {
+    const navigate = useNavigate();
+
+    const handleNavLinkClick = (to) => {
+        navigate('/');
+        setTimeout(() => {
+            const element = document.getElementById(to);
+            if (element) {
+                element.scrollIntoView({ behavior: 'smooth' });
+            }
+        }, 100);
+    };
+
     return (
         <nav className="bg-green-800 p-4 fixed w-full top-0 left-0 h-16 z-20">
             <ul className="flex justify-around">
@@ -12,29 +24,29 @@ function Navbar() {
                     </NavLink>
                 </li>
                 <li>
-                    <Link to="about-me" smooth={true} duration={500} className="text-white hover:text-green-400 cursor-pointer">
+                    <span onClick={() => handleNavLinkClick('about-me')} className="text-white hover:text-green-400 cursor-pointer">
                         About Me
-                    </Link>
+                    </span>
                 </li>
                 <li>
-                    <Link to="market" smooth={true} duration={500} className="text-white hover:text-green-400 cursor-pointer">
+                    <span onClick={() => handleNavLinkClick('market')} className="text-white hover:text-green-400 cursor-pointer">
                         Market
-                    </Link>
+                    </span>
                 </li>
                 <li>
-                    <Link to="portfolio" smooth={true} duration={500} className="text-white hover:text-green-400 cursor-pointer">
+                    <span onClick={() => handleNavLinkClick('portfolio')} className="text-white hover:text-green-400 cursor-pointer">
                         Portfolio
-                    </Link>
+                    </span>
                 </li>
                 <li>
-                    <Link to="news" smooth={true} duration={500} className="text-white hover:text-green-400 cursor-pointer">
+                    <span onClick={() => handleNavLinkClick('news')} className="text-white hover:text-green-400 cursor-pointer">
                         News
-                    </Link>
+                    </span>
                 </li>
                 <li>
-                    <Link to="contact-me" smooth={true} duration={500} className="text-white hover:text-green-400 cursor-pointer">
+                    <span onClick={() => handleNavLinkClick('contact-me')} className="text-white hover:text-green-400 cursor-pointer">
                         Contact Me
-                    </Link>
+                    </span>
                 </li>
                 <li>
                     <NavLink to="/finance-calculator" className="text-white hover:text-green-400 cursor-pointer">
