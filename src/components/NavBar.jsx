@@ -1,6 +1,5 @@
 import React from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
-import { Link } from 'react-scroll';
 
 function Navbar() {
     const navigate = useNavigate();
@@ -10,7 +9,9 @@ function Navbar() {
         setTimeout(() => {
             const element = document.getElementById(to);
             if (element) {
-                element.scrollIntoView({ behavior: 'smooth' });
+                const yOffset = -80; // Adjust this value based on your navbar height
+                const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
+                window.scrollTo({ top: y, behavior: 'smooth' });
             }
         }, 100);
     };
