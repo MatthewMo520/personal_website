@@ -6,7 +6,8 @@ import Navbar from './components/NavBar';
 import { Element } from 'react-scroll';
 import TypingAnimation from './components/TypingAnimation';
 import StockTicker from './components/StockTicker';
-import News from './components/News'; // Import the News component
+import News from './components/News'; 
+import ContactMe from './components/ContactMe';
 
 function App() {
   return (
@@ -58,7 +59,7 @@ function App() {
         <Element name="contact-me" className="mb-8">
           <section className="bg-white p-6 rounded-lg shadow-md">
             <h2 className="text-3xl text-gray-800 mb-4 font-semibold">Contact Me</h2>
-            <p className="text-gray-600">Feel free to reach out to me for any inquiries or collaboration opportunities. You can contact me via email at stocktracker@example.com or follow me on social media for the latest updates.</p>
+            <ContactMe/>
           </section>
         </Element>
       </main>

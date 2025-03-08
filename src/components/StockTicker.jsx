@@ -7,8 +7,37 @@ function StockTicker() {
     useEffect(() => {
         const fetchStockData = async () => {
             try {
-                const response = await axios.get('http://localhost:5000/stocks');
-                setStocks(response.data);
+                const stockSymbols = ['AAPL', 'GOOGL', 'AMZN', 'TSLA', 'NVDA'];
+                const API_KEY = 'QTZHX19WPRAP39DH';
+                const stockData = await Promise.all(
+                    stockSymbols.map(async (symbol) => {
+                        const response = await axios.get(`https://www.alphavantage.co/query`, {
+                            params: {
+                                function: 'GLOBAL_QUOTE',
+                                symbol,
+                                apikey: API_KEY,
+                            },
+                        });
+                        if (response.data && response.data['Global Quote']) {
+                            const data = response.data['Global Quote'];
+                            return {
+                                symbol: data['01. symbol'],
+                                price: parseFloat(data['05. price'] || '0').toFixed(2),
+                                change: parseFloat(data['09. change'] || '0').toFixed(2),
+                            };
+                        } else {
+                            console.error(`Error fetching data for ${symbol}:`, response.data);
+                            return {
+                                symbol,
+                                price: '0.00',
+                                change: '0.00',
+                            };
+                        }
+                    })
+                );
+                setStocks(stockData);
+                localStorage.setItem('stockData', JSON.stringify(stockData));
+                localStorage.setItem('stockDataTimestamp', Date.now());
             } catch (error) {
                 console.error('Error fetching stock data:', error);
                 // Set default data in case of error
@@ -22,8 +51,24 @@ function StockTicker() {
             }
         };
 
-        fetchStockData();
-        const interval = setInterval(fetchStockData, 3600000); // Fetch data every minute
+        const loadStockData = () => {
+            const stockData = localStorage.getItem('stockData');
+            const stockDataTimestamp = localStorage.getItem('stockDataTimestamp');
+            if (stockData && stockDataTimestamp) {
+                const age = Date.now() - stockDataTimestamp;
+                if (age < 3600000) { // 1 hour in milliseconds
+                    setStocks(JSON.parse(stockData));
+                    return true;
+                }
+            }
+            return false;
+        };
+
+        if (!loadStockData()) {
+            fetchStockData();
+        }
+
+        const interval = setInterval(fetchStockData, 3600000); // Fetch data every hour
 
         return () => clearInterval(interval);
     }, []);
