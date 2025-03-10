@@ -9,12 +9,12 @@ function News() {
     useEffect(() => {
         const fetchNews = async () => {
             try {
-                const response = await axios.get('https://newsapi.org/v2/top-headlines', {
+                const response = await axios.get('https://gnews.io/api/v4/top-headlines', {
                     params: {
                         category: 'business',
-                        apiKey: import.meta.env.VITE_NEWS_API_KEY,
-                        pageSize: 6,
-                        sortBy: 'publishedAt',
+                        token: import.meta.env.VITE_GNEWS_API_KEY,
+                        max: 6,
+                        lang: 'en',
                     },
                 });
                 setNews(response.data.articles);
@@ -50,8 +50,8 @@ function News() {
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mx-auto">
                         {displayedNews.map((article, index) => (
                             <div key={index} className="news-article bg-white p-6 border rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300">
-                                {article.urlToImage && (
-                                    <img src={article.urlToImage} alt={article.title} className="w-full h-48 object-cover mb-4 rounded-t-lg" />
+                                {article.image && (
+                                    <img src={article.image} alt={article.title} className="w-full h-48 object-cover mb-4 rounded-t-lg" />
                                 )}
                                 <h3 className="text-xl font-bold mb-2 text-gray-800">{article.title}</h3>
                                 <p className="text-gray-600 mb-4">{article.description}</p>
