@@ -8,7 +8,7 @@ function StockTicker() {
         const fetchStockData = async () => {
             try {
                 const stockSymbols = ['AAPL', 'GOOGL', 'AMZN', 'TSLA', 'NVDA'];
-                const API_KEY = 'QTZHX19WPRAP39DH';
+                const API_KEY = import.meta.env.VITE_STOCK_API_KEY;
                 const stockData = await Promise.all(
                     stockSymbols.map(async (symbol) => {
                         const response = await axios.get(`https://www.alphavantage.co/query`, {

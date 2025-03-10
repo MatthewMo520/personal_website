@@ -28,7 +28,12 @@ function ContactMe() {
             message: formData.message || 'No message provided',
         };
 
-        emailjs.send('service_08ebulw', 'template_lgvtvr9', emailParams, 'nSJ063WJqSfxk3zDV')
+        emailjs.send(
+            import.meta.env.VITE_EMAILJS_SERVICE_ID,
+            import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+            emailParams,
+            import.meta.env.VITE_EMAILJS_USER_ID
+        )
             .then((response) => {
                 console.log('SUCCESS!', response.status, response.text);
                 alert('Message sent successfully!');
