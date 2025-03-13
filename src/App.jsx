@@ -10,6 +10,7 @@ import StockTicker from './components/StockTicker';
 import News from './components/News'; 
 import ContactMe from './components/ContactMe';
 import FinanceCalculator from './components/FinanceCalculator';
+import MyWork from './components/MyWork';
 
 function Home() {
   return (
@@ -50,6 +51,9 @@ function Home() {
             <h2 className="text-3xl text-gray-800 mb-4 font-semibold">Your Portfolio</h2>
             <p className="text-gray-600">Your portfolio consists of a collection of investments, including stocks, bonds, mutual funds, and other assets. Diversifying your portfolio can help manage risk and improve potential returns.</p>
           </section>
+        </Element>
+        <Element name="my-work" id="my-work" className="mb-8">
+          <MyWork />
         </Element>
         <Element name="news" id="news" className="mb-8">
           <section className="bg-white p-6 rounded-lg shadow-md">
