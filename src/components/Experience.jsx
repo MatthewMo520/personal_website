@@ -38,11 +38,9 @@ function Experience() {
       const scrollY = window.scrollY
       const windowHeight = window.innerHeight
 
-      // Check if we're in the experience section
       if (scrollY + windowHeight / 2 >= containerTop && 
           scrollY <= containerTop + containerHeight) {
         
-        // Calculate which experience should be active based on scroll position
         const relativeScroll = scrollY - containerTop + windowHeight / 2
         const sectionHeight = containerHeight / experiences.length
         const newActiveIndex = Math.min(
@@ -55,19 +53,16 @@ function Experience() {
     }
 
     window.addEventListener('scroll', handleScroll)
-    handleScroll() // Call once to set initial state
+    handleScroll()
 
     return () => window.removeEventListener('scroll', handleScroll)
   }, [experiences.length])
 
   return (
     <section ref={containerRef} className="relative py-20 md:py-32 bg-gray-800 transition-all duration-700">
-      {/* Smooth transition from previous section */}
       <div className="absolute top-0 left-0 right-0 h-16 bg-gradient-to-b from-gray-800/0 to-gray-800"></div>
-      {/* Background decoration */}
       <div className="absolute inset-0 bg-gradient-to-br from-gray-800 via-gray-800 to-gray-750"></div>
       <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-transparent via-gray-700/10 to-transparent"></div>
-      {/* Smooth transition to next section */}
       <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-gray-800 via-gray-820 to-gray-800"></div>
       
       <div className="relative z-10 container mx-auto px-6">
@@ -80,7 +75,6 @@ function Experience() {
         
         <div className="max-w-4xl mx-auto">
           <div className="relative">
-            {/* Timeline line */}
             <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-blue-500"></div>
             
             <div className="space-y-12">
@@ -95,12 +89,10 @@ function Experience() {
                     ref={el => itemRefs.current[index] = el}
                     className={`relative flex items-start group transition-all duration-700 ${scale} ${opacity}`}
                   >
-                    {/* Timeline dot */}
                     <div className={`absolute left-6 w-4 h-4 rounded-full border-4 border-gray-800 transition-all duration-500 ${
                       isActive ? 'bg-blue-400 w-6 h-6 left-5' : 'bg-blue-500'
                     }`}></div>
                     
-                    {/* Content */}
                     <div className={`ml-20 transform transition-all duration-700 ${
                       isActive ? 'translate-x-4' : 'translate-x-0'
                     }`}>

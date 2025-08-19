@@ -4,7 +4,7 @@ function Projects() {
       title: "LinkedIt",
       description: "🎉 Winner of Geesehacks 2024 Best Beginner Hack! Making LinkedIn connections easier - one link at a time. Streamlines finding and contacting sponsors by automating profile searches and email extraction.",
       tech: ["React", "Flask", "Selenium", "Tailwind CSS", "Axios"],
-      image: "/src/assets/LinkedIt.png",
+      image: "/images/LinkedIt.png",
       link: "https://github.com/MatthewMo520/LinkedIt",
       devpost: "https://devpost.com/software/linkedit"
     },
@@ -12,7 +12,7 @@ function Projects() {
       title: "AgeWell",
       description: "TerraHack project - An integrated suite of tools designed to improve day-to-day safety and independence for people living with Alzheimer's disease while giving caregivers actionable, real-time information.",
       tech: ["React", "Express", "YOLOv8", "MediaPipe", "MongoDB", "Twilio", "Leaflet"],
-      image: "/src/assets/agewell.png",
+      image: "/images/agewell.png",
       link: "https://github.com/MatthewMo520/Terrahacks2025",
       devpost: "https://devpost.com/software/elderlyassist?ref_content=user-portfolio&ref_feature=in_progress"
     },
@@ -20,7 +20,7 @@ function Projects() {
       title: "TaskFlow",
       description: "A comprehensive task management application designed to streamline productivity and collaboration with intuitive workflow management.",
       tech: ["Flask", "SQLAlchemy", "Flask-SCSS", "Python", "Jinja2"],
-      image: "/src/assets/taskflow.png",
+      image: "/images/taskflow.png",
       link: "https://github.com/MatthewMo520/TaskFlow",
       liveLink: "https://taskflow.matthew-mo.com/"
     },
@@ -35,12 +35,9 @@ function Projects() {
 
   return (
     <section className="relative py-20 md:py-32 bg-gray-900 transition-all duration-700">
-      {/* Smooth transition from previous section */}
       <div className="absolute top-0 left-0 right-0 h-32 bg-gradient-to-b from-gray-800 via-gray-850 to-gray-900"></div>
-      {/* Background decoration */}
       <div className="absolute inset-0 bg-gradient-to-br from-gray-900 via-gray-900 to-gray-850"></div>
       <div className="absolute top-1/3 right-0 w-96 h-96 bg-green-500/5 rounded-full blur-3xl"></div>
-      {/* Smooth transition to next section */}
       <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-gray-800 via-gray-850 to-gray-900"></div>
       
       <div className="relative z-10 container mx-auto px-6">

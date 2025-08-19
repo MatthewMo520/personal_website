@@ -7,15 +7,13 @@ function Portfolio() {
   const [totalChange, setTotalChange] = useState(0)
   const [loading, setLoading] = useState(true)
   const [showStocks, setShowStocks] = useState(false)
-  const [usdToCadRate, setUsdToCadRate] = useState(1.35) // Default fallback rate
+  const [usdToCadRate, setUsdToCadRate] = useState(1.35)
 
-  // Load holdings from JSON config file
   const holdings = portfolioConfig.holdings
 
   useEffect(() => {
     const fetchExchangeRate = async () => {
       try {
-        // Fetch USD to CAD exchange rate
         const response = await fetch('https://api.exchangerate-api.com/v4/latest/USD')
         if (response.ok) {
           const data = await response.json()
@@ -23,7 +21,6 @@ function Portfolio() {
         }
       } catch (error) {
         console.log('Failed to fetch exchange rate, using fallback:', error)
-        // Keep the default fallback rate of 1.35
       }
     }
 
@@ -33,11 +30,9 @@ function Portfolio() {
         const updatedHoldings = await Promise.all(
           holdings.map(async (holding) => {
             try {
-              // Try multiple APIs for better reliability
               let currentPrice, dailyChange, dailyChangePercent;
               
               try {
-                // Try Yahoo Finance via proxy
                 const response = await fetch(
                   `https://api.allorigins.win/raw?url=${encodeURIComponent(`https://query1.finance.yahoo.com/v8/finance/chart/${holding.symbol}?interval=1d&range=1d`)}`
                 )
@@ -56,7 +51,6 @@ function Portfolio() {
                 }
               } catch (error) {
                 console.log('Yahoo Finance failed, using fallback...')
-                // Fallback: Use realistic current market prices (you can update these manually)
                 const fallbackPrices = {
                   'IONQ': 40.23,
                   'NUWE': 5.54,
@@ -77,12 +71,11 @@ function Portfolio() {
                 }
                 
                 currentPrice = fallbackPrices[holding.symbol] || holding.purchasePrice
-                const previousPrice = currentPrice * 0.98 // Simulate previous close
+                const previousPrice = currentPrice * 0.98
                 dailyChange = currentPrice - previousPrice
                 dailyChangePercent = (dailyChange / previousPrice) * 100
               }
               
-              // Validate all numbers and prevent NaN
               currentPrice = Number(currentPrice) || Number(holding.purchasePrice) || 0
               dailyChange = Number(dailyChange) || 0
               dailyChangePercent = Number(dailyChangePercent) || 0
@@ -91,7 +84,7 @@ function Portfolio() {
               const purchasePrice = Number(holding.purchasePrice) || 0
               
               const totalValue = currentPrice * shares
-              const dailyChangeAmount = dailyChange * shares  // Daily change for all shares
+              const dailyChangeAmount = dailyChange * shares
               
               return {
                 ...holding,
@@ -99,12 +92,11 @@ function Portfolio() {
                 dailyChange,
                 dailyChangePercent,
                 totalValue,
-                dailyChangeAmount,  // This is the daily $ change for this holding
+                dailyChangeAmount,
                 currency: holding.currency || 'USD'
               }
             } catch (error) {
               console.error(`Error fetching data for ${holding.symbol}:`, error)
-              // Fallback to demo data if API fails
               const totalValue = holding.purchasePrice * holding.shares
               return {
                 ...holding,
@@ -119,22 +111,18 @@ function Portfolio() {
           })
         )
         
-        // Calculate portfolio totals with validation (convert to CAD)
         const portfolioValue = updatedHoldings.reduce((sum, stock) => {
           const value = Number(stock.totalValue) || 0
-          // Convert USD values to CAD for total calculation
           const cadValue = stock.currency === 'USD' ? value * usdToCadRate : value
           return sum + cadValue
         }, 0)
         
         const portfolioDailyChange = updatedHoldings.reduce((sum, stock) => {
           const dailyChange = Number(stock.dailyChangeAmount) || 0
-          // Convert USD daily change to CAD for total calculation
           const cadDailyChange = stock.currency === 'USD' ? dailyChange * usdToCadRate : dailyChange
           return sum + cadDailyChange
         }, 0)
         
-        // Add portfolio percentage to each holding (based on CAD values)
         const holdingsWithPercentage = updatedHoldings.map(stock => ({
           ...stock,
           portfolioPercentage: portfolioValue > 0 ? ((stock.currency === 'USD' ? stock.totalValue * usdToCadRate : stock.totalValue) / portfolioValue) * 100 : 0
@@ -146,7 +134,6 @@ function Portfolio() {
         
       } catch (error) {
         console.error('Error fetching portfolio data:', error)
-        // Set fallback data
         const fallbackData = holdings.map(holding => ({
           ...holding,
           currentPrice: holding.purchasePrice,
@@ -157,13 +144,11 @@ function Portfolio() {
           currency: holding.currency || 'USD'
         }))
         
-        // Calculate total value for percentage calculation (convert to CAD)
         const totalFallbackValue = fallbackData.reduce((sum, stock) => {
           const cadValue = stock.currency === 'USD' ? stock.totalValue * usdToCadRate : stock.totalValue
           return sum + cadValue
         }, 0)
         
-        // Add portfolio percentage to fallback data
         const fallbackWithPercentage = fallbackData.map(stock => ({
           ...stock,
           portfolioPercentage: totalFallbackValue > 0 ? ((stock.currency === 'USD' ? stock.totalValue * usdToCadRate : stock.totalValue) / totalFallbackValue) * 100 : 0
@@ -180,7 +165,6 @@ function Portfolio() {
     fetchExchangeRate()
     fetchStockData()
     
-    // Refresh data every 30 seconds
     const interval = setInterval(() => {
       fetchExchangeRate()
       fetchStockData()
@@ -203,13 +187,10 @@ function Portfolio() {
 
   return (
     <section className="relative py-20 md:py-32 bg-gray-850 transition-all duration-700">
-      {/* Smooth transition from previous section */}
       <div className="absolute top-0 left-0 right-0 h-32 bg-gradient-to-b from-gray-800 via-gray-825 to-gray-850"></div>
-      {/* Background decoration */}
       <div className="absolute inset-0 bg-gradient-to-br from-gray-850 via-gray-850 to-gray-800"></div>
       <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-green-500/3 rounded-full blur-3xl"></div>
       <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-blue-500/3 rounded-full blur-3xl"></div>
-      {/* Smooth transition to next section */}
       <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-gray-800 via-gray-825 to-gray-850"></div>
       
       <div className="relative z-10 container mx-auto px-6">
@@ -233,7 +214,6 @@ function Portfolio() {
           </div>
         ) : (
           <>
-            {/* Portfolio Summary */}
             <div className="bg-gray-800 rounded-xl border border-gray-700 p-6 mb-8 transform transition-all duration-500 hover:scale-105">
               <div className="grid md:grid-cols-3 gap-6 text-center">
                 <div>
@@ -255,7 +235,6 @@ function Portfolio() {
               </div>
             </div>
 
-            {/* Toggle Button */}
             <div className="text-center mb-8">
               <button
                 onClick={() => setShowStocks(!showStocks)}
@@ -280,7 +259,6 @@ function Portfolio() {
               </button>
             </div>
 
-            {/* Stock Holdings */}
             {showStocks && (
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6"
                  style={{

@@ -1,9 +1,7 @@
 function Contact() {
   return (
     <section className="relative py-20 md:py-32 bg-gray-800 text-white transition-all duration-700">
-      {/* Smooth transition from previous section */}
       <div className="absolute top-0 left-0 right-0 h-16 bg-gradient-to-b from-gray-800/0 to-gray-800"></div>
-      {/* Background decoration */}
       <div className="absolute inset-0 bg-gradient-to-br from-gray-800 via-gray-750 to-gray-800"></div>
       <div className="absolute bottom-0 left-1/4 w-96 h-96 bg-blue-500/5 rounded-full blur-3xl"></div>
       

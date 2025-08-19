@@ -1,12 +1,9 @@
 function About() {
   return (
     <section className="relative py-20 md:py-32 bg-gray-800 transition-all duration-700">
-      {/* Smooth transition from previous section */}
       <div className="absolute top-0 left-0 right-0 h-16 bg-gradient-to-b from-gray-800/0 to-gray-800"></div>
-      {/* Background decoration */}
       <div className="absolute inset-0 bg-gradient-to-br from-gray-800 via-gray-800 to-gray-750"></div>
       <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-transparent via-gray-700/10 to-transparent"></div>
-      {/* Smooth transition to next section */}
       <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-gray-800 via-gray-820 to-gray-800"></div>
       
       <div className="relative z-10 container mx-auto px-6">
