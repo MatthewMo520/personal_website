@@ -19,9 +19,9 @@ function Contact() {
           </p>
         </div>
         
-        <div className="max-w-4xl mx-auto px-4">
+        <div className="max-w-md mx-auto px-4">
           <div className="bg-gray-700 rounded-xl border border-gray-600 p-6 md:p-8">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
               <div>
                 <div className="space-y-6">
                   <div className="flex items-center gap-4">
@@ -104,20 +104,30 @@ function Contact() {
               
               <div>
                 <h3 className="text-xl font-semibold text-gray-100 mb-6">Send a message</h3>
-                <form className="space-y-4">
+                <form 
+                  action="https://formspree.io/f/xjkodnpk" 
+                  method="POST"
+                  className="space-y-4"
+                >
                   <input 
                     type="text" 
+                    name="name"
                     placeholder="Name"
+                    required
                     className="w-full px-4 py-3 bg-gray-800 border border-gray-600 rounded-lg focus:outline-none focus:border-blue-500 text-gray-300"
                   />
                   <input 
                     type="email" 
+                    name="email"
                     placeholder="Email"
+                    required
                     className="w-full px-4 py-3 bg-gray-800 border border-gray-600 rounded-lg focus:outline-none focus:border-blue-500 text-gray-300"
                   />
                   <textarea 
+                    name="message"
                     placeholder="Message"
                     rows="4"
+                    required
                     className="w-full px-4 py-3 bg-gray-800 border border-gray-600 rounded-lg focus:outline-none focus:border-blue-500 text-gray-300"
                   ></textarea>
                   <button 
