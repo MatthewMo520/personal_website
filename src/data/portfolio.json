@@ -23,14 +23,7 @@
       "currency": "USD"
     },
     {
-      "symbol": "RIOT",
-      "name": "Riot Platforms Inc.",
-      "shares": 100,
-      "purchasePrice": 11.33,
-      "currency": "USD"
-    },
-    {
-      "symbol": "INTC.TO",
+      "symbol": "INTC.NE",
       "name": "Intel Corp CDRs (CAD Hedged)",
       "shares": 50,
       "purchasePrice": 14.13,
@@ -112,6 +105,13 @@
       "shares": 30,
       "purchasePrice": 20.43,
       "currency": "USD"
+    },
+    {
+      "symbol": "UPS.NE",
+      "name": "UPS CDR (CAD Hedged)",
+      "shares": 160,
+      "purchasePrice": 175.00,
+      "currency": "CAD"
     }
   ]
 }

@@ -89,7 +89,7 @@ function Portfolio() {
           })
         )
         
-        const availableHoldings = updatedHoldings.filter(stock => !stock.dataUnavailable)
+        const availableHoldings = updatedHoldings.filter(stock => !stock.dataUnavailable && stock.shares > 0)
         
         if (availableHoldings.length === 0) {
           setPortfolioData([])

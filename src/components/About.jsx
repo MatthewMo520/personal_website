@@ -26,7 +26,7 @@ function About() {
             </p>
             <p className="text-gray-400 mb-6 leading-relaxed transition-colors duration-300 hover:text-gray-300">
               My technical expertise spans multiple programming languages and frameworks, with 
-              particular strength in Python, R, and web technologies. I'm passionate about 
+              particular strength in Python, Java, and web technologies. I'm passionate about 
               leveraging data to drive insights and create meaningful applications.
             </p>
           </div>
@@ -34,7 +34,7 @@ function About() {
           <div>
             <h3 className="text-xl md:text-2xl font-semibold text-gray-200 mb-6 md:mb-8">Skills</h3>
             <div className="grid grid-cols-2 gap-4">
-              {['Python', 'R', 'Java', 'Javascript', 'C', 'C++', 'HTML/CSS', 'SQL', 'Excel VBA'].map((skill, index) => (
+              {['Python', 'Java', 'Javascript', 'C', 'C++', 'HTML/CSS', 'SQL', 'Excel VBA'].map((skill, index) => (
                 <div 
                   key={skill} 
                   className="bg-gray-700 px-4 py-3 rounded-xl text-center border border-gray-600 transform transition-all duration-500 hover:scale-105 hover:border-blue-500 hover:bg-gray-600"
