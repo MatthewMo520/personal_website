@@ -29,6 +29,11 @@ function About() {
               particular strength in Python, Java, and web technologies. I'm passionate about 
               leveraging data to drive insights and create meaningful applications.
             </p>
+            <p className="text-gray-400 mb-6 leading-relaxed transition-colors duration-300 hover:text-gray-300">
+              Beyond programming, I have a keen interest in financial markets and investing. I enjoy 
+              analyzing market trends and building a diversified portfolio, combining my analytical 
+              skills with investment strategy to make informed financial decisions.
+            </p>
           </div>
           
           <div>
