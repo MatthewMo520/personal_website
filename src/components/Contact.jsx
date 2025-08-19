@@ -3,6 +3,7 @@ import backgroundImage from '../assets/backgroundimage.png'
 function Contact() {
   return (
     <section className="relative py-20 md:py-32 text-white overflow-hidden">
+      <div className="absolute top-0 left-0 right-0 h-32 bg-gradient-to-b from-gray-850 to-transparent"></div>
       <div 
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
         style={{ backgroundImage: `url(${backgroundImage})` }}

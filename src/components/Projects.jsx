@@ -39,7 +39,7 @@ function Projects() {
       <div className="absolute top-0 left-0 right-0 h-32 bg-gradient-to-b from-gray-800 via-gray-850 to-gray-900"></div>
       <div className="absolute inset-0 bg-gradient-to-br from-gray-900 via-gray-900 to-gray-850"></div>
       <div className="absolute top-1/3 right-0 w-96 h-96 bg-green-500/5 rounded-full blur-3xl"></div>
-      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-gray-800 via-gray-850 to-gray-900"></div>
+      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-gray-850 via-gray-900 to-gray-900"></div>
       
       <div className="relative z-10 container mx-auto px-6">
         <div className="text-center mb-20">
