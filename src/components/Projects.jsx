@@ -39,12 +39,12 @@ function Projects() {
       <div className="absolute top-0 left-0 right-0 h-32 bg-gradient-to-b from-gray-800 via-gray-850 to-gray-900"></div>
       <div className="absolute inset-0 bg-gradient-to-br from-gray-900 via-gray-900 to-gray-850"></div>
       <div className="absolute top-1/3 right-0 w-96 h-96 bg-green-500/5 rounded-full blur-3xl"></div>
-      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-gray-850 via-gray-900 to-gray-900"></div>
+      <div className="absolute bottom-0 left-0 right-0 h-48 bg-gradient-to-t from-gray-850 via-gray-875 to-gray-900"></div>
       
       <div className="relative z-10 container mx-auto px-6">
-        <div className="text-center mb-20">
-          <h2 className="text-4xl font-bold text-gray-100 mb-4 transform transition-all duration-700 hover:scale-105">My Projects</h2>
-          <p className="text-gray-400 max-w-2xl mx-auto mb-4 transition-all duration-500">
+        <div className="text-center mb-12 md:mb-20">
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-100 mb-4">My Projects</h2>
+          <p className="text-gray-400 max-w-2xl mx-auto mb-4 px-4">
             Here are some of the projects I've worked on recently
           </p>
           <p className="text-gray-500 text-sm">← Scroll to see more →</p>
@@ -53,7 +53,7 @@ function Projects() {
         <div className="overflow-x-auto pb-6 scrollbar-hide">
           <div className="flex gap-8 w-max">
             {projects.map((project, index) => (
-              <div key={index} className="bg-gray-800 rounded-xl border border-gray-700 overflow-hidden hover:border-gray-600 hover:scale-105 transition-all duration-500 w-80 flex-shrink-0">
+              <div key={index} className="bg-gray-800 rounded-xl border border-gray-700 overflow-hidden hover:border-gray-600 md:hover:scale-105 transition-all duration-500 w-72 md:w-80 flex-shrink-0">
                 <img 
                   src={project.image} 
                   alt={project.title}

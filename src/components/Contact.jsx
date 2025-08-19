@@ -3,25 +3,25 @@ import backgroundImage from '../assets/backgroundimage.png'
 function Contact() {
   return (
     <section className="relative py-20 md:py-32 text-white overflow-hidden">
-      <div className="absolute top-0 left-0 right-0 h-32 bg-gradient-to-b from-gray-850 to-transparent"></div>
       <div 
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
         style={{ backgroundImage: `url(${backgroundImage})` }}
       ></div>
       <div className="absolute inset-0 bg-black/70"></div>
-      <div className="absolute inset-0 bg-gradient-to-b from-gray-900/60 via-gray-900/40 to-gray-800/80"></div>
+      <div className="absolute inset-0 bg-gradient-to-b from-gray-900/80 via-gray-900/40 to-gray-800/80"></div>
+      <div className="absolute top-0 left-0 right-0 h-64 bg-gradient-to-b from-gray-800 via-gray-830 to-transparent"></div>
       
       <div className="relative z-10 container mx-auto px-6">
-        <div className="text-center mb-20">
-          <h2 className="text-4xl font-bold text-gray-100 mb-4">Contact</h2>
-          <p className="text-gray-400 max-w-2xl mx-auto">
+        <div className="text-center mb-12 md:mb-20">
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-100 mb-4">Contact</h2>
+          <p className="text-gray-400 max-w-2xl mx-auto px-4">
             Let's connect
           </p>
         </div>
         
-        <div className="max-w-4xl mx-auto">
-          <div className="bg-gray-700 rounded-xl border border-gray-600 p-8">
-            <div className="grid md:grid-cols-2 gap-12">
+        <div className="max-w-4xl mx-auto px-4">
+          <div className="bg-gray-700 rounded-xl border border-gray-600 p-6 md:p-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
               <div>
                 <div className="space-y-6">
                   <div className="flex items-center gap-4">
