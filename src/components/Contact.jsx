@@ -19,9 +19,9 @@ function Contact() {
           </p>
         </div>
         
-        <div className="max-w-md mx-auto px-4">
+        <div className="max-w-sm mx-auto px-4">
           <div className="bg-gray-700 rounded-xl border border-gray-600 p-6 md:p-8">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-2 md:gap-3">
               <div>
                 <div className="space-y-6">
                   <div className="flex items-center gap-4">
