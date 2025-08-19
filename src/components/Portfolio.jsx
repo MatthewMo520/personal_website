@@ -50,30 +50,8 @@ function Portfolio() {
                   throw new Error('Yahoo API failed')
                 }
               } catch (error) {
-                console.log('Yahoo Finance failed, using fallback...')
-                const fallbackPrices = {
-                  'IONQ': 40.23,
-                  'NUWE': 5.54,
-                  'ON': 51.09,
-                  'RIOT': 11.33,
-                  'INTC.TO': 14.13,
-                  'RY.TO': 188.50,
-                  'TD.TO': 102.35,
-                  'VFV.TO': 158.16,
-                  'ATD.TO': 70.02,
-                  'GOOG.TO': 33.47,
-                  'BMO.TO': 156.70,
-                  'AMD': 177.51,
-                  'BBAI': 6.14,
-                  'IMNM': 10.28,
-                  'SPY': 643.44,
-                  'TEN': 20.43
-                }
-                
-                currentPrice = fallbackPrices[holding.symbol] || holding.purchasePrice
-                const previousPrice = currentPrice * 0.98
-                dailyChange = currentPrice - previousPrice
-                dailyChangePercent = (dailyChange / previousPrice) * 100
+                console.log('Yahoo Finance API unavailable')
+                throw new Error('Unable to fetch real market data')
               }
               
               currentPrice = Number(currentPrice) || Number(holding.purchasePrice) || 0
@@ -97,33 +75,43 @@ function Portfolio() {
               }
             } catch (error) {
               console.error(`Error fetching data for ${holding.symbol}:`, error)
-              const totalValue = holding.purchasePrice * holding.shares
               return {
                 ...holding,
-                currentPrice: holding.purchasePrice,
-                dailyChange: 0,
-                dailyChangePercent: 0,
-                totalValue,
-                dailyChangeAmount: 0,
-                currency: holding.currency || 'USD'
+                currentPrice: null,
+                dailyChange: null,
+                dailyChangePercent: null,
+                totalValue: null,
+                dailyChangeAmount: null,
+                currency: holding.currency || 'USD',
+                dataUnavailable: true
               }
             }
           })
         )
         
-        const portfolioValue = updatedHoldings.reduce((sum, stock) => {
+        const availableHoldings = updatedHoldings.filter(stock => !stock.dataUnavailable)
+        
+        if (availableHoldings.length === 0) {
+          setPortfolioData([])
+          setTotalValue(null)
+          setTotalChange(null)
+          setLoading(false)
+          return
+        }
+        
+        const portfolioValue = availableHoldings.reduce((sum, stock) => {
           const value = Number(stock.totalValue) || 0
           const cadValue = stock.currency === 'USD' ? value * usdToCadRate : value
           return sum + cadValue
         }, 0)
         
-        const portfolioDailyChange = updatedHoldings.reduce((sum, stock) => {
+        const portfolioDailyChange = availableHoldings.reduce((sum, stock) => {
           const dailyChange = Number(stock.dailyChangeAmount) || 0
           const cadDailyChange = stock.currency === 'USD' ? dailyChange * usdToCadRate : dailyChange
           return sum + cadDailyChange
         }, 0)
         
-        const holdingsWithPercentage = updatedHoldings.map(stock => ({
+        const holdingsWithPercentage = availableHoldings.map(stock => ({
           ...stock,
           portfolioPercentage: portfolioValue > 0 ? ((stock.currency === 'USD' ? stock.totalValue * usdToCadRate : stock.totalValue) / portfolioValue) * 100 : 0
         }))
@@ -134,15 +122,11 @@ function Portfolio() {
         
       } catch (error) {
         console.error('Error fetching portfolio data:', error)
-        const fallbackData = holdings.map(holding => ({
-          ...holding,
-          currentPrice: holding.purchasePrice,
-          dailyChange: 0,
-          dailyChangePercent: 0,
-          totalValue: holding.purchasePrice * holding.shares,
-          dailyChangeAmount: 0,
-          currency: holding.currency || 'USD'
-        }))
+        setPortfolioData([])
+        setTotalValue(null)
+        setTotalChange(null)
+        setLoading(false)
+        return
         
         const totalFallbackValue = fallbackData.reduce((sum, stock) => {
           const cadValue = stock.currency === 'USD' ? stock.totalValue * usdToCadRate : stock.totalValue
@@ -196,8 +180,8 @@ function Portfolio() {
       <div className="relative z-10 container mx-auto px-6">
         <div className="text-center mb-20">
           <div className="inline-flex items-center gap-3 bg-gray-700 border border-gray-600 rounded-full px-6 py-2 mb-6">
-            <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
-            <span className="text-sm text-gray-300 font-medium">Live Market Data</span>
+            <div className={`w-2 h-2 rounded-full ${portfolioData.length > 0 ? 'bg-green-400 animate-pulse' : 'bg-red-400'}`}></div>
+            <span className="text-sm text-gray-300 font-medium">{portfolioData.length > 0 ? 'Live Market Data' : 'Market Data Unavailable'}</span>
           </div>
           <h2 className="text-4xl font-bold text-gray-100 mb-4 transform transition-all duration-700 hover:scale-105">
             Investment Portfolio
@@ -211,6 +195,20 @@ function Portfolio() {
           <div className="text-center">
             <div className="inline-block animate-spin rounded-full h-12 w-12 border-b-2 border-blue-400"></div>
             <p className="text-gray-400 mt-4">Loading portfolio data...</p>
+          </div>
+        ) : portfolioData.length === 0 ? (
+          <div className="text-center">
+            <div className="bg-gray-800 rounded-xl border border-gray-700 p-8">
+              <div className="text-red-400 text-6xl mb-4">⚠️</div>
+              <h3 className="text-xl font-semibold text-gray-200 mb-2">Market Data Unavailable</h3>
+              <p className="text-gray-400 mb-4">Unable to fetch real-time market data. Please try again later.</p>
+              <button 
+                onClick={() => window.location.reload()} 
+                className="bg-blue-600 hover:bg-blue-700 px-6 py-2 rounded-lg text-white font-medium transition-colors"
+              >
+                Retry
+              </button>
+            </div>
           </div>
         ) : (
           <>

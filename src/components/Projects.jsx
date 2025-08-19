@@ -29,7 +29,8 @@ function Projects() {
       description: "Browser-based versions of classic games built with React. Features Tetris, Minesweeper, and Solitaire with responsive design and smooth animations.",
       tech: ["React", "Vite", "Tailwind CSS", "JavaScript"],
       image: "https://images.unsplash.com/photo-1556438064-2d7646166914?w=500&h=300&fit=crop",
-      link: "https://github.com/MatthewMo520/coded-games"
+      link: "https://github.com/MatthewMo520/coded-games",
+      liveLink: "https://games.matthew-mo.com/"
     }
   ]
 
