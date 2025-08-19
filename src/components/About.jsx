@@ -10,7 +10,7 @@ function About() {
         <div className="text-center mb-20">
           <h2 className="text-4xl font-bold text-gray-100 mb-4 transform transition-all duration-700 hover:scale-105">About Me</h2>
           <p className="text-gray-400 max-w-2xl mx-auto transition-all duration-500">
-            Passionate developer with expertise in modern web technologies
+            Data Science student at University of Waterloo with passion for technology and innovation
           </p>
         </div>
         
@@ -20,13 +20,14 @@ function About() {
               My Story
             </h3>
             <p className="text-gray-400 mb-6 leading-relaxed transition-colors duration-300 hover:text-gray-300">
-              I'm a passionate full-stack developer with over 3 years of experience 
-              creating digital solutions. I love turning complex problems into simple, 
-              beautiful designs.
+              I'm a Data Science student at the University of Waterloo with a strong foundation in 
+              programming, data analysis, and machine learning. I have experience in full-stack 
+              development and enjoy building innovative solutions to real-world problems.
             </p>
             <p className="text-gray-400 mb-6 leading-relaxed transition-colors duration-300 hover:text-gray-300">
-              When I'm not coding, you can find me exploring new technologies, 
-              contributing to open source projects, or enjoying a good cup of coffee.
+              My technical expertise spans multiple programming languages and frameworks, with 
+              particular strength in Python, R, and web technologies. I'm passionate about 
+              leveraging data to drive insights and create meaningful applications.
             </p>
           </div>
           

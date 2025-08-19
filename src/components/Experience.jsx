@@ -23,7 +23,7 @@ function Experience() {
     {
       title: "Lifeguard and Swim Instructor",
       company: "City of Toronto",
-      period: "Dec 2022 - Present",
+      period: "Dec 2022 - May 2025",
       description: "Guided swimmers of all ages and skill levels toward achieving their goals, from building foundational skills to refining advanced techniques. Provided a safe and welcoming environment, maintaining vigilance in and around the water to ensure participant safety. Addressed patron concerns professionally, enhancing customer satisfaction through respectful communication and problem resolution.",
       technologies: ["Leadership", "Safety Management", "Customer Service", "Instruction"]
     }
