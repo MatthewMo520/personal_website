@@ -27,13 +27,7 @@ function Contact() {
                 <div className="w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center mr-4 transition-all duration-300 group-hover:scale-110">
                   <span className="text-sm">📱</span>
                 </div>
-                <span className="text-gray-300 transition-colors duration-300 group-hover:text-blue-400">+1 (555) 123-4567</span>
-              </div>
-              <div className="flex items-center group">
-                <div className="w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center mr-4 transition-all duration-300 group-hover:scale-110">
-                  <span className="text-sm">📍</span>
-                </div>
-                <span className="text-gray-300 transition-colors duration-300 group-hover:text-blue-400">Your City, Country</span>
+                <span className="text-gray-300 transition-colors duration-300 group-hover:text-blue-400">437-982-6562</span>
               </div>
             </div>
             
