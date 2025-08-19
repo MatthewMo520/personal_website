@@ -1,0 +1,117 @@
+{
+  "lastUpdated": "2024-08-16",
+  "holdings": [
+    {
+      "symbol": "IONQ",
+      "name": "IonQ Inc.",
+      "shares": 10,
+      "purchasePrice": 40.23,
+      "currency": "USD"
+    },
+    {
+      "symbol": "NUWE", 
+      "name": "Nuwellis Inc.",
+      "shares": 7,
+      "purchasePrice": 5.54,
+      "currency": "USD"
+    },
+    {
+      "symbol": "ON",
+      "name": "ON Semiconductor Corp.",
+      "shares": 35,
+      "purchasePrice": 51.09,
+      "currency": "USD"
+    },
+    {
+      "symbol": "RIOT",
+      "name": "Riot Platforms Inc.",
+      "shares": 100,
+      "purchasePrice": 11.33,
+      "currency": "USD"
+    },
+    {
+      "symbol": "INTC.TO",
+      "name": "Intel Corp CDRs (CAD Hedged)",
+      "shares": 50,
+      "purchasePrice": 14.13,
+      "currency": "CAD"
+    },
+    {
+      "symbol": "RY.TO",
+      "name": "Royal Bank of Canada",
+      "shares": 14,
+      "purchasePrice": 188.50,
+      "currency": "CAD"
+    },
+    {
+      "symbol": "TD.TO",
+      "name": "Toronto-Dominion Bank",
+      "shares": 4,
+      "purchasePrice": 102.35,
+      "currency": "CAD"
+    },
+    {
+      "symbol": "VFV.TO",
+      "name": "Vanguard S&P 500 Index ETF",
+      "shares": 9,
+      "purchasePrice": 158.16,
+      "currency": "CAD"
+    },
+    {
+      "symbol": "ATD.TO",
+      "name": "Alimentation Couche-Tard Inc.",
+      "shares": 20,
+      "purchasePrice": 70.02,
+      "currency": "CAD"
+    },
+    {
+      "symbol": "GOOG.TO", 
+      "name": "Alphabet Inc CDRs (CAD Hedged)",
+      "shares": 140,
+      "purchasePrice": 33.47,
+      "currency": "CAD"
+    },
+    {
+      "symbol": "BMO.TO",
+      "name": "Bank of Montreal",
+      "shares": 30,
+      "purchasePrice": 156.70,
+      "currency": "CAD"
+    },
+    {
+      "symbol": "AMD",
+      "name": "Advanced Micro Devices Inc.",
+      "shares": 1,
+      "purchasePrice": 177.51,
+      "currency": "USD"
+    },
+    {
+      "symbol": "BBAI",
+      "name": "BigBear.ai Inc.",
+      "shares": 350,
+      "purchasePrice": 6.14,
+      "currency": "USD"
+    },
+    {
+      "symbol": "IMNM",
+      "name": "Immunome Inc.",
+      "shares": 15,
+      "purchasePrice": 10.28,
+      "currency": "USD"
+    },
+    {
+      "symbol": "SPY",
+      "name": "SPDR S&P 500 ETF Trust",
+      "shares": 2,
+      "purchasePrice": 643.44,
+      "currency": "USD"
+    },
+    {
+      "symbol": "TEN",
+      "name": "Tsakos Energy Navigation",
+      "shares": 30,
+      "purchasePrice": 20.43,
+      "currency": "USD"
+    }
+  ]
+}
