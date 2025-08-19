@@ -51,7 +51,7 @@ function Projects() {
         </div>
         
         <div className="overflow-x-auto pb-6 scrollbar-hide">
-          <div className="flex gap-8 w-max">
+          <div className="flex gap-4 md:gap-8" style={{minWidth: 'max-content'}}>
             {projects.map((project, index) => (
               <div key={index} className="bg-gray-800 rounded-xl border border-gray-700 overflow-hidden hover:border-gray-600 md:hover:scale-105 transition-all duration-500 w-72 md:w-80 flex-shrink-0">
                 <img 
