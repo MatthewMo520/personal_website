@@ -4,7 +4,7 @@ function Projects() {
       title: "Stock Analysis Dashboard",
       description: "Interactive web application for real-time stock analysis and visualization. Features comprehensive stock data, technical indicators, moving averages, and dynamic charting capabilities.",
       tech: ["Python", "Streamlit", "Pandas", "Plotly", "yfinance"],
-      image: "/src/assets/Stock_Dashboard.png",
+      image: "/images/Stock_Dashboard.png",
       link: "https://github.com/MatthewMo520/stock-dashboard",
       liveLink: "https://stock-dashboard-matthew-mo.streamlit.app/"
     },
