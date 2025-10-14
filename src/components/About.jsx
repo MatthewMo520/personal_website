@@ -32,18 +32,18 @@ function About() {
               <div className="space-y-4 text-gray-300 leading-relaxed">
                 <p>
                   I'm a Data Science student at the University of Waterloo with a strong foundation in
-                  programming, data analysis, and machine learning. I specialize in building full-stack
-                  applications and developing data-driven solutions to complex problems.
+                  programming, data analysis, and full-stack development. I specialize in building
+                  web applications and developing data-driven solutions to real-world problems.
                 </p>
                 <p>
-                  My experience spans multiple domains including web development, financial analysis,
-                  and machine learning. I've worked on projects ranging from real-time stock analysis
-                  dashboards to AI-powered health monitoring systems.
+                  My experience spans web development, financial analysis, and automation. I've worked
+                  on projects ranging from real-time stock analysis dashboards to computer vision safety
+                  systems, winning Best Beginner Hack at GeeseHacks 2024 with LinkedIt.
                 </p>
                 <p>
-                  I combine technical expertise with analytical thinking to create practical,
-                  scalable solutions. Whether it's developing web applications or analyzing market
-                  trends, I focus on delivering measurable results.
+                  I combine technical skills with analytical thinking to create practical, scalable
+                  solutions. Whether it's streamlining financial processes through Excel automation
+                  or building interactive data visualizations, I focus on delivering measurable results.
                 </p>
               </div>
             </div>

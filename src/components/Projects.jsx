@@ -43,7 +43,7 @@ function Projects() {
           <h2 className="text-4xl font-bold text-white mb-4">Projects</h2>
           <div className="w-20 h-1 bg-blue-600 mx-auto mb-4"></div>
           <p className="text-gray-300 max-w-2xl mx-auto">
-            A selection of my recent work in web development, data science, and machine learning
+            A selection of my recent work in web development, data analysis, and automation
           </p>
         </div>
 

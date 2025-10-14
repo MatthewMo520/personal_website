@@ -28,7 +28,7 @@ function Hero() {
             Data Science Student | Full-Stack Developer
           </p>
           <p className="text-lg text-gray-400 mb-8 max-w-2xl mx-auto">
-            University of Waterloo • Building innovative solutions with data science and modern web technologies
+            University of Waterloo • Building data-driven web applications and financial analysis tools
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
