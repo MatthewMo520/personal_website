@@ -3,31 +3,33 @@ function Projects() {
     {
       title: "Stock Analysis Dashboard",
       description: "Interactive web application for real-time stock analysis and visualization. Features comprehensive stock data, technical indicators, moving averages, and dynamic charting capabilities.",
-      tech: ["Python", "Streamlit", "Pandas", "Plotly", "yfinance"],
+      tech: ["Python", "Streamlit", "Pandas", "Plotly"],
       image: "/images/Stock_Dashboard.png",
       link: "https://github.com/MatthewMo520/stock-dashboard",
-      liveLink: "https://stock-dashboard-matthew-mo.streamlit.app/"
+      liveLink: "https://stock-dashboard-matthew-mo.streamlit.app/",
+      featured: true
     },
     {
       title: "LinkedIt",
-      description: "🎉 Winner of Geesehacks 2024 Best Beginner Hack! Making LinkedIn connections easier - one link at a time. Streamlines finding and contacting sponsors by automating profile searches and email extraction.",
-      tech: ["React", "Flask", "Selenium", "Tailwind CSS", "Axios"],
+      description: "Winner of Geesehacks 2024 Best Beginner Hack. Streamlines finding and contacting LinkedIn sponsors by automating profile searches and email extraction.",
+      tech: ["React", "Flask", "Selenium", "Tailwind CSS"],
       image: "/images/LinkedIt.png",
       link: "https://github.com/MatthewMo520/LinkedIt",
-      devpost: "https://devpost.com/software/linkedit"
+      devpost: "https://devpost.com/software/linkedit",
+      featured: true
     },
     {
       title: "AgeWell",
-      description: "TerraHack project - An integrated suite of tools designed to improve day-to-day safety and independence for people living with Alzheimer's disease while giving caregivers actionable, real-time information.",
-      tech: ["React", "Express", "YOLOv8", "MediaPipe", "MongoDB", "Twilio", "Leaflet"],
+      description: "Integrated suite of tools designed to improve day-to-day safety and independence for people living with Alzheimer's disease while giving caregivers actionable, real-time information.",
+      tech: ["React", "Express", "YOLOv8", "MongoDB"],
       image: "/images/agewell.png",
       link: "https://github.com/MatthewMo520/Terrahacks2025",
-      devpost: "https://devpost.com/software/elderlyassist?ref_content=user-portfolio&ref_feature=in_progress"
+      devpost: "https://devpost.com/software/elderlyassist"
     },
     {
       title: "TaskFlow",
-      description: "A comprehensive task management application designed to streamline productivity and collaboration with intuitive workflow management.",
-      tech: ["Flask", "SQLAlchemy", "Flask-SCSS", "Python", "Jinja2"],
+      description: "Comprehensive task management application designed to streamline productivity and collaboration with intuitive workflow management.",
+      tech: ["Flask", "SQLAlchemy", "Python", "Jinja2"],
       image: "/images/taskflow.png",
       link: "https://github.com/MatthewMo520/TaskFlow",
       liveLink: "https://taskflow.matthew-mo.com/"
@@ -35,75 +37,84 @@ function Projects() {
   ]
 
   return (
-    <section className="relative py-20 md:py-32 bg-gray-900 transition-all duration-700">
-      <div className="absolute top-0 left-0 right-0 h-32 bg-gradient-to-b from-gray-800 via-gray-850 to-gray-900"></div>
-      <div className="absolute inset-0 bg-gradient-to-br from-gray-900 via-gray-900 to-gray-850"></div>
-      <div className="absolute top-1/3 right-0 w-96 h-96 bg-green-500/5 rounded-full blur-3xl"></div>
-      <div className="absolute bottom-0 left-0 right-0 h-48 bg-gradient-to-t from-gray-850 via-gray-875 to-gray-900"></div>
-      
-      <div className="relative z-10 container mx-auto px-6">
-        <div className="text-center mb-12 md:mb-20">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-100 mb-4">My Projects</h2>
-          <p className="text-gray-400 max-w-2xl mx-auto mb-4 px-4">
-            Here are some of the projects I've worked on recently
+    <section className="py-20 bg-gray-800">
+      <div className="container mx-auto px-6">
+        <div className="text-center mb-16">
+          <h2 className="text-4xl font-bold text-white mb-4">Projects</h2>
+          <div className="w-20 h-1 bg-blue-600 mx-auto mb-4"></div>
+          <p className="text-gray-300 max-w-2xl mx-auto">
+            A selection of my recent work in web development, data science, and machine learning
           </p>
-          <p className="text-gray-500 text-sm">← Scroll to see more →</p>
         </div>
-        
-        <div className="overflow-x-auto pb-6 scrollbar-hide -mx-6 px-6">
-          <div className="flex gap-4 md:gap-8" style={{minWidth: 'max-content', maxWidth: 'none'}}>
-            {projects.map((project, index) => (
-              <div key={index} className="bg-gray-800 rounded-xl border border-gray-700 overflow-hidden hover:border-gray-600 md:hover:scale-105 transition-all duration-500 w-72 md:w-80 flex-shrink-0 max-w-none">
-                <img 
-                  src={project.image} 
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
+          {projects.map((project, index) => (
+            <div
+              key={index}
+              className="bg-gray-900 rounded-lg border border-gray-700 overflow-hidden hover:border-gray-600 transition-colors"
+            >
+              <div className="relative">
+                <img
+                  src={project.image}
                   alt={project.title}
                   className="w-full h-48 object-cover"
                 />
-                <div className="p-6">
-                  <h3 className="text-xl font-semibold text-gray-100 mb-2">
-                    {project.title}
-                  </h3>
-                  <p className="text-gray-400 mb-4">
-                    {project.description}
-                  </p>
-                  <div className="flex flex-wrap gap-2 mb-4">
-                    {project.tech.map((tech, techIndex) => (
-                      <span 
-                        key={techIndex}
-                        className="bg-gray-700 text-blue-400 px-3 py-1 rounded-full text-sm border border-gray-600"
-                      >
-                        {tech}
-                      </span>
-                    ))}
+                {project.featured && (
+                  <div className="absolute top-3 right-3 bg-blue-600 text-white px-3 py-1 rounded-md text-xs font-semibold">
+                    Featured
                   </div>
-                  <div className="flex gap-4">
-                    <a 
-                      href={project.link}
-                      className="text-blue-400 hover:text-blue-300 font-medium transition-colors duration-300"
+                )}
+              </div>
+              <div className="p-6">
+                <h3 className="text-xl font-semibold text-white mb-2">
+                  {project.title}
+                </h3>
+                <p className="text-gray-300 mb-4 text-sm leading-relaxed">
+                  {project.description}
+                </p>
+                <div className="flex flex-wrap gap-2 mb-4">
+                  {project.tech.map((tech, techIndex) => (
+                    <span
+                      key={techIndex}
+                      className="bg-gray-800 text-gray-300 px-3 py-1 rounded-md text-xs border border-gray-700"
                     >
-                      GitHub →
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+                <div className="flex flex-wrap gap-3 text-sm">
+                  <a
+                    href={project.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-blue-400 hover:text-blue-300 font-medium transition-colors"
+                  >
+                    GitHub →
+                  </a>
+                  {project.devpost && (
+                    <a
+                      href={project.devpost}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-green-400 hover:text-green-300 font-medium transition-colors"
+                    >
+                      Devpost →
                     </a>
-                    {project.devpost && (
-                      <a 
-                        href={project.devpost}
-                        className="text-green-400 hover:text-green-300 font-medium transition-colors duration-300"
-                      >
-                        Devpost →
-                      </a>
-                    )}
-                    {project.liveLink && (
-                      <a 
-                        href={project.liveLink}
-                        className="text-purple-400 hover:text-purple-300 font-medium transition-colors duration-300"
-                      >
-                        Live App →
-                      </a>
-                    )}
-                  </div>
+                  )}
+                  {project.liveLink && (
+                    <a
+                      href={project.liveLink}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-purple-400 hover:text-purple-300 font-medium transition-colors"
+                    >
+                      Live Demo →
+                    </a>
+                  )}
                 </div>
               </div>
-            ))}
-          </div>
+            </div>
+          ))}
         </div>
       </div>
     </section>

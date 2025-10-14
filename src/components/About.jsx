@@ -1,53 +1,69 @@
 function About() {
+  const skills = [
+    { name: 'Python', category: 'Language' },
+    { name: 'Java', category: 'Language' },
+    { name: 'JavaScript', category: 'Language' },
+    { name: 'C/C++', category: 'Language' },
+    { name: 'SQL', category: 'Database' },
+    { name: 'React', category: 'Framework' },
+    { name: 'Flask', category: 'Framework' },
+    { name: 'Node.js', category: 'Runtime' },
+    { name: 'Pandas', category: 'Library' },
+    { name: 'NumPy', category: 'Library' },
+    { name: 'Git', category: 'Tool' },
+    { name: 'Excel/VBA', category: 'Tool' }
+  ]
+
   return (
-    <section className="relative py-20 md:py-32 bg-gray-800 transition-all duration-700">
-      <div className="absolute top-0 left-0 right-0 h-16 bg-gradient-to-b from-gray-800/0 to-gray-800"></div>
-      <div className="absolute inset-0 bg-gradient-to-br from-gray-800 via-gray-800 to-gray-750"></div>
-      <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-transparent via-gray-700/10 to-transparent"></div>
-      <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-gray-800 via-gray-820 to-gray-800"></div>
-      
-      <div className="relative z-10 container mx-auto px-6">
-        <div className="text-center mb-12 md:mb-20">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-100 mb-4">About Me</h2>
-          <p className="text-gray-400 max-w-2xl mx-auto px-4">
-            Data Science student at University of Waterloo with passion for technology and innovation
-          </p>
+    <section className="py-20 bg-gray-800">
+      <div className="container mx-auto px-6">
+        <div className="text-center mb-16">
+          <h2 className="text-4xl font-bold text-white mb-4">About Me</h2>
+          <div className="w-20 h-1 bg-blue-600 mx-auto"></div>
         </div>
-        
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 items-center">
-          <div>
-            <h3 className="text-xl md:text-2xl font-semibold text-gray-200 mb-6">
-              My Story
-            </h3>
-            <p className="text-gray-400 mb-6 leading-relaxed transition-colors duration-300 hover:text-gray-300">
-              I'm a Data Science student at the University of Waterloo with a strong foundation in 
-              programming, data analysis, and machine learning. I have experience in full-stack 
-              development and enjoy building innovative solutions to real-world problems.
-            </p>
-            <p className="text-gray-400 mb-6 leading-relaxed transition-colors duration-300 hover:text-gray-300">
-              My technical expertise spans multiple programming languages and frameworks, with 
-              particular strength in Python, Java, and web technologies. I'm passionate about 
-              leveraging data to drive insights and create meaningful applications.
-            </p>
-            <p className="text-gray-400 mb-6 leading-relaxed transition-colors duration-300 hover:text-gray-300">
-              Beyond programming, I have a keen interest in financial markets and investing. I enjoy 
-              analyzing market trends and building a diversified portfolio, combining my analytical 
-              skills with investment strategy to make informed financial decisions.
-            </p>
-          </div>
-          
-          <div>
-            <h3 className="text-xl md:text-2xl font-semibold text-gray-200 mb-6 md:mb-8">Skills</h3>
-            <div className="grid grid-cols-2 gap-4">
-              {['Python', 'Java', 'Javascript', 'C', 'C++', 'HTML/CSS', 'SQL', 'Excel VBA'].map((skill, index) => (
-                <div 
-                  key={skill} 
-                  className="bg-gray-700 px-4 py-3 rounded-xl text-center border border-gray-600 transform transition-all duration-500 hover:scale-105 hover:border-blue-500 hover:bg-gray-600"
-                  style={{ animationDelay: `${index * 100}ms` }}
-                >
-                  <span className="text-gray-300 font-medium">{skill}</span>
-                </div>
-              ))}
+
+        <div className="max-w-6xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
+            {/* Bio Section */}
+            <div>
+              <h3 className="text-2xl font-semibold text-white mb-6">
+                Background
+              </h3>
+              <div className="space-y-4 text-gray-300 leading-relaxed">
+                <p>
+                  I'm a Data Science student at the University of Waterloo with a strong foundation in
+                  programming, data analysis, and machine learning. I specialize in building full-stack
+                  applications and developing data-driven solutions to complex problems.
+                </p>
+                <p>
+                  My experience spans multiple domains including web development, financial analysis,
+                  and machine learning. I've worked on projects ranging from real-time stock analysis
+                  dashboards to AI-powered health monitoring systems.
+                </p>
+                <p>
+                  I combine technical expertise with analytical thinking to create practical,
+                  scalable solutions. Whether it's developing web applications or analyzing market
+                  trends, I focus on delivering measurable results.
+                </p>
+              </div>
+            </div>
+
+            {/* Skills Section */}
+            <div>
+              <h3 className="text-2xl font-semibold text-white mb-6">
+                Technical Skills
+              </h3>
+              <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
+                {skills.map((skill) => (
+                  <div
+                    key={skill.name}
+                    className="bg-gray-700 px-4 py-3 rounded-lg border border-gray-600 hover:border-blue-600 transition-colors"
+                  >
+                    <div className="text-white font-medium text-sm">{skill.name}</div>
+                    <div className="text-gray-400 text-xs mt-1">{skill.category}</div>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </div>

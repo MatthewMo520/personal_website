@@ -5,35 +5,40 @@ import Experience from './components/Experience'
 import Projects from './components/Projects'
 import Portfolio from './components/Portfolio'
 import Contact from './components/Contact'
+import Footer from './components/Footer'
 
 function App() {
   return (
-    <div className="min-h-screen bg-gray-900 scroll-smooth overflow-x-hidden">
+    <div className="min-h-screen bg-gray-900">
       <Navigation />
-      
-      <div id="home" className="overflow-x-hidden">
-        <Hero />
-      </div>
-      
-      <div id="about" className="overflow-x-hidden">
-        <About />
-      </div>
-      
-      <div id="experience" className="overflow-x-hidden">
-        <Experience />
-      </div>
-      
-      <div id="projects" className="overflow-x-hidden">
-        <Projects />
-      </div>
-      
-      <div id="portfolio" className="overflow-x-hidden">
-        <Portfolio />
-      </div>
-      
-      <div id="contact" className="overflow-x-hidden">
-        <Contact />
-      </div>
+
+      <main>
+        <section id="home">
+          <Hero />
+        </section>
+
+        <section id="about">
+          <About />
+        </section>
+
+        <section id="experience">
+          <Experience />
+        </section>
+
+        <section id="projects">
+          <Projects />
+        </section>
+
+        <section id="portfolio">
+          <Portfolio />
+        </section>
+
+        <section id="contact">
+          <Contact />
+        </section>
+      </main>
+
+      <Footer />
     </div>
   )
 }
