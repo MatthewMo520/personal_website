@@ -1,6 +1,14 @@
 function Projects() {
   const projects = [
     {
+      title: "Flight Price Tracker",
+      description: "Web application that searches and compares flight prices from Kayak.com. Helps users find the cheapest flights by displaying results in an organized table with booking options.",
+      tech: ["React", "Flask", "Selenium", "BeautifulSoup", "Python"],
+      image: "/images/flight-price-tracker.png",
+      link: "https://github.com/MatthewMo520/Flight-Price-Tracker",
+      featured: true
+    },
+    {
       title: "Stock Analysis Dashboard",
       description: "Interactive web application for real-time stock analysis and visualization. Features comprehensive stock data, technical indicators, moving averages, and dynamic charting capabilities.",
       tech: ["Python", "Streamlit", "Pandas", "Plotly"],
