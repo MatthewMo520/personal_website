@@ -37,7 +37,7 @@ function Projects() {
     {
       title: "TaskFlow",
       description: "Comprehensive task management application designed to streamline productivity and collaboration with intuitive workflow management.",
-      tech: ["Flask", "SQLAlchemy", "Python", "Jinja2"],
+      tech: ["Flask", "SQLAlchemy", "Python"],
       image: "/images/taskflow.png",
       link: "https://github.com/MatthewMo520/TaskFlow",
       liveLink: "https://taskflow.matthew-mo.com/"
