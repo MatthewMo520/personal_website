@@ -1,6 +1,14 @@
 function Projects() {
   const projects = [
     {
+      title: "Customer Churn Prediction",
+      description: "Machine learning project that predicts which telecom customers are likely to leave using classification algorithms. Achieved 78.54% accuracy with Random Forest, analyzing 7,032 customer records to identify key churn predictors.",
+      tech: ["Python", "Scikit-learn", "Pandas", "Matplotlib"],
+      image: "/images/Customer_churn_project.png",
+      link: "https://github.com/MatthewMo520/customer_churn_project",
+      featured: true
+    },
+    {
       title: "Flight Price Tracker",
       description: "Web application that searches and compares flight prices from Kayak.com. Helps users find the cheapest flights by displaying results in an organized table with booking options.",
       tech: ["React", "Flask", "Selenium", "BeautifulSoup", "Python"],
