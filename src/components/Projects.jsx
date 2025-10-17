@@ -1,6 +1,14 @@
 function Projects() {
   const projects = [
     {
+      title: "Movie Sentiment Analysis",
+      description: "NLP project analyzing 50,000 IMDB movie reviews to predict positive or negative sentiment. Achieved 88.74% accuracy using Logistic Regression with TF-IDF vectorization, processing and extracting 5,000 key features from review text.",
+      tech: ["Python", "Scikit-learn", "NLTK", "Pandas", "TF-IDF"],
+      image: "/images/Movie-Sentiment-Analysis.png",
+      link: "https://github.com/MatthewMo520/movie-sentiment-analysis",
+      featured: true
+    },
+    {
       title: "Customer Churn Prediction",
       description: "Machine learning project that predicts which telecom customers are likely to leave using classification algorithms. Achieved 78.54% accuracy with Random Forest, analyzing 7,032 customer records to identify key churn predictors.",
       tech: ["Python", "Scikit-learn", "Pandas", "Matplotlib"],
