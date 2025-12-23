@@ -24,41 +24,90 @@ function Experience() {
   ]
 
   return (
-    <section className="py-20 bg-gray-900">
+    <section className="py-20" style={{ backgroundColor: '#0A1929' }}>
       <div className="container mx-auto px-6">
         <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-white mb-4">Experience</h2>
-          <div className="w-20 h-1 bg-blue-600 mx-auto"></div>
+          <h2 className="text-4xl md:text-5xl font-bold text-white mb-4 tracking-tight">
+            Experience
+          </h2>
+          <div className="w-20 h-1 mx-auto" style={{ backgroundColor: '#D4A574' }}></div>
         </div>
 
         <div className="max-w-4xl mx-auto">
           <div className="relative">
-            {/* Timeline line */}
-            <div className="hidden md:block absolute left-8 top-0 bottom-0 w-0.5 bg-gray-700"></div>
+            {/* Timeline line with gradient at connection points */}
+            <div
+              className="hidden md:block absolute left-8 top-0 bottom-0 w-0.5"
+              style={{
+                background: `linear-gradient(to bottom,
+                  #D4A574 0%,
+                  #2B3F5C 10%,
+                  #2B3F5C 30%,
+                  #D4A574 33%,
+                  #2B3F5C 36%,
+                  #2B3F5C 63%,
+                  #D4A574 66%,
+                  #2B3F5C 69%,
+                  #2B3F5C 90%,
+                  #D4A574 100%
+                )`
+              }}
+            ></div>
 
             <div className="space-y-8">
               {experiences.map((exp, index) => (
                 <div key={index} className="relative">
-                  {/* Timeline dot */}
-                  <div className="hidden md:block absolute left-6 top-6 w-4 h-4 rounded-full bg-blue-600 border-4 border-gray-900"></div>
+                  {/* Timeline dot - Gold */}
+                  <div
+                    className="hidden md:block absolute left-6 top-6 w-4 h-4 rounded-full border-4"
+                    style={{
+                      backgroundColor: '#D4A574',
+                      borderColor: '#0A1929'
+                    }}
+                  ></div>
 
                   <div className="md:ml-20">
-                    <div className="bg-gray-800 p-6 rounded-lg border border-gray-700 hover:border-gray-600 transition-colors">
+                    <div
+                      className="p-6 rounded-lg border transition-all duration-300 cursor-pointer"
+                      style={{
+                        backgroundColor: '#1A2942',
+                        borderColor: '#2B3F5C'
+                      }}
+                      onMouseEnter={(e) => {
+                        e.currentTarget.style.borderColor = '#D4A574'
+                        e.currentTarget.style.transform = 'translateY(-4px)'
+                        e.currentTarget.style.boxShadow = '0 10px 30px rgba(212, 165, 116, 0.15)'
+                      }}
+                      onMouseLeave={(e) => {
+                        e.currentTarget.style.borderColor = '#2B3F5C'
+                        e.currentTarget.style.transform = 'translateY(0)'
+                        e.currentTarget.style.boxShadow = 'none'
+                      }}
+                    >
                       <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-4">
                         <div>
-                          <h3 className="text-xl font-semibold text-white mb-1">
+                          <h3 className="text-xl md:text-2xl font-semibold text-white mb-1">
                             {exp.title}
                           </h3>
-                          <h4 className="text-lg text-blue-400 font-medium">
+                          <h4
+                            className="text-lg md:text-xl font-medium"
+                            style={{ color: '#D4A574' }}
+                          >
                             {exp.company}
                           </h4>
                         </div>
-                        <span className="text-sm text-gray-400 mt-2 sm:mt-0">
+                        <span
+                          className="text-sm mt-2 sm:mt-0"
+                          style={{ color: '#9CA3AF' }}
+                        >
                           {exp.period}
                         </span>
                       </div>
 
-                      <p className="text-gray-300 mb-4 leading-relaxed">
+                      <p
+                        className="mb-4 leading-relaxed text-base md:text-lg"
+                        style={{ color: '#E5E7EB' }}
+                      >
                         {exp.description}
                       </p>
 
@@ -66,7 +115,10 @@ function Experience() {
                         {exp.technologies.map((tech, techIndex) => (
                           <span
                             key={techIndex}
-                            className="px-3 py-1 bg-gray-700 text-gray-300 rounded-md text-sm border border-gray-600"
+                            className="px-3 py-1 rounded-md text-sm text-white"
+                            style={{
+                              backgroundColor: '#5B8FB9'
+                            }}
                           >
                             {tech}
                           </span>

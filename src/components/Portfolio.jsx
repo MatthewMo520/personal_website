@@ -170,34 +170,56 @@ function Portfolio() {
   }
 
   return (
-    <section className="py-20 bg-gray-900">
+    <section className="py-20" style={{ backgroundColor: '#0A1929' }}>
       <div className="container mx-auto px-6">
         <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-white mb-4">Investment Portfolio</h2>
-          <div className="w-20 h-1 bg-blue-600 mx-auto mb-4"></div>
+          <h2 className="text-4xl md:text-5xl font-bold text-white mb-4 tracking-tight">
+            Investment Portfolio
+          </h2>
+          <div className="w-20 h-1 mx-auto mb-4" style={{ backgroundColor: '#D4A574' }}></div>
           <div className="flex items-center justify-center gap-2 mb-2">
             <div className={`w-2 h-2 rounded-full ${portfolioData.length > 0 ? 'bg-green-500' : 'bg-red-500'}`}></div>
-            <span className="text-sm text-gray-400">{portfolioData.length > 0 ? 'Live Market Data' : 'Data Unavailable'}</span>
+            <span className="text-sm" style={{ color: '#9CA3AF' }}>
+              {portfolioData.length > 0 ? 'Live Market Data' : 'Data Unavailable'}
+            </span>
           </div>
-          <p className="text-gray-300 max-w-2xl mx-auto">
+          <p className="max-w-2xl mx-auto text-base md:text-lg" style={{ color: '#E5E7EB' }}>
             Real-time tracking of my investment holdings
           </p>
         </div>
 
         {loading ? (
           <div className="text-center py-12">
-            <div className="inline-block animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div>
-            <p className="text-gray-400 mt-4">Loading portfolio data...</p>
+            <div
+              className="inline-block animate-spin rounded-full h-12 w-12 border-b-2"
+              style={{ borderColor: '#D4A574' }}
+            ></div>
+            <p className="mt-4" style={{ color: '#9CA3AF' }}>Loading portfolio data...</p>
           </div>
         ) : portfolioData.length === 0 ? (
           <div className="max-w-md mx-auto">
-            <div className="bg-gray-800 rounded-lg border border-gray-700 p-8 text-center">
+            <div
+              className="rounded-lg border p-8 text-center"
+              style={{
+                backgroundColor: '#1A2942',
+                borderColor: '#2B3F5C'
+              }}
+            >
               <div className="text-4xl mb-4">⚠️</div>
               <h3 className="text-xl font-semibold text-white mb-2">Market Data Unavailable</h3>
-              <p className="text-gray-400 mb-4">Unable to fetch real-time market data. Please try again later.</p>
+              <p className="mb-4" style={{ color: '#9CA3AF' }}>
+                Unable to fetch real-time market data. Please try again later.
+              </p>
               <button
                 onClick={() => window.location.reload()}
-                className="bg-blue-600 hover:bg-blue-700 px-6 py-2 rounded-md text-white font-medium transition-colors"
+                className="px-6 py-2 rounded-md text-white font-medium transition-all duration-300"
+                style={{ backgroundColor: '#D4A574', color: '#0A1929' }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.backgroundColor = '#C09560'
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.backgroundColor = '#D4A574'
+                }}
               >
                 Retry
               </button>
@@ -205,20 +227,26 @@ function Portfolio() {
           </div>
         ) : (
           <>
-            <div className="bg-gray-800 rounded-lg border border-gray-700 p-6 mb-8 max-w-4xl mx-auto">
+            <div
+              className="rounded-lg border p-6 mb-8 max-w-4xl mx-auto"
+              style={{
+                backgroundColor: '#1A2942',
+                borderColor: '#D4A574'
+              }}
+            >
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 text-center">
                 <div>
-                  <h3 className="text-gray-400 text-sm mb-2">Total Value</h3>
+                  <h3 className="text-sm mb-2" style={{ color: '#D4A574' }}>Total Value</h3>
                   <p className="text-2xl font-bold text-white">{formatCurrency(totalValue, 'CAD')}</p>
                 </div>
                 <div>
-                  <h3 className="text-gray-400 text-sm mb-2">Daily Change</h3>
+                  <h3 className="text-sm mb-2" style={{ color: '#D4A574' }}>Daily Change</h3>
                   <p className={`text-2xl font-bold ${totalChange >= 0 ? 'text-green-400' : 'text-red-400'}`}>
                     {formatCurrency(totalChange, 'CAD')}
                   </p>
                 </div>
                 <div>
-                  <h3 className="text-gray-400 text-sm mb-2">Performance</h3>
+                  <h3 className="text-sm mb-2" style={{ color: '#D4A574' }}>Performance</h3>
                   <p className={`text-2xl font-bold ${totalChange >= 0 ? 'text-green-400' : 'text-red-400'}`}>
                     {formatPercent(totalValue > 0 ? (totalChange / (totalValue - totalChange)) * 100 : 0)}
                   </p>
@@ -229,20 +257,38 @@ function Portfolio() {
             <div className="text-center mb-8">
               <button
                 onClick={() => setShowStocks(!showStocks)}
-                className="inline-flex items-center gap-3 bg-gray-800 hover:bg-gray-700 border border-gray-700 rounded-lg px-6 py-3 transition-colors"
+                className="inline-flex items-center gap-3 border rounded-lg px-6 py-3 transition-all duration-300"
+                style={{
+                  backgroundColor: showStocks ? '#D4A574' : '#2B3F5C',
+                  borderColor: showStocks ? '#D4A574' : '#2B3F5C',
+                  color: showStocks ? '#0A1929' : '#FFFFFF'
+                }}
+                onMouseEnter={(e) => {
+                  if (!showStocks) {
+                    e.currentTarget.style.borderColor = '#D4A574'
+                  }
+                }}
+                onMouseLeave={(e) => {
+                  if (!showStocks) {
+                    e.currentTarget.style.borderColor = '#2B3F5C'
+                  }
+                }}
               >
                 <svg
-                  className={`w-5 h-5 text-gray-300 transition-transform ${showStocks ? 'rotate-180' : ''}`}
+                  className={`w-5 h-5 transition-transform ${showStocks ? 'rotate-180' : ''}`}
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
                 >
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                 </svg>
-                <span className="text-white font-medium">
+                <span className="font-medium">
                   {showStocks ? 'Hide Holdings' : 'View Holdings'}
                 </span>
-                <span className="bg-blue-600 text-white px-2 py-1 rounded text-xs font-semibold">
+                <span
+                  className="px-2 py-1 rounded text-xs font-semibold text-white"
+                  style={{ backgroundColor: '#5B8FB9' }}
+                >
                   {portfolioData.length}
                 </span>
               </button>
@@ -253,31 +299,50 @@ function Portfolio() {
                 {portfolioData.map((stock) => (
                   <div
                     key={stock.symbol}
-                    className="bg-gray-800 rounded-lg border border-gray-700 p-6 hover:border-gray-600 transition-colors"
+                    className="rounded-lg border p-6 transition-all duration-300 cursor-pointer"
+                    style={{
+                      backgroundColor: '#1A2942',
+                      borderColor: '#2B3F5C'
+                    }}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.borderColor = '#D4A574'
+                      e.currentTarget.style.transform = 'translateY(-4px)'
+                      e.currentTarget.style.boxShadow = '0 10px 30px rgba(212, 165, 116, 0.15)'
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.borderColor = '#2B3F5C'
+                      e.currentTarget.style.transform = 'translateY(0)'
+                      e.currentTarget.style.boxShadow = 'none'
+                    }}
                   >
                     <div className="flex justify-between items-start mb-4">
                       <div>
                         <h3 className="text-lg font-semibold text-white">{stock.symbol}</h3>
-                        <p className="text-gray-400 text-sm">{stock.name}</p>
-                        <p className="text-blue-400 text-xs mt-1">{stock.portfolioPercentage.toFixed(1)}% of portfolio</p>
+                        <p className="text-sm" style={{ color: '#9CA3AF' }}>{stock.name}</p>
+                        <p
+                          className="text-xs mt-1"
+                          style={{ color: '#5B8FB9' }}
+                        >
+                          {stock.portfolioPercentage.toFixed(1)}% of portfolio
+                        </p>
                       </div>
                       <div className="text-right">
                         <p className="text-lg font-bold text-white">{formatCurrency(stock.currentPrice, stock.currency)}</p>
-                        <span className="text-xs font-semibold text-gray-400">{stock.currency}</span>
+                        <span className="text-xs font-semibold" style={{ color: '#9CA3AF' }}>{stock.currency}</span>
                       </div>
                     </div>
 
-                    <div className="space-y-2 text-sm border-t border-gray-700 pt-4">
+                    <div className="space-y-2 text-sm border-t pt-4" style={{ borderColor: '#2B3F5C' }}>
                       <div className="flex justify-between">
-                        <span className="text-gray-400">Shares</span>
-                        <span className="text-gray-300">{stock.shares}</span>
+                        <span style={{ color: '#9CA3AF' }}>Shares</span>
+                        <span style={{ color: '#E5E7EB' }}>{stock.shares}</span>
                       </div>
                       <div className="flex justify-between">
-                        <span className="text-gray-400">Total Value</span>
-                        <span className="text-gray-300">{formatCurrency(stock.totalValue, stock.currency)}</span>
+                        <span style={{ color: '#9CA3AF' }}>Total Value</span>
+                        <span style={{ color: '#E5E7EB' }}>{formatCurrency(stock.totalValue, stock.currency)}</span>
                       </div>
                       <div className="flex justify-between">
-                        <span className="text-gray-400">Daily Change</span>
+                        <span style={{ color: '#9CA3AF' }}>Daily Change</span>
                         <span className={stock.dailyChangeAmount >= 0 ? 'text-green-400' : 'text-red-400'}>
                           {formatCurrency(stock.dailyChangeAmount, stock.currency)} ({formatPercent(stock.dailyChangePercent)})
                         </span>
@@ -289,7 +354,7 @@ function Portfolio() {
             )}
 
             <div className="mt-8 text-center">
-              <p className="text-gray-500 text-sm">Updates every 30 seconds</p>
+              <p className="text-sm" style={{ color: '#9CA3AF' }}>Updates every 30 seconds</p>
             </div>
           </>
         )}
