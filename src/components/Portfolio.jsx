@@ -1,7 +1,9 @@
 import { useState, useEffect } from 'react'
 import portfolioConfig from '../data/portfolio.json'
+import { useScrollAnimation } from '../hooks/useScrollAnimation'
 
 function Portfolio() {
+  const { ref, isVisible } = useScrollAnimation({ threshold: 0.15, triggerOnce: false })
   const [portfolioData, setPortfolioData] = useState([])
   const [totalValue, setTotalValue] = useState(0)
   const [totalChange, setTotalChange] = useState(0)
@@ -172,7 +174,7 @@ function Portfolio() {
   return (
     <section className="py-20" style={{ backgroundColor: '#0A1929' }}>
       <div className="container mx-auto px-6">
-        <div className="text-center mb-16">
+        <div ref={ref} className={`text-center mb-16 ${isVisible ? 'scroll-visible' : 'scroll-hidden'}`}>
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-4 tracking-tight">
             Investment Portfolio
           </h2>
@@ -228,7 +230,7 @@ function Portfolio() {
         ) : (
           <>
             <div
-              className="rounded-lg border p-6 mb-8 max-w-4xl mx-auto"
+              className={`rounded-lg border p-6 mb-8 max-w-4xl mx-auto ${isVisible ? 'scroll-visible' : 'scroll-hidden'}`}
               style={{
                 backgroundColor: '#1A2942',
                 borderColor: '#D4A574'

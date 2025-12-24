@@ -1,13 +1,14 @@
 import { useState, useEffect } from 'react'
-import mLogo from '../assets/m-logo.svg'
+import { Link, useLocation } from 'react-router-dom'
 
 function Navigation() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [activeSection, setActiveSection] = useState('home')
+  const location = useLocation()
 
   useEffect(() => {
     const handleScroll = () => {
-      const sections = ['home', 'about', 'experience', 'projects', 'portfolio', 'contact']
+      const sections = ['home', 'about', 'experience', 'projects', 'contact']
       const scrollPosition = window.scrollY + 100
 
       for (const sectionId of sections) {
@@ -29,6 +30,13 @@ function Navigation() {
   const handleScroll = (e, targetId) => {
     e.preventDefault()
     setMobileMenuOpen(false)
+
+    // If we're not on the home page, navigate to home first
+    if (location.pathname !== '/') {
+      window.location.href = `/#${targetId}`
+      return
+    }
+
     const element = document.getElementById(targetId)
     if (element) {
       element.scrollIntoView({
@@ -43,7 +51,6 @@ function Navigation() {
     { id: 'about', label: 'About' },
     { id: 'experience', label: 'Experience' },
     { id: 'projects', label: 'Projects' },
-    { id: 'portfolio', label: 'Investments' },
     { id: 'contact', label: 'Contact' }
   ]
 
@@ -58,22 +65,31 @@ function Navigation() {
       <div className="container mx-auto px-6 py-4">
         <div className="flex justify-between items-center">
           {/* Logo and Name */}
-          <div className="flex items-center space-x-3 group cursor-pointer">
-            <img
-              src={mLogo}
-              alt="M Logo"
-              className="w-8 h-8 transition-transform duration-300 group-hover:scale-110"
+          <Link to="/" className="flex items-center space-x-3 group cursor-pointer">
+            <div
+              className="w-10 h-10 rounded-lg flex items-center justify-center transition-all duration-300 group-hover:scale-110 group-hover:rotate-6"
               style={{
-                filter: 'brightness(0) saturate(100%) invert(100%)'
+                background: 'linear-gradient(135deg, #D4A574 0%, #E8B87E 100%)',
+                boxShadow: '0 2px 8px rgba(212, 165, 116, 0.3)'
               }}
-            />
+            >
+              <span
+                className="text-xl font-bold"
+                style={{
+                  color: '#0A1929',
+                  fontFamily: "'Space Grotesk', sans-serif"
+                }}
+              >
+                MM
+              </span>
+            </div>
             <span
               className="text-xl font-semibold text-white"
               style={{ fontFamily: "'Space Grotesk', sans-serif" }}
             >
               Matthew Mo
             </span>
-          </div>
+          </Link>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
@@ -84,21 +100,21 @@ function Navigation() {
                 onClick={(e) => handleScroll(e, link.id)}
                 className="cursor-pointer text-sm font-medium transition-all duration-300 relative"
                 style={{
-                  color: activeSection === link.id ? '#D4A574' : '#E5E7EB'
+                  color: (location.pathname === '/' && activeSection === link.id) ? '#D4A574' : '#E5E7EB'
                 }}
                 onMouseEnter={(e) => {
-                  if (activeSection !== link.id) {
+                  if (!(location.pathname === '/' && activeSection === link.id)) {
                     e.currentTarget.style.color = '#D4A574'
                   }
                 }}
                 onMouseLeave={(e) => {
-                  if (activeSection !== link.id) {
+                  if (!(location.pathname === '/' && activeSection === link.id)) {
                     e.currentTarget.style.color = '#E5E7EB'
                   }
                 }}
               >
                 {link.label}
-                {activeSection === link.id && (
+                {(location.pathname === '/' && activeSection === link.id) && (
                   <span
                     className="absolute -bottom-1 left-0 right-0 h-0.5"
                     style={{ backgroundColor: '#D4A574' }}
@@ -106,6 +122,31 @@ function Navigation() {
                 )}
               </a>
             ))}
+            <Link
+              to="/portfolio"
+              className="cursor-pointer text-sm font-medium transition-all duration-300 relative"
+              style={{
+                color: location.pathname === '/portfolio' ? '#D4A574' : '#E5E7EB'
+              }}
+              onMouseEnter={(e) => {
+                if (location.pathname !== '/portfolio') {
+                  e.currentTarget.style.color = '#D4A574'
+                }
+              }}
+              onMouseLeave={(e) => {
+                if (location.pathname !== '/portfolio') {
+                  e.currentTarget.style.color = '#E5E7EB'
+                }
+              }}
+            >
+              Investments
+              {location.pathname === '/portfolio' && (
+                <span
+                  className="absolute -bottom-1 left-0 right-0 h-0.5"
+                  style={{ backgroundColor: '#D4A574' }}
+                ></span>
+              )}
+            </Link>
             <a
               href="/Resume_Matthew_Mo.pdf"
               target="_blank"
@@ -170,12 +211,22 @@ function Navigation() {
                   onClick={(e) => handleScroll(e, link.id)}
                   className="cursor-pointer text-sm font-medium py-2 transition-colors duration-300"
                   style={{
-                    color: activeSection === link.id ? '#D4A574' : '#E5E7EB'
+                    color: (location.pathname === '/' && activeSection === link.id) ? '#D4A574' : '#E5E7EB'
                   }}
                 >
                   {link.label}
                 </a>
               ))}
+              <Link
+                to="/portfolio"
+                onClick={() => setMobileMenuOpen(false)}
+                className="cursor-pointer text-sm font-medium py-2 transition-colors duration-300"
+                style={{
+                  color: location.pathname === '/portfolio' ? '#D4A574' : '#E5E7EB'
+                }}
+              >
+                Investments
+              </Link>
               <a
                 href="/Resume_Matthew_Mo.pdf"
                 target="_blank"

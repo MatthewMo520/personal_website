@@ -1,4 +1,34 @@
+import { useScrollAnimation } from '../hooks/useScrollAnimation'
+
+function SkillBadge({ skill, index }) {
+  const { ref, isVisible } = useScrollAnimation({ threshold: 0.15, triggerOnce: false })
+
+  return (
+    <div
+      ref={ref}
+      className={`px-4 py-3 rounded-lg border transition-all duration-300 transform hover:scale-105 cursor-pointer ${isVisible ? 'scroll-visible' : 'scroll-hidden'}`}
+      style={{
+        backgroundColor: '#2B3F5C',
+        borderColor: '#5B8FB9'
+      }}
+      onMouseEnter={(e) => {
+        e.currentTarget.style.borderColor = '#D4A574'
+        e.currentTarget.style.boxShadow = '0 4px 15px rgba(212, 165, 116, 0.2)'
+      }}
+      onMouseLeave={(e) => {
+        e.currentTarget.style.borderColor = '#5B8FB9'
+        e.currentTarget.style.boxShadow = 'none'
+      }}
+    >
+      <div className="text-white font-medium text-sm">{skill.name}</div>
+      <div className="text-xs mt-1" style={{ color: '#6BA3C4' }}>{skill.category}</div>
+    </div>
+  )
+}
+
 function About() {
+  const { ref, isVisible } = useScrollAnimation({ threshold: 0.15, triggerOnce: false })
+
   const skills = [
     { name: 'Python', category: 'Language' },
     { name: 'Java', category: 'Language' },
@@ -28,7 +58,7 @@ function About() {
           <div className="w-20 h-1 mx-auto" style={{ backgroundColor: '#D4A574' }}></div>
         </div>
 
-        <div className="max-w-6xl mx-auto">
+        <div ref={ref} className={`max-w-6xl mx-auto ${isVisible ? 'scroll-visible' : 'scroll-hidden'}`}>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
             {/* Bio Section */}
             <div>
@@ -66,26 +96,8 @@ function About() {
                 Technical Skills
               </h3>
               <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
-                {skills.map((skill) => (
-                  <div
-                    key={skill.name}
-                    className="px-4 py-3 rounded-lg border transition-all duration-300 transform hover:scale-105 cursor-pointer"
-                    style={{
-                      backgroundColor: '#2B3F5C',
-                      borderColor: '#5B8FB9'
-                    }}
-                    onMouseEnter={(e) => {
-                      e.currentTarget.style.borderColor = '#D4A574'
-                      e.currentTarget.style.boxShadow = '0 4px 15px rgba(212, 165, 116, 0.2)'
-                    }}
-                    onMouseLeave={(e) => {
-                      e.currentTarget.style.borderColor = '#5B8FB9'
-                      e.currentTarget.style.boxShadow = 'none'
-                    }}
-                  >
-                    <div className="text-white font-medium text-sm">{skill.name}</div>
-                    <div className="text-xs mt-1" style={{ color: '#6BA3C4' }}>{skill.category}</div>
-                  </div>
+                {skills.map((skill, index) => (
+                  <SkillBadge key={skill.name} skill={skill} index={index} />
                 ))}
               </div>
             </div>
