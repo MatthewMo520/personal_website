@@ -159,9 +159,9 @@ function Portfolio() {
     <section className="py-20" style={{ backgroundColor: '#0A1929' }}>
       <div className="container mx-auto px-6">
         <div ref={ref} className={`text-center mb-16 ${isVisible ? 'scroll-visible' : 'scroll-hidden'}`}>
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-4 tracking-tight">
+          <h1 className="text-4xl md:text-5xl font-bold text-white mb-4 tracking-tight">
             Investment Portfolio
-          </h2>
+          </h1>
           <div className="w-20 h-1 mx-auto mb-4" style={{ backgroundColor: '#D4A574' }}></div>
           <div className="flex items-center justify-center gap-2 mb-2">
             <div className={`w-2 h-2 rounded-full ${portfolioData.length > 0 ? 'bg-green-500' : 'bg-red-500'}`}></div>
