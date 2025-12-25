@@ -1,0 +1,19 @@
+{
+  "name": "Matthew Mo - Portfolio",
+  "short_name": "Matthew Mo",
+  "description": "Data Science student at University of Waterloo. Full-stack developer and ML engineer building data-driven web applications.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0A1929",
+  "theme_color": "#0A1929",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["portfolio", "education", "technology"],
+  "orientation": "portrait-primary"
+}

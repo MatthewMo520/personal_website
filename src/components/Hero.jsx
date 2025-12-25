@@ -3,11 +3,41 @@ import AnimatedBackground from './AnimatedBackground'
 
 function Hero() {
   const [showScrollIndicator, setShowScrollIndicator] = useState(false)
+  const [currentRoleIndex, setCurrentRoleIndex] = useState(0)
+  const [displayedText, setDisplayedText] = useState('')
+  const [isDeleting, setIsDeleting] = useState(false)
+
+  const roles = ['Data Scientist', 'Full-Stack Developer', 'ML Engineer']
 
   useEffect(() => {
     const timer = setTimeout(() => setShowScrollIndicator(true), 2000)
     return () => clearTimeout(timer)
   }, [])
+
+  useEffect(() => {
+    const currentRole = roles[currentRoleIndex]
+    const typingSpeed = isDeleting ? 50 : 100
+    const pauseTime = isDeleting ? 500 : 2000
+
+    const timeout = setTimeout(() => {
+      if (!isDeleting && displayedText === currentRole) {
+        // Pause at full text, then start deleting
+        setTimeout(() => setIsDeleting(true), pauseTime)
+      } else if (isDeleting && displayedText === '') {
+        // Move to next role
+        setIsDeleting(false)
+        setCurrentRoleIndex((prev) => (prev + 1) % roles.length)
+      } else if (isDeleting) {
+        // Delete character
+        setDisplayedText(currentRole.substring(0, displayedText.length - 1))
+      } else {
+        // Add character
+        setDisplayedText(currentRole.substring(0, displayedText.length + 1))
+      }
+    }, typingSpeed)
+
+    return () => clearTimeout(timeout)
+  }, [displayedText, isDeleting, currentRoleIndex, roles])
 
   const handleScroll = (targetId) => {
     const element = document.getElementById(targetId)
@@ -48,17 +78,18 @@ function Hero() {
             ></div>
           </div>
 
-          {/* Role/Title - Gold color with spacing */}
-          <p
-            className="text-2xl md:text-3xl font-semibold mb-4"
+          {/* Role/Title with Typing Animation */}
+          <div
+            className="text-2xl md:text-3xl font-semibold mb-4 h-10 flex items-center justify-center"
             style={{
               color: '#D4A574',
               letterSpacing: '0.05em',
               animation: 'fadeInUp 0.8s ease-out 0.4s both'
             }}
           >
-            Data Science Student | Full-Stack Developer
-          </p>
+            {displayedText}
+            <span className="inline-block w-0.5 h-7 ml-1 animate-pulse" style={{ backgroundColor: '#D4A574' }}></span>
+          </div>
 
           {/* Description - Light gray, refined */}
           <p
@@ -71,7 +102,7 @@ function Hero() {
             University of Waterloo • Building data-driven web applications and financial analysis tools
           </p>
 
-          {/* Three-tier CTA system */}
+          {/* CTA system - 2 CTAs on mobile, 3 on desktop */}
           <div
             className="flex flex-col sm:flex-row gap-4 justify-center items-center"
             style={{
@@ -81,6 +112,7 @@ function Hero() {
             {/* Primary CTA - Gold background */}
             <button
               onClick={() => handleScroll('projects')}
+              aria-label="View my work and projects"
               className="px-8 py-4 rounded-lg font-semibold min-w-[200px] transition-all duration-300 transform hover:scale-105 hover:shadow-lg"
               style={{
                 backgroundColor: '#D4A574',
@@ -96,17 +128,16 @@ function Hero() {
                 e.currentTarget.style.boxShadow = '0 4px 15px rgba(212, 165, 116, 0.3)'
               }}
             >
-              View Work
+              View My Work
             </button>
 
-            {/* Secondary CTA - Navy border */}
-            <a
-              href="/Resume_Matthew_Mo.pdf"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="px-8 py-4 rounded-lg font-semibold min-w-[200px] text-center transition-all duration-300 transform hover:scale-105"
+            {/* Secondary CTA - Contact */}
+            <button
+              onClick={() => handleScroll('contact')}
+              aria-label="Get in touch with me"
+              className="px-8 py-4 rounded-lg font-semibold min-w-[200px] transition-all duration-300 transform hover:scale-105"
               style={{
-                border: '2px solid #2B3F5C',
+                border: '2px solid #5B8FB9',
                 color: '#FFFFFF',
                 backgroundColor: 'transparent'
               }}
@@ -116,29 +147,36 @@ function Hero() {
               }}
               onMouseLeave={(e) => {
                 e.currentTarget.style.backgroundColor = 'transparent'
-                e.currentTarget.style.borderColor = '#2B3F5C'
+                e.currentTarget.style.borderColor = '#5B8FB9'
+              }}
+            >
+              Let's Connect
+            </button>
+
+            {/* Tertiary CTA - Resume (hidden on mobile) */}
+            <a
+              href="/Resume_Matthew_Mo.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Download my resume"
+              onClick={() => {
+                // Track resume download
+                console.log('Resume downloaded')
+              }}
+              className="hidden sm:flex px-8 py-4 rounded-lg font-semibold min-w-[200px] text-center items-center justify-center transition-all duration-300 transform hover:scale-105"
+              style={{
+                backgroundColor: '#2B3F5C',
+                color: '#FFFFFF'
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.backgroundColor = '#3D5470'
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.backgroundColor = '#2B3F5C'
               }}
             >
               Resume →
             </a>
-
-            {/* Tertiary CTA - Steel blue background */}
-            <button
-              onClick={() => handleScroll('contact')}
-              className="px-8 py-4 rounded-lg font-semibold min-w-[200px] transition-all duration-300 transform hover:scale-105"
-              style={{
-                backgroundColor: '#5B8FB9',
-                color: '#FFFFFF'
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.backgroundColor = '#4A7A9F'
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.backgroundColor = '#5B8FB9'
-              }}
-            >
-              Get in Touch
-            </button>
           </div>
         </div>
       </div>

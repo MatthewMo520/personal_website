@@ -1,0 +1,27 @@
+<svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <title>Matthew Mo Logo</title>
+  <desc>Modern personal logo with initials MM in gold on navy</desc>
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1A2942;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#0A1929;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#E8B87E;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#D4A574;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#C09560;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+
+  <!-- Rounded square background with gradient -->
+  <rect width="64" height="64" rx="12" fill="url(#bgGrad)"/>
+
+  <!-- Gold border accent -->
+  <rect x="2" y="2" width="60" height="60" rx="10" fill="none" stroke="url(#goldGrad)" stroke-width="1.5" opacity="0.4"/>
+
+  <!-- Modern M monogram -->
+  <path d="M14 45V19H21L32 40L43 19H50V45H44V28L36 43H28L20 28V45H14Z" fill="url(#goldGrad)" stroke="#0A1929" stroke-width="0.5"/>
+
+  <!-- Subtle shine effect on top -->
+  <path d="M12 12 Q32 10 52 12" stroke="#D4A574" stroke-width="1" opacity="0.15" stroke-linecap="round"/>
+</svg>

@@ -1,106 +1,245 @@
-function Footer() {
-  const currentYear = new Date().getFullYear()
+import { Link } from 'react-router-dom'
 
-  const scrollToTop = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth'
-    })
+function Footer() {
+  const handleScroll = (e, targetId) => {
+    e.preventDefault()
+    const element = document.getElementById(targetId)
+    if (element) {
+      element.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+      })
+    }
   }
 
   return (
-    <footer className="border-t py-8" style={{ backgroundColor: '#0A1929', borderColor: '#2B3F5C' }}>
-      <div className="container mx-auto px-6">
-        <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-          <div className="text-sm" style={{ color: '#9CA3AF' }}>
-            © {currentYear} Matthew Mo. All rights reserved.
+    <footer className="py-12 px-6" style={{ backgroundColor: '#0A1929' }}>
+      <div className="container mx-auto">
+        {/* Gold Divider */}
+        <div className="w-full h-px mb-12" style={{ backgroundColor: '#D4A574' }}></div>
+
+        {/* Main Footer Content - 3 Columns */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 max-w-6xl mx-auto mb-12">
+          {/* Quick Links Column */}
+          <div>
+            <h3 className="text-lg font-semibold mb-4" style={{ color: '#D4A574' }}>
+              Quick Links
+            </h3>
+            <ul className="space-y-3">
+              {[
+                { id: 'home', label: 'Home' },
+                { id: 'about', label: 'About' },
+                { id: 'experience', label: 'Experience' },
+                { id: 'projects', label: 'Projects' },
+                { id: 'contact', label: 'Contact' }
+              ].map(link => (
+                <li key={link.id}>
+                  <a
+                    href={`#${link.id}`}
+                    onClick={(e) => handleScroll(e, link.id)}
+                    className="text-sm transition-colors duration-300 hover:underline"
+                    style={{ color: '#E5E7EB' }}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.color = '#D4A574'
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.color = '#E5E7EB'
+                    }}
+                  >
+                    {link.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
           </div>
 
-          <div className="flex gap-6">
-            <a
-              href="https://github.com/MatthewMo520"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="transition-all duration-300 transform"
-              style={{ color: '#E5E7EB' }}
-              aria-label="GitHub"
+          {/* Resources Column */}
+          <div>
+            <h3 className="text-lg font-semibold mb-4" style={{ color: '#D4A574' }}>
+              Resources
+            </h3>
+            <ul className="space-y-3">
+              <li>
+                <a
+                  href="/Resume_Matthew_Mo.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-sm transition-colors duration-300 hover:underline flex items-center gap-2"
+                  style={{ color: '#E5E7EB' }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.color = '#D4A574'
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.color = '#E5E7EB'
+                  }}
+                >
+                  <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M6 2a2 2 0 00-2 2v12a2 2 0 002 2h8a2 2 0 002-2V7.414A2 2 0 0015.414 6L12 2.586A2 2 0 0010.586 2H6zm5 6a1 1 0 10-2 0v3.586l-1.293-1.293a1 1 0 10-1.414 1.414l3 3a1 1 0 001.414 0l3-3a1 1 0 00-1.414-1.414L11 11.586V8z" clipRule="evenodd" />
+                  </svg>
+                  Resume
+                </a>
+              </li>
+              <li>
+                <Link
+                  to="/portfolio"
+                  className="text-sm transition-colors duration-300 hover:underline flex items-center gap-2"
+                  style={{ color: '#E5E7EB' }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.color = '#D4A574'
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.color = '#E5E7EB'
+                  }}
+                >
+                  <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M4 4a2 2 0 00-2 2v1h16V6a2 2 0 00-2-2H4z" />
+                    <path fillRule="evenodd" d="M18 9H2v5a2 2 0 002 2h12a2 2 0 002-2V9zM4 13a1 1 0 011-1h1a1 1 0 110 2H5a1 1 0 01-1-1zm5-1a1 1 0 100 2h1a1 1 0 100-2H9z" clipRule="evenodd" />
+                  </svg>
+                  Investments
+                </Link>
+              </li>
+              <li>
+                <a
+                  href="#projects"
+                  onClick={(e) => handleScroll(e, 'projects')}
+                  className="text-sm transition-colors duration-300 hover:underline flex items-center gap-2"
+                  style={{ color: '#E5E7EB' }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.color = '#D4A574'
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.color = '#E5E7EB'
+                  }}
+                >
+                  <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M7 3a1 1 0 000 2h6a1 1 0 100-2H7zM4 7a1 1 0 011-1h10a1 1 0 110 2H5a1 1 0 01-1-1zM2 11a2 2 0 012-2h12a2 2 0 012 2v4a2 2 0 01-2 2H4a2 2 0 01-2-2v-4z" />
+                  </svg>
+                  All Projects
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          {/* Connect Column */}
+          <div>
+            <h3 className="text-lg font-semibold mb-4" style={{ color: '#D4A574' }}>
+              Connect
+            </h3>
+            <ul className="space-y-3">
+              <li>
+                <a
+                  href="https://github.com/MatthewMo520"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-sm transition-all duration-300 hover:underline flex items-center gap-2"
+                  style={{ color: '#E5E7EB' }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.color = '#D4A574'
+                    e.currentTarget.style.transform = 'translateX(4px)'
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.color = '#E5E7EB'
+                    e.currentTarget.style.transform = 'translateX(0)'
+                  }}
+                >
+                  <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M10 0C4.477 0 0 4.484 0 10.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0110 4.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.203 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.942.359.31.678.921.678 1.856 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0020 10.017C20 4.484 15.522 0 10 0z" clipRule="evenodd" />
+                  </svg>
+                  GitHub
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://www.linkedin.com/in/matthew-mo520/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-sm transition-all duration-300 hover:underline flex items-center gap-2"
+                  style={{ color: '#E5E7EB' }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.color = '#D4A574'
+                    e.currentTarget.style.transform = 'translateX(4px)'
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.color = '#E5E7EB'
+                    e.currentTarget.style.transform = 'translateX(0)'
+                  }}
+                >
+                  <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M16.338 16.338H13.67V12.16c0-.995-.017-2.277-1.387-2.277-1.39 0-1.601 1.086-1.601 2.207v4.248H8.014v-8.59h2.559v1.174h.037c.356-.675 1.227-1.387 2.526-1.387 2.703 0 3.203 1.778 3.203 4.092v4.711zM5.005 6.575a1.548 1.548 0 11-.003-3.096 1.548 1.548 0 01.003 3.096zm-1.337 9.763H6.34v-8.59H3.667v8.59zM17.668 1H2.328C1.595 1 1 1.581 1 2.298v15.403C1 18.418 1.595 19 2.328 19h15.34c.734 0 1.332-.582 1.332-1.299V2.298C19 1.581 18.402 1 17.668 1z" clipRule="evenodd" />
+                  </svg>
+                  LinkedIn
+                </a>
+              </li>
+              <li>
+                <a
+                  href="mailto:mzmo@uwaterloo.ca"
+                  className="text-sm transition-all duration-300 hover:underline flex items-center gap-2"
+                  style={{ color: '#E5E7EB' }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.color = '#D4A574'
+                    e.currentTarget.style.transform = 'translateX(4px)'
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.color = '#E5E7EB'
+                    e.currentTarget.style.transform = 'translateX(0)'
+                  }}
+                >
+                  <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
+                    <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
+                  </svg>
+                  Email
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        {/* Bottom Bar */}
+        <div className="border-t pt-8" style={{ borderColor: '#2B3F5C' }}>
+          <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
+            {/* Copyright */}
+            <div className="text-sm text-center md:text-left" style={{ color: '#9CA3AF' }}>
+              <p>
+                © {new Date().getFullYear()} Matthew Mo • Built with{' '}
+                <span style={{ color: '#D4A574' }}>React</span> &{' '}
+                <span style={{ color: '#D4A574' }}>Vite</span>
+              </p>
+            </div>
+
+            {/* Back to Top Button */}
+            <button
+              onClick={() => {
+                window.scrollTo({
+                  top: 0,
+                  behavior: 'smooth'
+                })
+              }}
+              className="flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300"
+              style={{
+                backgroundColor: '#2B3F5C',
+                color: '#E5E7EB'
+              }}
               onMouseEnter={(e) => {
-                e.currentTarget.style.color = '#D4A574'
-                e.currentTarget.style.transform = 'scale(1.1)'
+                e.currentTarget.style.backgroundColor = '#D4A574'
+                e.currentTarget.style.color = '#0A1929'
+                e.currentTarget.style.transform = 'translateY(-2px)'
               }}
               onMouseLeave={(e) => {
+                e.currentTarget.style.backgroundColor = '#2B3F5C'
                 e.currentTarget.style.color = '#E5E7EB'
-                e.currentTarget.style.transform = 'scale(1)'
+                e.currentTarget.style.transform = 'translateY(0)'
               }}
+              aria-label="Scroll back to top"
             >
-              <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                <path fillRule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.203 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.942.359.31.678.921.678 1.856 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clipRule="evenodd" />
+              Back to Top
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 10l7-7m0 0l7 7m-7-7v18" />
               </svg>
-            </a>
-            <a
-              href="https://www.linkedin.com/in/matthew-mo520/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="transition-all duration-300 transform"
-              style={{ color: '#E5E7EB' }}
-              aria-label="LinkedIn"
-              onMouseEnter={(e) => {
-                e.currentTarget.style.color = '#D4A574'
-                e.currentTarget.style.transform = 'scale(1.1)'
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.color = '#E5E7EB'
-                e.currentTarget.style.transform = 'scale(1)'
-              }}
-            >
-              <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-              </svg>
-            </a>
-            <a
-              href="mailto:mzmo@uwaterloo.ca"
-              className="transition-all duration-300 transform"
-              style={{ color: '#E5E7EB' }}
-              aria-label="Email"
-              onMouseEnter={(e) => {
-                e.currentTarget.style.color = '#D4A574'
-                e.currentTarget.style.transform = 'scale(1.1)'
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.color = '#E5E7EB'
-                e.currentTarget.style.transform = 'scale(1)'
-              }}
-            >
-              <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
-              </svg>
-            </a>
+            </button>
           </div>
         </div>
       </div>
-
-      {/* Back to top button - fixed bottom right */}
-      <button
-        onClick={scrollToTop}
-        className="fixed bottom-8 right-8 w-12 h-12 rounded-full shadow-lg transition-all duration-300 transform hover:scale-110 z-40"
-        style={{
-          backgroundColor: '#D4A574',
-          color: '#0A1929'
-        }}
-        aria-label="Back to top"
-        onMouseEnter={(e) => {
-          e.currentTarget.style.backgroundColor = '#C09560'
-          e.currentTarget.style.boxShadow = '0 8px 25px rgba(212, 165, 116, 0.4)'
-        }}
-        onMouseLeave={(e) => {
-          e.currentTarget.style.backgroundColor = '#D4A574'
-          e.currentTarget.style.boxShadow = '0 4px 15px rgba(212, 165, 116, 0.3)'
-        }}
-      >
-        <svg className="w-6 h-6 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 10l7-7m0 0l7 7m-7-7v18" />
-        </svg>
-      </button>
     </footer>
   )
 }

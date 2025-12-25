@@ -127,22 +127,6 @@ function Portfolio() {
         setPortfolioData([])
         setTotalValue(null)
         setTotalChange(null)
-        setLoading(false)
-        return
-        
-        const totalFallbackValue = fallbackData.reduce((sum, stock) => {
-          const cadValue = stock.currency === 'USD' ? stock.totalValue * usdToCadRate : stock.totalValue
-          return sum + cadValue
-        }, 0)
-        
-        const fallbackWithPercentage = fallbackData.map(stock => ({
-          ...stock,
-          portfolioPercentage: totalFallbackValue > 0 ? ((stock.currency === 'USD' ? stock.totalValue * usdToCadRate : stock.totalValue) / totalFallbackValue) * 100 : 0
-        }))
-        
-        setPortfolioData(fallbackWithPercentage)
-        setTotalValue(totalFallbackValue)
-        setTotalChange(0)
       } finally {
         setLoading(false)
       }
@@ -195,25 +179,31 @@ function Portfolio() {
             <div
               className="inline-block animate-spin rounded-full h-12 w-12 border-b-2"
               style={{ borderColor: '#D4A574' }}
+              aria-hidden="true"
             ></div>
-            <p className="mt-4" style={{ color: '#9CA3AF' }}>Loading portfolio data...</p>
+            <p className="mt-4" style={{ color: '#9CA3AF' }} aria-live="polite" aria-atomic="true">
+              Loading portfolio data...
+            </p>
           </div>
         ) : portfolioData.length === 0 ? (
           <div className="max-w-md mx-auto">
             <div
               className="rounded-lg border p-8 text-center"
+              role="alert"
+              aria-live="assertive"
               style={{
                 backgroundColor: '#1A2942',
                 borderColor: '#2B3F5C'
               }}
             >
-              <div className="text-4xl mb-4">⚠️</div>
+              <div className="text-4xl mb-4" aria-hidden="true">⚠️</div>
               <h3 className="text-xl font-semibold text-white mb-2">Market Data Unavailable</h3>
               <p className="mb-4" style={{ color: '#9CA3AF' }}>
                 Unable to fetch real-time market data. Please try again later.
               </p>
               <button
                 onClick={() => window.location.reload()}
+                aria-label="Retry loading portfolio data"
                 className="px-6 py-2 rounded-md text-white font-medium transition-all duration-300"
                 style={{ backgroundColor: '#D4A574', color: '#0A1929' }}
                 onMouseEnter={(e) => {

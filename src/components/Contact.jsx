@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react'
 import { useScrollAnimation } from '../hooks/useScrollAnimation'
 
 function ContactInfoCard({ icon, label, value }) {
@@ -30,6 +31,7 @@ function ConnectLink({ href, icon, label, stagger }) {
       href={href}
       target="_blank"
       rel="noopener noreferrer"
+      aria-label={label}
       className={`flex items-center gap-4 p-3 rounded-lg transition-all duration-300 border ${isVisible ? 'scroll-visible' : 'scroll-hidden'}`}
       style={{
         backgroundColor: '#2B3F5C',
@@ -57,6 +59,46 @@ function ConnectLink({ href, icon, label, stagger }) {
 
 function Contact() {
   const { ref, isVisible } = useScrollAnimation({ threshold: 0.15, triggerOnce: false })
+  const [formState, setFormState] = useState('idle') // idle | loading | success | error
+  const [formMessage, setFormMessage] = useState('')
+
+  useEffect(() => {
+    if (formState === 'success' || formState === 'error') {
+      const timer = setTimeout(() => {
+        setFormState('idle')
+        setFormMessage('')
+      }, 5000)
+      return () => clearTimeout(timer)
+    }
+  }, [formState])
+
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+    setFormState('loading')
+
+    const formData = new FormData(e.target)
+
+    try {
+      const response = await fetch('https://formspree.io/f/xjkodnpk', {
+        method: 'POST',
+        body: formData,
+        headers: {
+          'Accept': 'application/json'
+        }
+      })
+
+      if (response.ok) {
+        setFormState('success')
+        setFormMessage('Message sent successfully! I\'ll get back to you soon.')
+        e.target.reset()
+      } else {
+        throw new Error('Submission failed')
+      }
+    } catch (error) {
+      setFormState('error')
+      setFormMessage('Failed to send message. Please try again or email me directly at mzmo@uwaterloo.ca')
+    }
+  }
 
   return (
     <section className="py-20" style={{ backgroundColor: '#1A2942' }}>
@@ -148,9 +190,31 @@ function Contact() {
               >
                 Send a Message
               </h3>
+
+              {/* Success/Error Notification */}
+              {formState !== 'idle' && formState !== 'loading' && (
+                <div
+                  className="mb-4 p-4 rounded-lg flex items-center gap-3 animate-fadeIn"
+                  style={{
+                    backgroundColor: formState === 'success' ? '#10B981' : '#EF4444',
+                    color: 'white'
+                  }}
+                >
+                  {formState === 'success' ? (
+                    <svg className="w-6 h-6 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                    </svg>
+                  ) : (
+                    <svg className="w-6 h-6 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                  )}
+                  <p className="text-sm">{formMessage}</p>
+                </div>
+              )}
+
               <form
-                action="https://formspree.io/f/xjkodnpk"
-                method="POST"
+                onSubmit={handleSubmit}
                 className={`space-y-4 ${isVisible ? 'scroll-visible' : 'scroll-hidden'}`}
               >
                 <div>
@@ -166,6 +230,8 @@ function Contact() {
                     id="name"
                     name="name"
                     required
+                    aria-label="Your name"
+                    aria-required="true"
                     className="w-full px-4 py-3 rounded-lg text-white transition-all duration-300"
                     style={{
                       backgroundColor: '#0A1929',
@@ -194,6 +260,8 @@ function Contact() {
                     id="email"
                     name="email"
                     required
+                    aria-label="Your email address"
+                    aria-required="true"
                     className="w-full px-4 py-3 rounded-lg text-white transition-all duration-300"
                     style={{
                       backgroundColor: '#0A1929',
@@ -222,6 +290,8 @@ function Contact() {
                     name="message"
                     rows="5"
                     required
+                    aria-label="Your message"
+                    aria-required="true"
                     className="w-full px-4 py-3 rounded-lg text-white resize-none transition-all duration-300"
                     style={{
                       backgroundColor: '#0A1929',
@@ -239,23 +309,40 @@ function Contact() {
                 </div>
                 <button
                   type="submit"
-                  className="w-full py-3 rounded-lg font-medium transition-all duration-300 transform"
+                  disabled={formState === 'loading'}
+                  className="w-full py-3 rounded-lg font-medium transition-all duration-300 transform flex items-center justify-center gap-2"
                   style={{
-                    backgroundColor: '#D4A574',
-                    color: '#0A1929'
+                    backgroundColor: formState === 'loading' ? '#9CA3AF' : '#D4A574',
+                    color: '#0A1929',
+                    cursor: formState === 'loading' ? 'not-allowed' : 'pointer',
+                    opacity: formState === 'loading' ? 0.7 : 1
                   }}
                   onMouseEnter={(e) => {
-                    e.currentTarget.style.backgroundColor = '#C09560'
-                    e.currentTarget.style.transform = 'translateY(-2px)'
-                    e.currentTarget.style.boxShadow = '0 4px 15px rgba(212, 165, 116, 0.3)'
+                    if (formState !== 'loading') {
+                      e.currentTarget.style.backgroundColor = '#C09560'
+                      e.currentTarget.style.transform = 'translateY(-2px)'
+                      e.currentTarget.style.boxShadow = '0 4px 15px rgba(212, 165, 116, 0.3)'
+                    }
                   }}
                   onMouseLeave={(e) => {
-                    e.currentTarget.style.backgroundColor = '#D4A574'
-                    e.currentTarget.style.transform = 'translateY(0)'
-                    e.currentTarget.style.boxShadow = 'none'
+                    if (formState !== 'loading') {
+                      e.currentTarget.style.backgroundColor = '#D4A574'
+                      e.currentTarget.style.transform = 'translateY(0)'
+                      e.currentTarget.style.boxShadow = 'none'
+                    }
                   }}
                 >
-                  Send Message
+                  {formState === 'loading' ? (
+                    <>
+                      <svg className="animate-spin h-5 w-5" fill="none" viewBox="0 0 24 24">
+                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                      </svg>
+                      <span>Sending...</span>
+                    </>
+                  ) : (
+                    'Send Message'
+                  )}
                 </button>
               </form>
             </div>

@@ -61,11 +61,36 @@ function Navigation() {
         backgroundColor: 'rgba(10, 25, 41, 0.95)',
         borderBottom: '1px solid #2B3F5C'
       }}
+      aria-label="Main navigation"
     >
+      {/* Skip to main content link for accessibility */}
+      <a
+        href="#main-content"
+        className="skip-link"
+        style={{
+          position: 'absolute',
+          left: '-9999px',
+          zIndex: 999,
+          padding: '1rem',
+          backgroundColor: '#D4A574',
+          color: '#0A1929',
+          textDecoration: 'none',
+          fontWeight: 'bold'
+        }}
+        onFocus={(e) => {
+          e.currentTarget.style.left = '0'
+          e.currentTarget.style.top = '0'
+        }}
+        onBlur={(e) => {
+          e.currentTarget.style.left = '-9999px'
+        }}
+      >
+        Skip to main content
+      </a>
       <div className="container mx-auto px-6 py-4">
         <div className="flex justify-between items-center">
           {/* Logo and Name */}
-          <Link to="/" className="flex items-center space-x-3 group cursor-pointer">
+          <Link to="/" className="flex items-center space-x-3 group cursor-pointer" aria-label="Go to home page">
             <div
               className="w-10 h-10 rounded-lg flex items-center justify-center transition-all duration-300 group-hover:scale-110 group-hover:rotate-6"
               style={{
@@ -174,7 +199,9 @@ function Navigation() {
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             className="md:hidden p-2 transition-colors duration-300"
             style={{ color: '#E5E7EB' }}
-            aria-label="Toggle menu"
+            aria-label="Toggle navigation menu"
+            aria-expanded={mobileMenuOpen}
+            aria-controls="mobile-menu"
             onMouseEnter={(e) => {
               e.currentTarget.style.color = '#D4A574'
             }}
@@ -197,6 +224,7 @@ function Navigation() {
         {/* Mobile Menu */}
         {mobileMenuOpen && (
           <div
+            id="mobile-menu"
             className="md:hidden mt-4 pb-4"
             style={{
               borderTop: '1px solid #2B3F5C',

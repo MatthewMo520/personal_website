@@ -6,7 +6,7 @@ function PortfolioPage() {
   return (
     <div className="min-h-screen" style={{ backgroundColor: '#0A1929' }}>
       <Navigation />
-      <main>
+      <main id="main-content">
         <Portfolio />
       </main>
       <Footer />
