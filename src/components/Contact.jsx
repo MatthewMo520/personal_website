@@ -108,9 +108,29 @@ function Contact() {
             Get In Touch
           </h2>
           <div className="w-20 h-1 mx-auto mb-4" style={{ backgroundColor: '#D4A574' }}></div>
-          <p className="max-w-2xl mx-auto text-base md:text-lg" style={{ color: '#E5E7EB' }}>
+          <p className="max-w-2xl mx-auto text-base md:text-lg mb-6" style={{ color: '#E5E7EB' }}>
             I'm always open to discussing new opportunities, projects, or collaborations
           </p>
+
+          {/* Internship Availability Callout */}
+          <div
+            className="max-w-3xl mx-auto p-6 rounded-lg border-2 mt-8"
+            style={{
+              backgroundColor: '#0A1929',
+              borderColor: '#D4A574',
+              animation: 'fadeInUp 0.8s ease-out 0.3s both'
+            }}
+          >
+            <div className="flex items-center justify-center gap-3 mb-3">
+              <h3 className="text-xl md:text-2xl font-bold" style={{ color: '#D4A574' }}>
+                Seeking Summer 2026 & Fall 2026 Internships
+              </h3>
+            </div>
+            <p className="text-base md:text-lg" style={{ color: '#E5E7EB' }}>
+              I'm actively seeking Data Science, Machine Learning, and Full-Stack Development internships
+              for Summer and Fall 2026. Let's connect if you have an opportunity or want to discuss my projects!
+            </p>
+          </div>
         </div>
 
         <div className="max-w-5xl mx-auto">

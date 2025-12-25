@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react'
 import { useScrollAnimation } from '../hooks/useScrollAnimation'
 
 function SkillBadge({ skill, index }) {
@@ -66,6 +67,75 @@ function SkillBadge({ skill, index }) {
             borderTop: '4px solid #D4A574'
           }}
         ></div>
+      </div>
+    </div>
+  )
+}
+
+function StatCard({ number, suffix, label, description, delay }) {
+  const { ref, isVisible } = useScrollAnimation({ threshold: 0.15, triggerOnce: false })
+  const [count, setCount] = useState(0)
+
+  useEffect(() => {
+    if (!isVisible) {
+      setCount(0)
+      return
+    }
+
+    const duration = 2000 // 2 seconds
+    const steps = 60
+    const increment = number / steps
+    const stepDuration = duration / steps
+
+    let currentStep = 0
+    const timer = setInterval(() => {
+      currentStep++
+      if (currentStep <= steps) {
+        setCount(Math.min(currentStep * increment, number))
+      } else {
+        clearInterval(timer)
+        setCount(number)
+      }
+    }, stepDuration)
+
+    return () => clearInterval(timer)
+  }, [isVisible, number])
+
+  return (
+    <div
+      ref={ref}
+      className={`p-6 rounded-lg border transition-all duration-300 cursor-default text-center ${
+        isVisible ? 'scroll-visible' : 'scroll-hidden'
+      }`}
+      style={{
+        backgroundColor: '#0A1929',
+        borderColor: '#2B3F5C',
+        transitionDelay: `${delay}s`
+      }}
+      onMouseEnter={(e) => {
+        e.currentTarget.style.borderColor = '#D4A574'
+        e.currentTarget.style.transform = 'translateY(-4px)'
+        e.currentTarget.style.boxShadow = '0 8px 25px rgba(212, 165, 116, 0.2)'
+      }}
+      onMouseLeave={(e) => {
+        e.currentTarget.style.borderColor = '#2B3F5C'
+        e.currentTarget.style.transform = 'translateY(0)'
+        e.currentTarget.style.boxShadow = 'none'
+      }}
+    >
+      {/* Large animated number */}
+      <div className="text-5xl md:text-6xl font-black mb-2" style={{ color: '#D4A574' }}>
+        {Math.floor(count)}{suffix}
+      </div>
+
+      {/* Label */}
+      <div className="text-lg font-semibold mb-2 text-white">
+        {label}
+      </div>
+
+      {/* Description */}
+      <div className="text-sm" style={{ color: '#9CA3AF' }}>
+        {description}
       </div>
     </div>
   )
@@ -181,6 +251,47 @@ function About() {
                   </li>
                 </ul>
               </div>
+            </div>
+          </div>
+
+          {/* Animated Statistics Section */}
+          <div className={`mb-16 ${isVisible ? 'scroll-visible' : 'scroll-hidden'}`}>
+            <h3
+              className="text-2xl md:text-3xl font-semibold mb-6 text-center"
+              style={{ color: '#D4A574' }}
+            >
+              Key Achievements
+            </h3>
+
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+              <StatCard
+                number={7}
+                suffix=""
+                label="Projects"
+                description="Full-Stack Web & ML"
+                delay={0}
+              />
+              <StatCard
+                number={12}
+                suffix="+"
+                label="Skills"
+                description="Languages & Frameworks"
+                delay={0.1}
+              />
+              <StatCard
+                number={88.74}
+                suffix="%"
+                label="Accuracy"
+                description="Movie Sentiment Analysis"
+                delay={0.2}
+              />
+              <StatCard
+                number={1}
+                suffix=""
+                label="Hackathon Win"
+                description="Best Beginner Hack 2024"
+                delay={0.3}
+              />
             </div>
           </div>
 

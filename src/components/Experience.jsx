@@ -83,10 +83,24 @@ function Experience() {
 
   const experiences = [
     {
+      title: "Data Science Intern",
+      company: "Scotiabank",
+      period: "Jan 2026 - April 2026",
+      description: "Building pricing and product recommendation models to enhance customer experience and optimize financial product offerings.",
+      technologies: ["Python", "Machine Learning", "Data Science", "Product Analytics"]
+    },
+    {
+      title: "ML Engineer",
+      company: "AgSights",
+      period: "Nov 2025 - Present",
+      description: "Developing an AI-powered voice-enabled system integrated with Microsoft Dynamics to automate farm record entry through phone-based data collection. Building speech-to-text pipeline with ML-based data extraction to parse farmer voice inputs and map structured information to appropriate database columns.",
+      technologies: ["Python", "ML", "Speech-to-Text", "Microsoft Dynamics", "NLP"]
+    },
+    {
       title: "Accounting Associate",
       company: "Stratos Solutions Inc.",
-      period: "May 2024 - Aug 2024",
-      description: "Worked alongside senior staff on accounting and tax consulting projects. Analyzed client accounting data and prepared in-depth tax research reports. Conducted tax and invoice overpayment recovery analysis using data-driven models for major corporations such as Boeing and PwC, contributing to recovering over $1M in tax credits.",
+      period: "May 2025 - Aug 2025",
+      description: "Conducted tax and invoice overpayment recovery analysis using data-driven models, prepared detailed financial reports and cost analysis for major corporations such as Boeing and PW&C that contributed to recovering over $1M in tax credits while ensuring compliance with contractual requirements. Leveraged Microsoft Office Suite, including advanced Excel functions and VBA, to streamline financial analysis and reporting, reducing tasks that typically took 3 hours to just 10 minutes for client deliverables.",
       technologies: ["Excel", "VBA", "Financial Analysis", "Tax Research"]
     },
     {
@@ -99,7 +113,7 @@ function Experience() {
     {
       title: "Lifeguard & Swim Instructor",
       company: "City of Toronto",
-      period: "Dec 2022 - May 2024",
+      period: "Dec 2022 - May 2025",
       description: "Guided swimmers of all ages and skill levels toward achieving their goals. Maintained a safe environment through vigilant supervision and professional patron interaction, enhancing customer satisfaction through effective communication and problem resolution.",
       technologies: ["Leadership", "Safety Management", "Customer Service", "Training"]
     }
@@ -123,14 +137,20 @@ function Experience() {
               style={{
                 background: `linear-gradient(to bottom,
                   #D4A574 0%,
-                  #2B3F5C 10%,
-                  #2B3F5C 30%,
-                  #D4A574 33%,
-                  #2B3F5C 36%,
-                  #2B3F5C 63%,
-                  #D4A574 66%,
-                  #2B3F5C 69%,
-                  #2B3F5C 90%,
+                  #2B3F5C 5%,
+                  #2B3F5C 18%,
+                  #D4A574 20%,
+                  #2B3F5C 22%,
+                  #2B3F5C 38%,
+                  #D4A574 40%,
+                  #2B3F5C 42%,
+                  #2B3F5C 58%,
+                  #D4A574 60%,
+                  #2B3F5C 62%,
+                  #2B3F5C 78%,
+                  #D4A574 80%,
+                  #2B3F5C 82%,
+                  #2B3F5C 95%,
                   #D4A574 100%
                 )`
               }}
