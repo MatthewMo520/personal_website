@@ -3,4 +3,4 @@ User-agent: *
 Allow: /
 
 # Sitemap location
-Sitemap: https://matthewmo.com/sitemap.xml
+Sitemap: https://www.matthew-mo.com/sitemap.xml
