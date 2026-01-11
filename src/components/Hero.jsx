@@ -99,7 +99,7 @@ function Hero() {
               animation: 'fadeInUp 0.8s ease-out 0.6s both'
             }}
           >
-            University of Waterloo • Building data-driven web applications and financial analysis tools
+            University of Waterloo • Building web scrapers, stock dashboards, and ML models that actually do stuff
           </p>
 
           {/* CTA system - 2 CTAs on mobile, 3 on desktop */}

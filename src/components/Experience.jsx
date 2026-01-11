@@ -85,36 +85,36 @@ function Experience() {
     {
       title: "Data Science Intern",
       company: "Scotiabank",
-      period: "Jan 2026 - April 2026",
-      description: "Building pricing and product recommendation models to enhance customer experience and optimize financial product offerings.",
+      period: "Jan 2026 - Present",
+      description: "Working on pricing models for mortgage products and analyzing customer price sensitivity. Also building automated monitoring systems to track how well the models are performing.",
       technologies: ["Python", "Machine Learning", "Data Science", "Product Analytics"]
     },
     {
       title: "ML Engineer",
       company: "AgSights",
-      period: "Nov 2025 - Present",
-      description: "Developing an AI-powered voice-enabled system integrated with Microsoft Dynamics to automate farm record entry through phone-based data collection. Building speech-to-text pipeline with ML-based data extraction to parse farmer voice inputs and map structured information to appropriate database columns.",
+      period: "Nov 2025 - Jan 2026",
+      description: "Built an AI voice system that lets farmers call in to update their farm records instead of typing everything manually. The system uses speech-to-text and ML to figure out what data goes where in Microsoft Dynamics.",
       technologies: ["Python", "ML", "Speech-to-Text", "Microsoft Dynamics", "NLP"]
     },
     {
       title: "Accounting Associate",
       company: "Stratos Solutions Inc.",
       period: "May 2025 - Aug 2025",
-      description: "Conducted tax and invoice overpayment recovery analysis using data-driven models, prepared detailed financial reports and cost analysis for major corporations such as Boeing and PW&C that contributed to recovering over $1M in tax credits while ensuring compliance with contractual requirements. Leveraged Microsoft Office Suite, including advanced Excel functions and VBA, to streamline financial analysis and reporting, reducing tasks that typically took 3 hours to just 10 minutes for client deliverables.",
+      description: "Analyzed tax and invoice data for big companies like Boeing and PW&C to find overpayments they could recover. Built Excel/VBA tools that turned 3-hour tasks into 10-minute ones. Helped recover over $1M in tax credits.",
       technologies: ["Excel", "VBA", "Financial Analysis", "Tax Research"]
     },
     {
       title: "Computer Science Tutor",
       company: "Students Supports Students",
       period: "Sept 2022 - June 2024",
-      description: "Taught foundational computer science concepts to classes of 8-14 children (ages 10-12) in weekly sessions. Developed engaging, age-appropriate curriculum to foster early technical skills and problem-solving abilities.",
+      description: "Taught computer science basics to kids aged 10-12 in weekly classes. Created lesson plans that made programming concepts fun and accessible for beginners.",
       technologies: ["Teaching", "Computer Science", "Curriculum Development", "Communication"]
     },
     {
       title: "Lifeguard & Swim Instructor",
       company: "City of Toronto",
       period: "Dec 2022 - May 2025",
-      description: "Guided swimmers of all ages and skill levels toward achieving their goals. Maintained a safe environment through vigilant supervision and professional patron interaction, enhancing customer satisfaction through effective communication and problem resolution.",
+      description: "Taught swimming lessons and kept the pool safe. Worked with people of all ages and skill levels, from kids learning to float to adults training for competitions.",
       technologies: ["Leadership", "Safety Management", "Customer Service", "Training"]
     }
   ]

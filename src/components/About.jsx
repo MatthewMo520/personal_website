@@ -215,12 +215,12 @@ function About() {
                 </h5>
                 <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
                   {[
-                    'Machine Learning',
-                    'Data Structures & Algorithms',
-                    'Statistical Analysis',
-                    'Database Systems',
-                    'Software Engineering',
-                    'Linear Algebra'
+                    'Data Structures (CS136)',
+                    'Logic & Computation (CS245)',
+                    'OOP & Software Dev (CS246)',
+                    'Linear Algebra (MATH136/235)',
+                    'Calculus (MATH137/138/237)',
+                    'Probability (STAT230)'
                   ].map((course, idx) => (
                     <div
                       key={idx}
@@ -244,10 +244,6 @@ function About() {
                   <li className="flex items-start gap-2">
                     <span className="text-xl" style={{ color: '#D4A574' }}>•</span>
                     <span className="text-white">Best Beginner Hack - GeeseHacks 2024</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-xl" style={{ color: '#D4A574' }}>•</span>
-                    <span className="text-white">Dean's Honours List</span>
                   </li>
                 </ul>
               </div>
@@ -306,19 +302,19 @@ function About() {
               </h3>
               <div className="space-y-4 leading-relaxed text-base md:text-lg" style={{ color: '#E5E7EB' }}>
                 <p>
-                  I'm a Data Science student at the University of Waterloo with a strong foundation in
-                  programming, data analysis, and full-stack development. I specialize in building
-                  web applications and developing data-driven solutions to real-world problems.
+                  I'm studying Data Science at Waterloo and I like building stuff that solves real problems.
+                  Most of my projects involve either scraping/analyzing data or building web apps - sometimes both.
                 </p>
                 <p>
-                  My experience spans web development, financial analysis, and automation. I've worked
-                  on projects ranging from real-time stock analysis dashboards to computer vision safety
-                  systems, winning Best Beginner Hack at GeeseHacks 2024 with LinkedIt.
+                  Right now I'm working at Scotiabank on pricing models, and before that I built a voice AI system
+                  for farmers at AgSights. I also won Best Beginner Hack at GeeseHacks 2024 with LinkedIt, which
+                  automates finding sponsors on LinkedIn. Other projects include a stock dashboard, flight price
+                  tracker, and ML models for sentiment analysis and churn prediction.
                 </p>
                 <p>
-                  I combine technical skills with analytical thinking to create practical, scalable
-                  solutions. Whether it's streamlining financial processes through Excel automation
-                  or building interactive data visualizations, I focus on delivering measurable results.
+                  When I'm not coding, I'm either swimming (former lifeguard/instructor) or managing my stock
+                  portfolio (which is actually beating the market right now). I'm always down to work on
+                  interesting projects, especially if they involve Python, React, or making boring tasks automated.
                 </p>
               </div>
             </div>

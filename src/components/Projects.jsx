@@ -276,7 +276,7 @@ function Projects() {
           </h2>
           <div className="w-20 h-1 mx-auto mb-4" style={{ backgroundColor: '#D4A574' }}></div>
           <p className="max-w-2xl mx-auto text-base md:text-lg" style={{ color: '#E5E7EB' }}>
-            A selection of my recent work in web development, data analysis, and automation
+            Hackathon projects, ML experiments, and web apps I've built to solve problems or just for fun
           </p>
         </div>
 
