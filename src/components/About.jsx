@@ -8,12 +8,12 @@ function SkillBadge({ skill, index }) {
     switch (level) {
       case 'Advanced':
         return {
-          borderColor: '#D4A574',
+          borderColor: '#4e86d0',
           borderWidth: '2px'
         }
       case 'Intermediate':
         return {
-          borderLeft: '4px solid #D4A574',
+          borderLeft: '4px solid #4e86d0',
           borderTop: '1px solid #5B8FB9',
           borderRight: '1px solid #5B8FB9',
           borderBottom: '1px solid #5B8FB9'
@@ -36,11 +36,11 @@ function SkillBadge({ skill, index }) {
       ref={ref}
       className={`px-4 py-3 rounded-lg transition-all duration-300 transform hover:scale-105 cursor-pointer relative group ${isVisible ? 'scroll-visible' : 'scroll-hidden'}`}
       style={{
-        backgroundColor: '#2B3F5C',
+        backgroundColor: '#0e1c30',
         ...getProficiencyStyle(skill.level)
       }}
       onMouseEnter={(e) => {
-        e.currentTarget.style.boxShadow = '0 4px 15px rgba(212, 165, 116, 0.2)'
+        e.currentTarget.style.boxShadow = '0 4px 15px rgba(78, 134, 208, 0.2)'
       }}
       onMouseLeave={(e) => {
         e.currentTarget.style.boxShadow = 'none'
@@ -53,9 +53,9 @@ function SkillBadge({ skill, index }) {
       <div
         className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 px-3 py-1.5 rounded text-xs font-semibold whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none"
         style={{
-          backgroundColor: '#0A1929',
-          color: '#D4A574',
-          border: '1px solid #D4A574'
+          backgroundColor: '#060d1b',
+          color: '#4e86d0',
+          border: '1px solid #4e86d0'
         }}
       >
         {skill.level}
@@ -64,7 +64,7 @@ function SkillBadge({ skill, index }) {
           style={{
             borderLeft: '4px solid transparent',
             borderRight: '4px solid transparent',
-            borderTop: '4px solid #D4A574'
+            borderTop: '4px solid #4e86d0'
           }}
         ></div>
       </div>
@@ -108,23 +108,23 @@ function StatCard({ number, suffix, label, description, delay }) {
         isVisible ? 'scroll-visible' : 'scroll-hidden'
       }`}
       style={{
-        backgroundColor: '#0A1929',
-        borderColor: '#2B3F5C',
+        backgroundColor: '#060d1b',
+        borderColor: '#162640',
         transitionDelay: `${delay}s`
       }}
       onMouseEnter={(e) => {
-        e.currentTarget.style.borderColor = '#D4A574'
+        e.currentTarget.style.borderColor = '#4e86d0'
         e.currentTarget.style.transform = 'translateY(-4px)'
-        e.currentTarget.style.boxShadow = '0 8px 25px rgba(212, 165, 116, 0.2)'
+        e.currentTarget.style.boxShadow = '0 8px 25px rgba(78, 134, 208, 0.2)'
       }}
       onMouseLeave={(e) => {
-        e.currentTarget.style.borderColor = '#2B3F5C'
+        e.currentTarget.style.borderColor = '#162640'
         e.currentTarget.style.transform = 'translateY(0)'
         e.currentTarget.style.boxShadow = 'none'
       }}
     >
       {/* Large animated number */}
-      <div className="text-5xl md:text-6xl font-black mb-2" style={{ color: '#D4A574' }}>
+      <div className="text-5xl md:text-6xl font-black mb-2" style={{ color: '#4e86d0' }}>
         {Math.floor(count)}{suffix}
       </div>
 
@@ -160,9 +160,9 @@ function About() {
   ]
 
   return (
-    <section className="py-20 relative" style={{ backgroundColor: '#1A2942' }}>
+    <section className="py-20 relative" style={{ backgroundColor: 'transparent' }}>
       {/* Subtle decorative shapes */}
-      <div className="absolute top-10 left-10 w-32 h-32 rounded-full opacity-[0.03]" style={{ backgroundColor: '#2B3F5C' }}></div>
+      <div className="absolute top-10 left-10 w-32 h-32 rounded-full opacity-[0.03]" style={{ backgroundColor: '#162640' }}></div>
       <div className="absolute bottom-10 right-10 w-40 h-40 opacity-[0.03]" style={{ backgroundColor: '#3D5470', borderRadius: '30%' }}></div>
 
       <div className="container mx-auto px-6 relative z-10">
@@ -170,7 +170,7 @@ function About() {
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-4 tracking-tight">
             About Me
           </h2>
-          <div className="w-20 h-1 mx-auto" style={{ backgroundColor: '#D4A574' }}></div>
+          <div className="w-20 h-1 mx-auto" style={{ backgroundColor: '#4e86d0' }}></div>
         </div>
 
         <div ref={ref} className={`max-w-6xl mx-auto ${isVisible ? 'scroll-visible' : 'scroll-hidden'}`}>
@@ -178,30 +178,30 @@ function About() {
           <div className="mb-16">
             <h3
               className="text-2xl md:text-3xl font-semibold mb-6 text-center"
-              style={{ color: '#D4A574' }}
+              style={{ color: '#4e86d0' }}
             >
               Education
             </h3>
             <div
               className="max-w-4xl mx-auto rounded-lg border p-8"
               style={{
-                backgroundColor: '#0A1929',
-                borderColor: '#2B3F5C'
+                backgroundColor: '#060d1b',
+                borderColor: '#162640'
               }}
             >
               <div className="flex items-start gap-6 mb-6">
                 <div
                   className="w-16 h-16 rounded-lg flex items-center justify-center flex-shrink-0"
                   style={{
-                    background: 'linear-gradient(135deg, #D4A574 0%, #E8B87E 100%)'
+                    background: 'linear-gradient(135deg, #4e86d0 0%, #6aaee0 100%)'
                   }}
                 >
-                  <svg className="w-8 h-8" style={{ color: '#0A1929' }} fill="currentColor" viewBox="0 0 20 20">
+                  <svg className="w-8 h-8" style={{ color: '#060d1b' }} fill="currentColor" viewBox="0 0 20 20">
                     <path d="M10.394 2.08a1 1 0 00-.788 0l-7 3a1 1 0 000 1.84L5.25 8.051a.999.999 0 01.356-.257l4-1.714a1 1 0 11.788 1.838L7.667 9.088l1.94.831a1 1 0 00.787 0l7-3a1 1 0 000-1.838l-7-3zM3.31 9.397L5 10.12v4.102a8.969 8.969 0 00-1.05-.174 1 1 0 01-.89-.89 11.115 11.115 0 01.25-3.762zM9.3 16.573A9.026 9.026 0 007 14.935v-3.957l1.818.78a3 3 0 002.364 0l5.508-2.361a11.026 11.026 0 01.25 3.762 1 1 0 01-.89.89 8.968 8.968 0 00-5.35 2.524 1 1 0 01-1.4 0zM6 18a1 1 0 001-1v-2.065a8.935 8.935 0 00-2-.712V17a1 1 0 001 1z"></path>
                   </svg>
                 </div>
                 <div className="flex-1">
-                  <h4 className="text-2xl font-bold text-white mb-2" style={{ color: '#D4A574' }}>
+                  <h4 className="text-2xl font-bold text-white mb-2" style={{ color: '#4e86d0' }}>
                     University of Waterloo
                   </h4>
                   <p className="text-lg text-white mb-1">Bachelor of Science in Data Science</p>
@@ -210,7 +210,7 @@ function About() {
               </div>
 
               <div className="mb-6">
-                <h5 className="text-sm font-semibold mb-3" style={{ color: '#D4A574' }}>
+                <h5 className="text-sm font-semibold mb-3" style={{ color: '#4e86d0' }}>
                   RELEVANT COURSEWORK
                 </h5>
                 <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
@@ -226,7 +226,7 @@ function About() {
                       key={idx}
                       className="px-3 py-2 rounded text-sm text-white text-center"
                       style={{
-                        backgroundColor: '#2B3F5C',
+                        backgroundColor: '#0e1c30',
                         border: '1px solid #5B8FB9'
                       }}
                     >
@@ -237,12 +237,12 @@ function About() {
               </div>
 
               <div>
-                <h5 className="text-sm font-semibold mb-3" style={{ color: '#D4A574' }}>
+                <h5 className="text-sm font-semibold mb-3" style={{ color: '#4e86d0' }}>
                   ACHIEVEMENTS
                 </h5>
                 <ul className="space-y-2">
                   <li className="flex items-start gap-2">
-                    <span className="text-xl" style={{ color: '#D4A574' }}>•</span>
+                    <span className="text-xl" style={{ color: '#4e86d0' }}>•</span>
                     <span className="text-white">Best Beginner Hack - GeeseHacks 2024</span>
                   </li>
                 </ul>
@@ -254,7 +254,7 @@ function About() {
           <div className={`mb-16 ${isVisible ? 'scroll-visible' : 'scroll-hidden'}`}>
             <h3
               className="text-2xl md:text-3xl font-semibold mb-6 text-center"
-              style={{ color: '#D4A574' }}
+              style={{ color: '#4e86d0' }}
             >
               Key Achievements
             </h3>
@@ -296,7 +296,7 @@ function About() {
             <div>
               <h3
                 className="text-2xl md:text-3xl font-semibold mb-6"
-                style={{ color: '#D4A574' }}
+                style={{ color: '#4e86d0' }}
               >
                 Background
               </h3>
@@ -323,7 +323,7 @@ function About() {
             <div>
               <h3
                 className="text-2xl md:text-3xl font-semibold mb-6"
-                style={{ color: '#D4A574' }}
+                style={{ color: '#4e86d0' }}
               >
                 Technical Skills
               </h3>

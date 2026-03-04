@@ -9,7 +9,7 @@ function ContactInfoCard({ icon, label, value }) {
       <div
         className="w-12 h-12 rounded-lg flex items-center justify-center flex-shrink-0"
         style={{
-          background: 'linear-gradient(135deg, #D4A574 0%, #E8B87E 100%)'
+          background: 'linear-gradient(135deg, #4e86d0 0%, #6aaee0 100%)'
         }}
       >
         {icon}
@@ -34,11 +34,11 @@ function ConnectLink({ href, icon, label, stagger }) {
       aria-label={label}
       className={`flex items-center gap-4 p-3 rounded-lg transition-all duration-300 border ${isVisible ? 'scroll-visible' : 'scroll-hidden'}`}
       style={{
-        backgroundColor: '#2B3F5C',
+        backgroundColor: '#0e1c30',
         borderColor: '#5B8FB9'
       }}
       onMouseEnter={(e) => {
-        e.currentTarget.style.borderColor = '#D4A574'
+        e.currentTarget.style.borderColor = '#4e86d0'
         e.currentTarget.style.transform = 'translateX(4px)'
       }}
       onMouseLeave={(e) => {
@@ -48,7 +48,7 @@ function ConnectLink({ href, icon, label, stagger }) {
     >
       <div
         className="w-10 h-10 rounded-lg flex items-center justify-center"
-        style={{ backgroundColor: '#D4A574' }}
+        style={{ backgroundColor: '#4e86d0' }}
       >
         {icon}
       </div>
@@ -101,13 +101,13 @@ function Contact() {
   }
 
   return (
-    <section className="py-20" style={{ backgroundColor: '#1A2942' }}>
+    <section className="py-20" style={{ backgroundColor: 'transparent' }}>
       <div className="container mx-auto px-6">
         <div ref={ref} className={`text-center mb-16 ${isVisible ? 'scroll-visible' : 'scroll-hidden'}`}>
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-4 tracking-tight">
             Get In Touch
           </h2>
-          <div className="w-20 h-1 mx-auto mb-4" style={{ backgroundColor: '#D4A574' }}></div>
+          <div className="w-20 h-1 mx-auto mb-4" style={{ backgroundColor: '#4e86d0' }}></div>
           <p className="max-w-2xl mx-auto text-base md:text-lg mb-6" style={{ color: '#E5E7EB' }}>
             I'm always open to discussing new opportunities, projects, or collaborations
           </p>
@@ -116,13 +116,13 @@ function Contact() {
           <div
             className="max-w-3xl mx-auto p-6 rounded-lg border-2 mt-8"
             style={{
-              backgroundColor: '#0A1929',
-              borderColor: '#D4A574',
+              backgroundColor: '#060d1b',
+              borderColor: '#4e86d0',
               animation: 'fadeInUp 0.8s ease-out 0.3s both'
             }}
           >
             <div className="flex items-center justify-center gap-3 mb-3">
-              <h3 className="text-xl md:text-2xl font-bold" style={{ color: '#D4A574' }}>
+              <h3 className="text-xl md:text-2xl font-bold" style={{ color: '#4e86d0' }}>
                 Seeking Summer 2026 & Fall 2026 Internships
               </h3>
             </div>
@@ -139,7 +139,7 @@ function Contact() {
             <div>
               <h3
                 className={`text-2xl md:text-3xl font-semibold mb-6 ${isVisible ? 'scroll-visible' : 'scroll-hidden'}`}
-                style={{ color: '#D4A574' }}
+                style={{ color: '#4e86d0' }}
               >
                 Contact Information
               </h3>
@@ -167,7 +167,7 @@ function Contact() {
 
               <h3
                 className={`text-2xl md:text-3xl font-semibold mb-6 ${isVisible ? 'scroll-visible' : 'scroll-hidden'}`}
-                style={{ color: '#D4A574' }}
+                style={{ color: '#4e86d0' }}
               >
                 Connect
               </h3>
@@ -175,7 +175,7 @@ function Contact() {
                 <ConnectLink
                   href="/Resume_Matthew_Mo.pdf"
                   icon={
-                    <svg className="w-5 h-5" style={{ color: '#0A1929' }} fill="currentColor" viewBox="0 0 20 20">
+                    <svg className="w-5 h-5" style={{ color: '#060d1b' }} fill="currentColor" viewBox="0 0 20 20">
                       <path fillRule="evenodd" d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4zm2 6a1 1 0 011-1h6a1 1 0 110 2H7a1 1 0 01-1-1zm1 3a1 1 0 100 2h6a1 1 0 100-2H7z" clipRule="evenodd"></path>
                     </svg>
                   }
@@ -184,7 +184,7 @@ function Contact() {
                 <ConnectLink
                   href="https://www.linkedin.com/in/matthew-mo520/"
                   icon={
-                    <svg className="w-5 h-5" style={{ color: '#0A1929' }} fill="currentColor" viewBox="0 0 20 20">
+                    <svg className="w-5 h-5" style={{ color: '#060d1b' }} fill="currentColor" viewBox="0 0 20 20">
                       <path fillRule="evenodd" d="M16.338 16.338H13.67V12.16c0-.995-.017-2.277-1.387-2.277-1.39 0-1.601 1.086-1.601 2.207v4.248H8.014v-8.59h2.559v1.174h.037c.356-.675 1.227-1.387 2.526-1.387 2.703 0 3.203 1.778 3.203 4.092v4.711zM5.005 6.575a1.548 1.548 0 11-.003-3.096 1.548 1.548 0 01.003 3.096zm-1.337 9.763H6.34v-8.59H3.667v8.59zM17.668 1H2.328C1.595 1 1 1.581 1 2.298v15.403C1 18.418 1.595 19 2.328 19h15.34c.734 0 1.332-.582 1.332-1.299V2.298C19 1.581 18.402 1 17.668 1z" clipRule="evenodd"></path>
                     </svg>
                   }
@@ -193,7 +193,7 @@ function Contact() {
                 <ConnectLink
                   href="https://github.com/MatthewMo520"
                   icon={
-                    <svg className="w-5 h-5" style={{ color: '#0A1929' }} fill="currentColor" viewBox="0 0 20 20">
+                    <svg className="w-5 h-5" style={{ color: '#060d1b' }} fill="currentColor" viewBox="0 0 20 20">
                       <path fillRule="evenodd" d="M10 0C4.477 0 0 4.484 0 10.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0110 4.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.203 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.942.359.31.678.921.678 1.856 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0020 10.017C20 4.484 15.522 0 10 0z" clipRule="evenodd"></path>
                     </svg>
                   }
@@ -206,7 +206,7 @@ function Contact() {
             <div>
               <h3
                 className={`text-2xl md:text-3xl font-semibold mb-6 ${isVisible ? 'scroll-visible' : 'scroll-hidden'}`}
-                style={{ color: '#D4A574' }}
+                style={{ color: '#4e86d0' }}
               >
                 Send a Message
               </h3>
@@ -241,7 +241,7 @@ function Contact() {
                   <label
                     htmlFor="name"
                     className="block text-sm font-medium mb-2"
-                    style={{ color: '#D4A574' }}
+                    style={{ color: '#4e86d0' }}
                   >
                     Name
                   </label>
@@ -254,15 +254,15 @@ function Contact() {
                     aria-required="true"
                     className="w-full px-4 py-3 rounded-lg text-white transition-all duration-300"
                     style={{
-                      backgroundColor: '#0A1929',
-                      border: '1px solid #2B3F5C'
+                      backgroundColor: '#060d1b',
+                      border: '1px solid #0e1c30'
                     }}
                     onFocus={(e) => {
-                      e.currentTarget.style.borderColor = '#D4A574'
-                      e.currentTarget.style.boxShadow = '0 0 0 2px rgba(212, 165, 116, 0.2)'
+                      e.currentTarget.style.borderColor = '#4e86d0'
+                      e.currentTarget.style.boxShadow = '0 0 0 2px rgba(78, 134, 208, 0.2)'
                     }}
                     onBlur={(e) => {
-                      e.currentTarget.style.borderColor = '#2B3F5C'
+                      e.currentTarget.style.borderColor = '#0e1c30'
                       e.currentTarget.style.boxShadow = 'none'
                     }}
                   />
@@ -271,7 +271,7 @@ function Contact() {
                   <label
                     htmlFor="email"
                     className="block text-sm font-medium mb-2"
-                    style={{ color: '#D4A574' }}
+                    style={{ color: '#4e86d0' }}
                   >
                     Email
                   </label>
@@ -284,15 +284,15 @@ function Contact() {
                     aria-required="true"
                     className="w-full px-4 py-3 rounded-lg text-white transition-all duration-300"
                     style={{
-                      backgroundColor: '#0A1929',
-                      border: '1px solid #2B3F5C'
+                      backgroundColor: '#060d1b',
+                      border: '1px solid #0e1c30'
                     }}
                     onFocus={(e) => {
-                      e.currentTarget.style.borderColor = '#D4A574'
-                      e.currentTarget.style.boxShadow = '0 0 0 2px rgba(212, 165, 116, 0.2)'
+                      e.currentTarget.style.borderColor = '#4e86d0'
+                      e.currentTarget.style.boxShadow = '0 0 0 2px rgba(78, 134, 208, 0.2)'
                     }}
                     onBlur={(e) => {
-                      e.currentTarget.style.borderColor = '#2B3F5C'
+                      e.currentTarget.style.borderColor = '#0e1c30'
                       e.currentTarget.style.boxShadow = 'none'
                     }}
                   />
@@ -301,7 +301,7 @@ function Contact() {
                   <label
                     htmlFor="message"
                     className="block text-sm font-medium mb-2"
-                    style={{ color: '#D4A574' }}
+                    style={{ color: '#4e86d0' }}
                   >
                     Message
                   </label>
@@ -314,15 +314,15 @@ function Contact() {
                     aria-required="true"
                     className="w-full px-4 py-3 rounded-lg text-white resize-none transition-all duration-300"
                     style={{
-                      backgroundColor: '#0A1929',
-                      border: '1px solid #2B3F5C'
+                      backgroundColor: '#060d1b',
+                      border: '1px solid #0e1c30'
                     }}
                     onFocus={(e) => {
-                      e.currentTarget.style.borderColor = '#D4A574'
-                      e.currentTarget.style.boxShadow = '0 0 0 2px rgba(212, 165, 116, 0.2)'
+                      e.currentTarget.style.borderColor = '#4e86d0'
+                      e.currentTarget.style.boxShadow = '0 0 0 2px rgba(78, 134, 208, 0.2)'
                     }}
                     onBlur={(e) => {
-                      e.currentTarget.style.borderColor = '#2B3F5C'
+                      e.currentTarget.style.borderColor = '#0e1c30'
                       e.currentTarget.style.boxShadow = 'none'
                     }}
                   ></textarea>
@@ -332,21 +332,21 @@ function Contact() {
                   disabled={formState === 'loading'}
                   className="w-full py-3 rounded-lg font-medium transition-all duration-300 transform flex items-center justify-center gap-2"
                   style={{
-                    backgroundColor: formState === 'loading' ? '#9CA3AF' : '#D4A574',
-                    color: '#0A1929',
+                    backgroundColor: formState === 'loading' ? '#9CA3AF' : '#4e86d0',
+                    color: '#ffffff',
                     cursor: formState === 'loading' ? 'not-allowed' : 'pointer',
                     opacity: formState === 'loading' ? 0.7 : 1
                   }}
                   onMouseEnter={(e) => {
                     if (formState !== 'loading') {
-                      e.currentTarget.style.backgroundColor = '#C09560'
+                      e.currentTarget.style.backgroundColor = '#3d74bc'
                       e.currentTarget.style.transform = 'translateY(-2px)'
-                      e.currentTarget.style.boxShadow = '0 4px 15px rgba(212, 165, 116, 0.3)'
+                      e.currentTarget.style.boxShadow = '0 4px 15px rgba(78, 134, 208, 0.3)'
                     }
                   }}
                   onMouseLeave={(e) => {
                     if (formState !== 'loading') {
-                      e.currentTarget.style.backgroundColor = '#D4A574'
+                      e.currentTarget.style.backgroundColor = '#4e86d0'
                       e.currentTarget.style.transform = 'translateY(0)'
                       e.currentTarget.style.boxShadow = 'none'
                     }

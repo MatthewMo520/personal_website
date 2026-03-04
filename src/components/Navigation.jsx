@@ -58,8 +58,8 @@ function Navigation() {
     <nav
       className="fixed top-0 left-0 right-0 z-50 shadow-lg backdrop-blur-md"
       style={{
-        backgroundColor: 'rgba(10, 25, 41, 0.95)',
-        borderBottom: '1px solid #2B3F5C'
+        backgroundColor: 'rgba(6, 13, 27, 0.97)',
+        borderBottom: '1px solid #0e1c30'
       }}
       aria-label="Main navigation"
     >
@@ -72,8 +72,8 @@ function Navigation() {
           left: '-9999px',
           zIndex: 999,
           padding: '1rem',
-          backgroundColor: '#D4A574',
-          color: '#0A1929',
+          backgroundColor: '#4e86d0',
+          color: '#ffffff',
           textDecoration: 'none',
           fontWeight: 'bold'
         }}
@@ -94,14 +94,14 @@ function Navigation() {
             <div
               className="w-10 h-10 rounded-lg flex items-center justify-center transition-all duration-300 group-hover:scale-110 group-hover:rotate-6"
               style={{
-                background: 'linear-gradient(135deg, #D4A574 0%, #E8B87E 100%)',
-                boxShadow: '0 2px 8px rgba(212, 165, 116, 0.3)'
+                background: 'linear-gradient(135deg, #4e86d0 0%, #6aaee0 100%)',
+                boxShadow: '0 2px 8px rgba(78, 134, 208, 0.3)'
               }}
             >
               <span
                 className="text-xl font-bold"
                 style={{
-                  color: '#0A1929',
+                  color: '#060d1b',
                   fontFamily: "'Space Grotesk', sans-serif"
                 }}
               >
@@ -125,11 +125,11 @@ function Navigation() {
                 onClick={(e) => handleScroll(e, link.id)}
                 className="cursor-pointer text-sm font-medium transition-all duration-300 relative"
                 style={{
-                  color: (location.pathname === '/' && activeSection === link.id) ? '#D4A574' : '#E5E7EB'
+                  color: (location.pathname === '/' && activeSection === link.id) ? '#4e86d0' : '#E5E7EB'
                 }}
                 onMouseEnter={(e) => {
                   if (!(location.pathname === '/' && activeSection === link.id)) {
-                    e.currentTarget.style.color = '#D4A574'
+                    e.currentTarget.style.color = '#4e86d0'
                   }
                 }}
                 onMouseLeave={(e) => {
@@ -142,7 +142,7 @@ function Navigation() {
                 {(location.pathname === '/' && activeSection === link.id) && (
                   <span
                     className="absolute -bottom-1 left-0 right-0 h-0.5"
-                    style={{ backgroundColor: '#D4A574' }}
+                    style={{ backgroundColor: '#4e86d0' }}
                   ></span>
                 )}
               </a>
@@ -151,11 +151,11 @@ function Navigation() {
               to="/portfolio"
               className="cursor-pointer text-sm font-medium transition-all duration-300 relative"
               style={{
-                color: location.pathname === '/portfolio' ? '#D4A574' : '#E5E7EB'
+                color: location.pathname === '/portfolio' ? '#4e86d0' : '#E5E7EB'
               }}
               onMouseEnter={(e) => {
                 if (location.pathname !== '/portfolio') {
-                  e.currentTarget.style.color = '#D4A574'
+                  e.currentTarget.style.color = '#4e86d0'
                 }
               }}
               onMouseLeave={(e) => {
@@ -168,7 +168,7 @@ function Navigation() {
               {location.pathname === '/portfolio' && (
                 <span
                   className="absolute -bottom-1 left-0 right-0 h-0.5"
-                  style={{ backgroundColor: '#D4A574' }}
+                  style={{ backgroundColor: '#4e86d0' }}
                 ></span>
               )}
             </Link>
@@ -178,15 +178,15 @@ function Navigation() {
               rel="noopener noreferrer"
               className="px-4 py-2 rounded-md text-sm font-semibold transition-all duration-300 transform hover:scale-105"
               style={{
-                backgroundColor: '#D4A574',
-                color: '#0A1929'
+                backgroundColor: '#4e86d0',
+                color: '#ffffff'
               }}
               onMouseEnter={(e) => {
-                e.currentTarget.style.backgroundColor = '#C09560'
+                e.currentTarget.style.backgroundColor = '#3d74bc'
                 e.currentTarget.style.transform = 'scale(1.05) translateY(-2px)'
               }}
               onMouseLeave={(e) => {
-                e.currentTarget.style.backgroundColor = '#D4A574'
+                e.currentTarget.style.backgroundColor = '#4e86d0'
                 e.currentTarget.style.transform = 'scale(1)'
               }}
             >
@@ -203,7 +203,7 @@ function Navigation() {
             aria-expanded={mobileMenuOpen}
             aria-controls="mobile-menu"
             onMouseEnter={(e) => {
-              e.currentTarget.style.color = '#D4A574'
+              e.currentTarget.style.color = '#4e86d0'
             }}
             onMouseLeave={(e) => {
               e.currentTarget.style.color = '#E5E7EB'
@@ -227,7 +227,7 @@ function Navigation() {
             id="mobile-menu"
             className="md:hidden mt-4 pb-4"
             style={{
-              borderTop: '1px solid #2B3F5C',
+              borderTop: '1px solid #0e1c30',
               animation: 'fadeInUp 0.3s ease-out'
             }}
           >
@@ -239,7 +239,7 @@ function Navigation() {
                   onClick={(e) => handleScroll(e, link.id)}
                   className="cursor-pointer text-sm font-medium py-2 transition-colors duration-300"
                   style={{
-                    color: (location.pathname === '/' && activeSection === link.id) ? '#D4A574' : '#E5E7EB'
+                    color: (location.pathname === '/' && activeSection === link.id) ? '#4e86d0' : '#E5E7EB'
                   }}
                 >
                   {link.label}
@@ -250,7 +250,7 @@ function Navigation() {
                 onClick={() => setMobileMenuOpen(false)}
                 className="cursor-pointer text-sm font-medium py-2 transition-colors duration-300"
                 style={{
-                  color: location.pathname === '/portfolio' ? '#D4A574' : '#E5E7EB'
+                  color: location.pathname === '/portfolio' ? '#4e86d0' : '#E5E7EB'
                 }}
               >
                 Investments
@@ -261,8 +261,8 @@ function Navigation() {
                 rel="noopener noreferrer"
                 className="px-4 py-2 rounded-md text-sm font-semibold text-center transition-colors duration-300"
                 style={{
-                  backgroundColor: '#D4A574',
-                  color: '#0A1929'
+                  backgroundColor: '#4e86d0',
+                  color: '#ffffff'
                 }}
               >
                 Resume

@@ -11,16 +11,16 @@ function ProjectCard({ project, index, onClick }) {
       onClick={onClick}
       className={`rounded-lg border overflow-hidden transition-all duration-300 cursor-pointer ${isVisible ? 'scroll-visible' : 'scroll-hidden'}`}
       style={{
-        backgroundColor: '#0A1929',
-        borderColor: '#2B3F5C'
+        backgroundColor: '#060d1b',
+        borderColor: '#0e1c30'
       }}
       onMouseEnter={(e) => {
-        e.currentTarget.style.borderColor = '#D4A574'
+        e.currentTarget.style.borderColor = '#4e86d0'
         e.currentTarget.style.transform = 'translateY(-8px)'
-        e.currentTarget.style.boxShadow = '0 20px 40px rgba(212, 165, 116, 0.15)'
+        e.currentTarget.style.boxShadow = '0 20px 40px rgba(78, 134, 208, 0.15)'
       }}
       onMouseLeave={(e) => {
-        e.currentTarget.style.borderColor = '#2B3F5C'
+        e.currentTarget.style.borderColor = '#0e1c30'
         e.currentTarget.style.transform = 'translateY(0)'
         e.currentTarget.style.boxShadow = 'none'
       }}
@@ -43,14 +43,14 @@ function ProjectCard({ project, index, onClick }) {
         />
         <div
           className="absolute inset-0 opacity-0 group-hover:opacity-40 transition-opacity duration-300"
-          style={{ backgroundColor: '#0A1929' }}
+          style={{ backgroundColor: '#060d1b' }}
         ></div>
         {project.featured && (
           <div
             className="absolute top-3 right-3 px-3 py-1 rounded-md text-xs font-semibold"
             style={{
-              backgroundColor: '#D4A574',
-              color: '#0A1929'
+              backgroundColor: '#4e86d0',
+              color: '#ffffff'
             }}
           >
             Featured
@@ -73,12 +73,12 @@ function ProjectCard({ project, index, onClick }) {
               key={techIndex}
               className="px-3 py-1 rounded-md text-xs border transition-all duration-300"
               style={{
-                backgroundColor: '#2B3F5C',
+                backgroundColor: '#0e1c30',
                 borderColor: '#5B8FB9',
                 color: '#FFFFFF'
               }}
               onMouseEnter={(e) => {
-                e.currentTarget.style.borderColor = '#D4A574'
+                e.currentTarget.style.borderColor = '#4e86d0'
               }}
               onMouseLeave={(e) => {
                 e.currentTarget.style.borderColor = '#5B8FB9'
@@ -127,12 +127,12 @@ function ProjectCard({ project, index, onClick }) {
               target="_blank"
               rel="noopener noreferrer"
               className="transition-colors duration-300"
-              style={{ color: '#D4A574' }}
+              style={{ color: '#4e86d0' }}
               onMouseEnter={(e) => {
-                e.currentTarget.style.color = '#E8B87E'
+                e.currentTarget.style.color = '#6aaee0'
               }}
               onMouseLeave={(e) => {
-                e.currentTarget.style.color = '#D4A574'
+                e.currentTarget.style.color = '#4e86d0'
               }}
             >
               Live Demo →
@@ -268,13 +268,13 @@ function Projects() {
   })
 
   return (
-    <section className="py-20" style={{ backgroundColor: '#1A2942' }}>
+    <section className="py-20" style={{ backgroundColor: 'transparent' }}>
       <div className="container mx-auto px-6">
         <div ref={ref} className={`text-center mb-16 ${isVisible ? 'scroll-visible' : 'scroll-hidden'}`}>
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-4 tracking-tight">
             Projects
           </h2>
-          <div className="w-20 h-1 mx-auto mb-4" style={{ backgroundColor: '#D4A574' }}></div>
+          <div className="w-20 h-1 mx-auto mb-4" style={{ backgroundColor: '#4e86d0' }}></div>
           <p className="max-w-2xl mx-auto text-base md:text-lg" style={{ color: '#E5E7EB' }}>
             Hackathon projects, ML experiments, and web apps I've built to solve problems or just for fun
           </p>
@@ -293,15 +293,15 @@ function Projects() {
                 aria-label="Search projects"
                 className="w-full px-4 py-3 pl-12 rounded-lg text-white transition-all duration-300 focus:outline-none"
                 style={{
-                  backgroundColor: '#0A1929',
-                  border: '2px solid #2B3F5C'
+                  backgroundColor: '#060d1b',
+                  border: '2px solid #0e1c30'
                 }}
                 onFocus={(e) => {
-                  e.currentTarget.style.borderColor = '#D4A574'
-                  e.currentTarget.style.boxShadow = '0 0 0 3px rgba(212, 165, 116, 0.1)'
+                  e.currentTarget.style.borderColor = '#4e86d0'
+                  e.currentTarget.style.boxShadow = '0 0 0 3px rgba(78, 134, 208, 0.1)'
                 }}
                 onBlur={(e) => {
-                  e.currentTarget.style.borderColor = '#2B3F5C'
+                  e.currentTarget.style.borderColor = '#0e1c30'
                   e.currentTarget.style.boxShadow = 'none'
                 }}
               />
@@ -321,7 +321,7 @@ function Projects() {
                   className="absolute right-4 top-1/2 transform -translate-y-1/2 transition-colors duration-300"
                   style={{ color: '#9CA3AF' }}
                   onMouseEnter={(e) => {
-                    e.currentTarget.style.color = '#D4A574'
+                    e.currentTarget.style.color = '#4e86d0'
                   }}
                   onMouseLeave={(e) => {
                     e.currentTarget.style.color = '#9CA3AF'
@@ -343,18 +343,18 @@ function Projects() {
                 onClick={() => setSelectedCategory(category)}
                 className="px-6 py-2.5 rounded-lg font-medium transition-all duration-300 border-2"
                 style={{
-                  backgroundColor: selectedCategory === category ? '#D4A574' : '#2B3F5C',
-                  borderColor: selectedCategory === category ? '#D4A574' : '#2B3F5C',
-                  color: selectedCategory === category ? '#0A1929' : '#FFFFFF'
+                  backgroundColor: selectedCategory === category ? '#4e86d0' : '#0e1c30',
+                  borderColor: selectedCategory === category ? '#4e86d0' : '#0e1c30',
+                  color: '#FFFFFF'
                 }}
                 onMouseEnter={(e) => {
                   if (selectedCategory !== category) {
-                    e.currentTarget.style.borderColor = '#D4A574'
+                    e.currentTarget.style.borderColor = '#4e86d0'
                   }
                 }}
                 onMouseLeave={(e) => {
                   if (selectedCategory !== category) {
-                    e.currentTarget.style.borderColor = '#2B3F5C'
+                    e.currentTarget.style.borderColor = '#0e1c30'
                   }
                 }}
               >

@@ -26,7 +26,7 @@ function ProjectModal({ project, isOpen, onClose }) {
   return (
     <div
       className="fixed inset-0 z-50 flex items-center justify-center p-4 animate-fadeIn"
-      style={{ backgroundColor: 'rgba(10, 25, 41, 0.95)' }}
+      style={{ backgroundColor: 'rgba(4, 9, 18, 0.97)' }}
       onClick={onClose}
       role="dialog"
       aria-modal="true"
@@ -35,8 +35,8 @@ function ProjectModal({ project, isOpen, onClose }) {
       <div
         className="relative max-w-4xl w-full max-h-[90vh] overflow-y-auto rounded-lg border animate-scaleIn"
         style={{
-          backgroundColor: '#0A1929',
-          borderColor: '#D4A574',
+          backgroundColor: '#060d1b',
+          borderColor: '#4e86d0',
           animation: 'scaleIn 0.3s ease-out'
         }}
         onClick={(e) => e.stopPropagation()}
@@ -47,16 +47,16 @@ function ProjectModal({ project, isOpen, onClose }) {
           aria-label="Close modal"
           className="absolute top-4 right-4 z-10 w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300"
           style={{
-            backgroundColor: '#2B3F5C',
+            backgroundColor: '#0e1c30',
             color: '#E5E7EB'
           }}
           onMouseEnter={(e) => {
-            e.currentTarget.style.backgroundColor = '#D4A574'
-            e.currentTarget.style.color = '#0A1929'
+            e.currentTarget.style.backgroundColor = '#4e86d0'
+            e.currentTarget.style.color = '#060d1b'
             e.currentTarget.style.transform = 'rotate(90deg)'
           }}
           onMouseLeave={(e) => {
-            e.currentTarget.style.backgroundColor = '#2B3F5C'
+            e.currentTarget.style.backgroundColor = '#0e1c30'
             e.currentTarget.style.color = '#E5E7EB'
             e.currentTarget.style.transform = 'rotate(0deg)'
           }}
@@ -85,8 +85,8 @@ function ProjectModal({ project, isOpen, onClose }) {
               <div
                 className="absolute top-4 left-4 px-4 py-2 rounded-md text-sm font-semibold"
                 style={{
-                  backgroundColor: '#D4A574',
-                  color: '#0A1929'
+                  backgroundColor: '#4e86d0',
+                  color: '#ffffff'
                 }}
               >
                 Featured
@@ -106,8 +106,8 @@ function ProjectModal({ project, isOpen, onClose }) {
               <span
                 className="px-3 py-1 rounded text-sm font-semibold"
                 style={{
-                  backgroundColor: '#2B3F5C',
-                  color: '#D4A574'
+                  backgroundColor: '#0e1c30',
+                  color: '#4e86d0'
                 }}
               >
                 {project.category}
@@ -122,7 +122,7 @@ function ProjectModal({ project, isOpen, onClose }) {
 
           {/* Description */}
           <div className="mb-6">
-            <h3 className="text-xl font-semibold mb-3" style={{ color: '#D4A574' }}>
+            <h3 className="text-xl font-semibold mb-3" style={{ color: '#4e86d0' }}>
               Overview
             </h3>
             <p className="leading-relaxed" style={{ color: '#E5E7EB' }}>
@@ -136,7 +136,7 @@ function ProjectModal({ project, isOpen, onClose }) {
               {project.impact && (
                 <div
                   className="p-4 rounded-lg"
-                  style={{ backgroundColor: '#1A2942', border: '1px solid #2B3F5C' }}
+                  style={{ backgroundColor: '#0a1628', border: '1px solid #0e1c30' }}
                 >
                   <div className="text-xs mb-1" style={{ color: '#9CA3AF' }}>IMPACT</div>
                   <div className="text-sm text-white">{project.impact}</div>
@@ -145,7 +145,7 @@ function ProjectModal({ project, isOpen, onClose }) {
               {project.teamSize && (
                 <div
                   className="p-4 rounded-lg"
-                  style={{ backgroundColor: '#1A2942', border: '1px solid #2B3F5C' }}
+                  style={{ backgroundColor: '#0a1628', border: '1px solid #0e1c30' }}
                 >
                   <div className="text-xs mb-1" style={{ color: '#9CA3AF' }}>TEAM SIZE</div>
                   <div className="text-sm text-white">{project.teamSize}</div>
@@ -154,7 +154,7 @@ function ProjectModal({ project, isOpen, onClose }) {
               {project.duration && (
                 <div
                   className="p-4 rounded-lg"
-                  style={{ backgroundColor: '#1A2942', border: '1px solid #2B3F5C' }}
+                  style={{ backgroundColor: '#0a1628', border: '1px solid #0e1c30' }}
                 >
                   <div className="text-xs mb-1" style={{ color: '#9CA3AF' }}>DURATION</div>
                   <div className="text-sm text-white">{project.duration}</div>
@@ -165,7 +165,7 @@ function ProjectModal({ project, isOpen, onClose }) {
 
           {/* Technologies */}
           <div className="mb-6">
-            <h3 className="text-xl font-semibold mb-3" style={{ color: '#D4A574' }}>
+            <h3 className="text-xl font-semibold mb-3" style={{ color: '#4e86d0' }}>
               Technologies Used
             </h3>
             <div className="flex flex-wrap gap-2">
@@ -174,7 +174,7 @@ function ProjectModal({ project, isOpen, onClose }) {
                   key={index}
                   className="px-4 py-2 rounded-lg text-sm font-medium border"
                   style={{
-                    backgroundColor: '#2B3F5C',
+                    backgroundColor: '#0e1c30',
                     borderColor: '#5B8FB9',
                     color: '#FFFFFF'
                   }}
@@ -190,13 +190,13 @@ function ProjectModal({ project, isOpen, onClose }) {
             <div className="mb-6 space-y-4">
               {project.features && (
                 <div>
-                  <h3 className="text-xl font-semibold mb-3" style={{ color: '#D4A574' }}>
+                  <h3 className="text-xl font-semibold mb-3" style={{ color: '#4e86d0' }}>
                     Key Features
                   </h3>
                   <ul className="space-y-2">
                     {project.features.map((feature, index) => (
                       <li key={index} className="flex items-start gap-2">
-                        <span className="text-lg" style={{ color: '#D4A574' }}>•</span>
+                        <span className="text-lg" style={{ color: '#4e86d0' }}>•</span>
                         <span style={{ color: '#E5E7EB' }}>{feature}</span>
                       </li>
                     ))}
@@ -205,7 +205,7 @@ function ProjectModal({ project, isOpen, onClose }) {
               )}
               {project.challenges && (
                 <div>
-                  <h3 className="text-xl font-semibold mb-3" style={{ color: '#D4A574' }}>
+                  <h3 className="text-xl font-semibold mb-3" style={{ color: '#4e86d0' }}>
                     Challenges
                   </h3>
                   <p style={{ color: '#E5E7EB' }}>{project.challenges}</p>
@@ -213,7 +213,7 @@ function ProjectModal({ project, isOpen, onClose }) {
               )}
               {project.learnings && (
                 <div>
-                  <h3 className="text-xl font-semibold mb-3" style={{ color: '#D4A574' }}>
+                  <h3 className="text-xl font-semibold mb-3" style={{ color: '#4e86d0' }}>
                     Key Learnings
                   </h3>
                   <p style={{ color: '#E5E7EB' }}>{project.learnings}</p>
@@ -223,7 +223,7 @@ function ProjectModal({ project, isOpen, onClose }) {
           )}
 
           {/* Action Buttons */}
-          <div className="flex flex-wrap gap-4 pt-6 border-t" style={{ borderColor: '#2B3F5C' }}>
+          <div className="flex flex-wrap gap-4 pt-6 border-t" style={{ borderColor: '#0e1c30' }}>
             <a
               href={project.link}
               target="_blank"
@@ -231,7 +231,7 @@ function ProjectModal({ project, isOpen, onClose }) {
               aria-label="View project on GitHub"
               className="flex items-center gap-2 px-6 py-3 rounded-lg font-medium transition-all duration-300"
               style={{
-                backgroundColor: '#2B3F5C',
+                backgroundColor: '#0e1c30',
                 color: '#FFFFFF'
               }}
               onMouseEnter={(e) => {
@@ -239,7 +239,7 @@ function ProjectModal({ project, isOpen, onClose }) {
                 e.currentTarget.style.transform = 'translateY(-2px)'
               }}
               onMouseLeave={(e) => {
-                e.currentTarget.style.backgroundColor = '#2B3F5C'
+                e.currentTarget.style.backgroundColor = '#0e1c30'
                 e.currentTarget.style.transform = 'translateY(0)'
               }}
             >
@@ -256,15 +256,15 @@ function ProjectModal({ project, isOpen, onClose }) {
                 aria-label="View live demo"
                 className="flex items-center gap-2 px-6 py-3 rounded-lg font-medium transition-all duration-300"
                 style={{
-                  backgroundColor: '#D4A574',
-                  color: '#0A1929'
+                  backgroundColor: '#4e86d0',
+                  color: '#ffffff'
                 }}
                 onMouseEnter={(e) => {
-                  e.currentTarget.style.backgroundColor = '#E8B87E'
+                  e.currentTarget.style.backgroundColor = '#6aaee0'
                   e.currentTarget.style.transform = 'translateY(-2px)'
                 }}
                 onMouseLeave={(e) => {
-                  e.currentTarget.style.backgroundColor = '#D4A574'
+                  e.currentTarget.style.backgroundColor = '#4e86d0'
                   e.currentTarget.style.transform = 'translateY(0)'
                 }}
               >

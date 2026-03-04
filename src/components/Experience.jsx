@@ -9,8 +9,8 @@ function ExperienceCard({ exp, index }) {
       <div
         className="hidden md:block absolute left-6 top-6 w-4 h-4 rounded-full border-4"
         style={{
-          backgroundColor: '#D4A574',
-          borderColor: '#0A1929'
+          backgroundColor: '#4e86d0',
+          borderColor: '#060d1b'
         }}
       ></div>
 
@@ -18,16 +18,16 @@ function ExperienceCard({ exp, index }) {
         <div
           className="p-6 rounded-lg border transition-all duration-300 cursor-pointer"
           style={{
-            backgroundColor: '#1A2942',
-            borderColor: '#2B3F5C'
+            backgroundColor: '#0a1628',
+            borderColor: '#162640'
           }}
           onMouseEnter={(e) => {
-            e.currentTarget.style.borderColor = '#D4A574'
+            e.currentTarget.style.borderColor = '#4e86d0'
             e.currentTarget.style.transform = 'translateY(-4px)'
-            e.currentTarget.style.boxShadow = '0 10px 30px rgba(212, 165, 116, 0.15)'
+            e.currentTarget.style.boxShadow = '0 10px 30px rgba(78, 134, 208, 0.15)'
           }}
           onMouseLeave={(e) => {
-            e.currentTarget.style.borderColor = '#2B3F5C'
+            e.currentTarget.style.borderColor = '#162640'
             e.currentTarget.style.transform = 'translateY(0)'
             e.currentTarget.style.boxShadow = 'none'
           }}
@@ -39,7 +39,7 @@ function ExperienceCard({ exp, index }) {
               </h3>
               <h4
                 className="text-lg md:text-xl font-medium"
-                style={{ color: '#D4A574' }}
+                style={{ color: '#4e86d0' }}
               >
                 {exp.company}
               </h4>
@@ -120,13 +120,13 @@ function Experience() {
   ]
 
   return (
-    <section className="py-20" style={{ backgroundColor: '#0A1929' }}>
+    <section className="py-20" style={{ backgroundColor: 'transparent' }}>
       <div className="container mx-auto px-6">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-4 tracking-tight">
             Experience
           </h2>
-          <div className="w-20 h-1 mx-auto" style={{ backgroundColor: '#D4A574' }}></div>
+          <div className="w-20 h-1 mx-auto" style={{ backgroundColor: '#4e86d0' }}></div>
         </div>
 
         <div ref={ref} className="max-w-4xl mx-auto">
@@ -136,22 +136,22 @@ function Experience() {
               className={`hidden md:block absolute left-8 top-0 bottom-0 w-0.5 ${isVisible ? 'scroll-visible' : 'scroll-hidden'}`}
               style={{
                 background: `linear-gradient(to bottom,
-                  #D4A574 0%,
-                  #2B3F5C 5%,
-                  #2B3F5C 18%,
-                  #D4A574 20%,
-                  #2B3F5C 22%,
-                  #2B3F5C 38%,
-                  #D4A574 40%,
-                  #2B3F5C 42%,
-                  #2B3F5C 58%,
-                  #D4A574 60%,
-                  #2B3F5C 62%,
-                  #2B3F5C 78%,
-                  #D4A574 80%,
-                  #2B3F5C 82%,
-                  #2B3F5C 95%,
-                  #D4A574 100%
+                  #4e86d0 0%,
+                  #162640 5%,
+                  #162640 18%,
+                  #4e86d0 20%,
+                  #162640 22%,
+                  #162640 38%,
+                  #4e86d0 40%,
+                  #162640 42%,
+                  #162640 58%,
+                  #4e86d0 60%,
+                  #162640 62%,
+                  #162640 78%,
+                  #4e86d0 80%,
+                  #162640 82%,
+                  #162640 95%,
+                  #4e86d0 100%
                 )`
               }}
             ></div>

@@ -156,13 +156,13 @@ function Portfolio() {
   }
 
   return (
-    <section className="py-20" style={{ backgroundColor: '#0A1929' }}>
+    <section className="py-20" style={{ backgroundColor: '#060d1b' }}>
       <div className="container mx-auto px-6">
         <div ref={ref} className={`text-center mb-16 ${isVisible ? 'scroll-visible' : 'scroll-hidden'}`}>
           <h1 className="text-4xl md:text-5xl font-bold text-white mb-4 tracking-tight">
             Investment Portfolio
           </h1>
-          <div className="w-20 h-1 mx-auto mb-4" style={{ backgroundColor: '#D4A574' }}></div>
+          <div className="w-20 h-1 mx-auto mb-4" style={{ backgroundColor: '#4e86d0' }}></div>
           <div className="flex items-center justify-center gap-2 mb-2">
             <div className={`w-2 h-2 rounded-full ${portfolioData.length > 0 ? 'bg-green-500' : 'bg-red-500'}`}></div>
             <span className="text-sm" style={{ color: '#9CA3AF' }}>
@@ -178,7 +178,7 @@ function Portfolio() {
           <div className="text-center py-12">
             <div
               className="inline-block animate-spin rounded-full h-12 w-12 border-b-2"
-              style={{ borderColor: '#D4A574' }}
+              style={{ borderColor: '#4e86d0' }}
               aria-hidden="true"
             ></div>
             <p className="mt-4" style={{ color: '#9CA3AF' }} aria-live="polite" aria-atomic="true">
@@ -192,8 +192,8 @@ function Portfolio() {
               role="alert"
               aria-live="assertive"
               style={{
-                backgroundColor: '#1A2942',
-                borderColor: '#2B3F5C'
+                backgroundColor: '#0a1628',
+                borderColor: '#0e1c30'
               }}
             >
               <div className="text-4xl mb-4" aria-hidden="true">⚠️</div>
@@ -205,12 +205,12 @@ function Portfolio() {
                 onClick={() => window.location.reload()}
                 aria-label="Retry loading portfolio data"
                 className="px-6 py-2 rounded-md text-white font-medium transition-all duration-300"
-                style={{ backgroundColor: '#D4A574', color: '#0A1929' }}
+                style={{ backgroundColor: '#4e86d0', color: '#ffffff' }}
                 onMouseEnter={(e) => {
-                  e.currentTarget.style.backgroundColor = '#C09560'
+                  e.currentTarget.style.backgroundColor = '#3d74bc'
                 }}
                 onMouseLeave={(e) => {
-                  e.currentTarget.style.backgroundColor = '#D4A574'
+                  e.currentTarget.style.backgroundColor = '#4e86d0'
                 }}
               >
                 Retry
@@ -222,23 +222,23 @@ function Portfolio() {
             <div
               className={`rounded-lg border p-6 mb-8 max-w-4xl mx-auto ${isVisible ? 'scroll-visible' : 'scroll-hidden'}`}
               style={{
-                backgroundColor: '#1A2942',
-                borderColor: '#D4A574'
+                backgroundColor: '#0a1628',
+                borderColor: '#4e86d0'
               }}
             >
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 text-center">
                 <div>
-                  <h3 className="text-sm mb-2" style={{ color: '#D4A574' }}>Total Value</h3>
+                  <h3 className="text-sm mb-2" style={{ color: '#4e86d0' }}>Total Value</h3>
                   <p className="text-2xl font-bold text-white">{formatCurrency(totalValue, 'CAD')}</p>
                 </div>
                 <div>
-                  <h3 className="text-sm mb-2" style={{ color: '#D4A574' }}>Daily Change</h3>
+                  <h3 className="text-sm mb-2" style={{ color: '#4e86d0' }}>Daily Change</h3>
                   <p className={`text-2xl font-bold ${totalChange >= 0 ? 'text-green-400' : 'text-red-400'}`}>
                     {formatCurrency(totalChange, 'CAD')}
                   </p>
                 </div>
                 <div>
-                  <h3 className="text-sm mb-2" style={{ color: '#D4A574' }}>Performance</h3>
+                  <h3 className="text-sm mb-2" style={{ color: '#4e86d0' }}>Performance</h3>
                   <p className={`text-2xl font-bold ${totalChange >= 0 ? 'text-green-400' : 'text-red-400'}`}>
                     {formatPercent(totalValue > 0 ? (totalChange / (totalValue - totalChange)) * 100 : 0)}
                   </p>
@@ -251,18 +251,18 @@ function Portfolio() {
                 onClick={() => setShowStocks(!showStocks)}
                 className="inline-flex items-center gap-3 border rounded-lg px-6 py-3 transition-all duration-300"
                 style={{
-                  backgroundColor: showStocks ? '#D4A574' : '#2B3F5C',
-                  borderColor: showStocks ? '#D4A574' : '#2B3F5C',
-                  color: showStocks ? '#0A1929' : '#FFFFFF'
+                  backgroundColor: showStocks ? '#4e86d0' : '#0e1c30',
+                  borderColor: showStocks ? '#4e86d0' : '#0e1c30',
+                  color: '#FFFFFF'
                 }}
                 onMouseEnter={(e) => {
                   if (!showStocks) {
-                    e.currentTarget.style.borderColor = '#D4A574'
+                    e.currentTarget.style.borderColor = '#4e86d0'
                   }
                 }}
                 onMouseLeave={(e) => {
                   if (!showStocks) {
-                    e.currentTarget.style.borderColor = '#2B3F5C'
+                    e.currentTarget.style.borderColor = '#0e1c30'
                   }
                 }}
               >
@@ -293,16 +293,16 @@ function Portfolio() {
                     key={stock.symbol}
                     className="rounded-lg border p-6 transition-all duration-300 cursor-pointer"
                     style={{
-                      backgroundColor: '#1A2942',
-                      borderColor: '#2B3F5C'
+                      backgroundColor: '#0a1628',
+                      borderColor: '#0e1c30'
                     }}
                     onMouseEnter={(e) => {
-                      e.currentTarget.style.borderColor = '#D4A574'
+                      e.currentTarget.style.borderColor = '#4e86d0'
                       e.currentTarget.style.transform = 'translateY(-4px)'
-                      e.currentTarget.style.boxShadow = '0 10px 30px rgba(212, 165, 116, 0.15)'
+                      e.currentTarget.style.boxShadow = '0 10px 30px rgba(78, 134, 208, 0.15)'
                     }}
                     onMouseLeave={(e) => {
-                      e.currentTarget.style.borderColor = '#2B3F5C'
+                      e.currentTarget.style.borderColor = '#0e1c30'
                       e.currentTarget.style.transform = 'translateY(0)'
                       e.currentTarget.style.boxShadow = 'none'
                     }}
@@ -324,7 +324,7 @@ function Portfolio() {
                       </div>
                     </div>
 
-                    <div className="space-y-2 text-sm border-t pt-4" style={{ borderColor: '#2B3F5C' }}>
+                    <div className="space-y-2 text-sm border-t pt-4" style={{ borderColor: '#0e1c30' }}>
                       <div className="flex justify-between">
                         <span style={{ color: '#9CA3AF' }}>Shares</span>
                         <span style={{ color: '#E5E7EB' }}>{stock.shares}</span>

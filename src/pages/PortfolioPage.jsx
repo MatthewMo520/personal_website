@@ -4,7 +4,7 @@ import Footer from '../components/Footer'
 
 function PortfolioPage() {
   return (
-    <div className="min-h-screen" style={{ backgroundColor: '#0A1929' }}>
+    <div className="min-h-screen" style={{ backgroundColor: '#060d1b' }}>
       <Navigation />
       <main id="main-content">
         <Portfolio />

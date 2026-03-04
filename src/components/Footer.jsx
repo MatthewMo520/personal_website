@@ -13,16 +13,16 @@ function Footer() {
   }
 
   return (
-    <footer className="py-12 px-6" style={{ backgroundColor: '#0A1929' }}>
+    <footer className="py-12 px-6" style={{ backgroundColor: 'transparent' }}>
       <div className="container mx-auto">
         {/* Gold Divider */}
-        <div className="w-full h-px mb-12" style={{ backgroundColor: '#D4A574' }}></div>
+        <div className="w-full h-px mb-12" style={{ backgroundColor: '#4e86d0' }}></div>
 
         {/* Main Footer Content - 3 Columns */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 max-w-6xl mx-auto mb-12">
           {/* Quick Links Column */}
           <div>
-            <h3 className="text-lg font-semibold mb-4" style={{ color: '#D4A574' }}>
+            <h3 className="text-lg font-semibold mb-4" style={{ color: '#4e86d0' }}>
               Quick Links
             </h3>
             <ul className="space-y-3">
@@ -40,7 +40,7 @@ function Footer() {
                     className="text-sm transition-colors duration-300 hover:underline"
                     style={{ color: '#E5E7EB' }}
                     onMouseEnter={(e) => {
-                      e.currentTarget.style.color = '#D4A574'
+                      e.currentTarget.style.color = '#4e86d0'
                     }}
                     onMouseLeave={(e) => {
                       e.currentTarget.style.color = '#E5E7EB'
@@ -55,7 +55,7 @@ function Footer() {
 
           {/* Resources Column */}
           <div>
-            <h3 className="text-lg font-semibold mb-4" style={{ color: '#D4A574' }}>
+            <h3 className="text-lg font-semibold mb-4" style={{ color: '#4e86d0' }}>
               Resources
             </h3>
             <ul className="space-y-3">
@@ -67,7 +67,7 @@ function Footer() {
                   className="text-sm transition-colors duration-300 hover:underline flex items-center gap-2"
                   style={{ color: '#E5E7EB' }}
                   onMouseEnter={(e) => {
-                    e.currentTarget.style.color = '#D4A574'
+                    e.currentTarget.style.color = '#4e86d0'
                   }}
                   onMouseLeave={(e) => {
                     e.currentTarget.style.color = '#E5E7EB'
@@ -85,7 +85,7 @@ function Footer() {
                   className="text-sm transition-colors duration-300 hover:underline flex items-center gap-2"
                   style={{ color: '#E5E7EB' }}
                   onMouseEnter={(e) => {
-                    e.currentTarget.style.color = '#D4A574'
+                    e.currentTarget.style.color = '#4e86d0'
                   }}
                   onMouseLeave={(e) => {
                     e.currentTarget.style.color = '#E5E7EB'
@@ -105,7 +105,7 @@ function Footer() {
                   className="text-sm transition-colors duration-300 hover:underline flex items-center gap-2"
                   style={{ color: '#E5E7EB' }}
                   onMouseEnter={(e) => {
-                    e.currentTarget.style.color = '#D4A574'
+                    e.currentTarget.style.color = '#4e86d0'
                   }}
                   onMouseLeave={(e) => {
                     e.currentTarget.style.color = '#E5E7EB'
@@ -122,7 +122,7 @@ function Footer() {
 
           {/* Connect Column */}
           <div>
-            <h3 className="text-lg font-semibold mb-4" style={{ color: '#D4A574' }}>
+            <h3 className="text-lg font-semibold mb-4" style={{ color: '#4e86d0' }}>
               Connect
             </h3>
             <ul className="space-y-3">
@@ -134,7 +134,7 @@ function Footer() {
                   className="text-sm transition-all duration-300 hover:underline flex items-center gap-2"
                   style={{ color: '#E5E7EB' }}
                   onMouseEnter={(e) => {
-                    e.currentTarget.style.color = '#D4A574'
+                    e.currentTarget.style.color = '#4e86d0'
                     e.currentTarget.style.transform = 'translateX(4px)'
                   }}
                   onMouseLeave={(e) => {
@@ -156,7 +156,7 @@ function Footer() {
                   className="text-sm transition-all duration-300 hover:underline flex items-center gap-2"
                   style={{ color: '#E5E7EB' }}
                   onMouseEnter={(e) => {
-                    e.currentTarget.style.color = '#D4A574'
+                    e.currentTarget.style.color = '#4e86d0'
                     e.currentTarget.style.transform = 'translateX(4px)'
                   }}
                   onMouseLeave={(e) => {
@@ -176,7 +176,7 @@ function Footer() {
                   className="text-sm transition-all duration-300 hover:underline flex items-center gap-2"
                   style={{ color: '#E5E7EB' }}
                   onMouseEnter={(e) => {
-                    e.currentTarget.style.color = '#D4A574'
+                    e.currentTarget.style.color = '#4e86d0'
                     e.currentTarget.style.transform = 'translateX(4px)'
                   }}
                   onMouseLeave={(e) => {
@@ -196,14 +196,14 @@ function Footer() {
         </div>
 
         {/* Bottom Bar */}
-        <div className="border-t pt-8" style={{ borderColor: '#2B3F5C' }}>
+        <div className="border-t pt-8" style={{ borderColor: '#0e1c30' }}>
           <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
             {/* Copyright */}
             <div className="text-sm text-center md:text-left" style={{ color: '#9CA3AF' }}>
               <p>
                 © {new Date().getFullYear()} Matthew Mo • Built with{' '}
-                <span style={{ color: '#D4A574' }}>React</span> &{' '}
-                <span style={{ color: '#D4A574' }}>Vite</span>
+                <span style={{ color: '#4e86d0' }}>React</span> &{' '}
+                <span style={{ color: '#4e86d0' }}>Vite</span>
               </p>
             </div>
 
@@ -217,16 +217,16 @@ function Footer() {
               }}
               className="flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300"
               style={{
-                backgroundColor: '#2B3F5C',
+                backgroundColor: '#0e1c30',
                 color: '#E5E7EB'
               }}
               onMouseEnter={(e) => {
-                e.currentTarget.style.backgroundColor = '#D4A574'
-                e.currentTarget.style.color = '#0A1929'
+                e.currentTarget.style.backgroundColor = '#4e86d0'
+                e.currentTarget.style.color = '#060d1b'
                 e.currentTarget.style.transform = 'translateY(-2px)'
               }}
               onMouseLeave={(e) => {
-                e.currentTarget.style.backgroundColor = '#2B3F5C'
+                e.currentTarget.style.backgroundColor = '#0e1c30'
                 e.currentTarget.style.color = '#E5E7EB'
                 e.currentTarget.style.transform = 'translateY(0)'
               }}

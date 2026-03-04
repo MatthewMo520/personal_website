@@ -1,39 +1,30 @@
-import Navigation from '../components/Navigation'
-import Hero from '../components/Hero'
-import About from '../components/About'
-import Experience from '../components/Experience'
-import Projects from '../components/Projects'
-import Contact from '../components/Contact'
-import Footer from '../components/Footer'
+import NotebookNav from '../components/notebook/NotebookNav'
+import SpiralBinding from '../components/notebook/SpiralBinding'
+import HeroSection from '../components/notebook/HeroSection'
+import ProjectsSection from '../components/notebook/ProjectsSection'
+import ContactSection from '../components/notebook/ContactSection'
+import NotebookFooter from '../components/notebook/NotebookFooter'
 
 function HomePage() {
   return (
-    <div className="min-h-screen" style={{ backgroundColor: '#0A1929' }}>
-      <Navigation />
+    <div
+      className="min-h-screen notebook-bg"
+      style={{ position: 'relative' }}
+    >
+      {/* Fixed spiral binding on left */}
+      <SpiralBinding />
 
-      <main id="main-content">
-        <section id="home">
-          <Hero />
-        </section>
+      {/* Fixed top nav */}
+      <NotebookNav />
 
-        <section id="about">
-          <About />
-        </section>
-
-        <section id="experience">
-          <Experience />
-        </section>
-
-        <section id="projects">
-          <Projects />
-        </section>
-
-        <section id="contact">
-          <Contact />
-        </section>
+      {/* Page content */}
+      <main id="main-content" style={{ paddingTop: '64px' }}>
+        <HeroSection />
+        <ProjectsSection />
+        <ContactSection />
       </main>
 
-      <Footer />
+      <NotebookFooter />
     </div>
   )
 }

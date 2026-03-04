@@ -4,7 +4,7 @@ import Footer from '../components/Footer'
 
 function NotFound() {
   return (
-    <div className="min-h-screen" style={{ backgroundColor: '#0A1929' }}>
+    <div className="min-h-screen" style={{ backgroundColor: '#060d1b' }}>
       <Navigation />
 
       <main className="flex items-center justify-center min-h-[calc(100vh-200px)]">
@@ -13,8 +13,8 @@ function NotFound() {
           <h1
             className="text-9xl md:text-[200px] font-black mb-4 tracking-tight"
             style={{
-              color: '#D4A574',
-              textShadow: '0 4px 20px rgba(212, 165, 116, 0.3)',
+              color: '#4e86d0',
+              textShadow: '0 4px 20px rgba(78, 134, 208, 0.3)',
               animation: 'fadeInUp 0.6s ease-out'
             }}
           >
@@ -49,17 +49,17 @@ function NotFound() {
               to="/"
               className="px-8 py-4 rounded-lg font-semibold min-w-[200px] transition-all duration-300 transform hover:scale-105"
               style={{
-                backgroundColor: '#D4A574',
-                color: '#0A1929',
-                boxShadow: '0 4px 15px rgba(212, 165, 116, 0.3)'
+                backgroundColor: '#4e86d0',
+                color: '#ffffff',
+                boxShadow: '0 4px 15px rgba(78, 134, 208, 0.3)'
               }}
               onMouseEnter={(e) => {
-                e.currentTarget.style.backgroundColor = '#C09560'
-                e.currentTarget.style.boxShadow = '0 6px 20px rgba(212, 165, 116, 0.4)'
+                e.currentTarget.style.backgroundColor = '#3d74bc'
+                e.currentTarget.style.boxShadow = '0 6px 20px rgba(78, 134, 208, 0.4)'
               }}
               onMouseLeave={(e) => {
-                e.currentTarget.style.backgroundColor = '#D4A574'
-                e.currentTarget.style.boxShadow = '0 4px 15px rgba(212, 165, 116, 0.3)'
+                e.currentTarget.style.backgroundColor = '#4e86d0'
+                e.currentTarget.style.boxShadow = '0 4px 15px rgba(78, 134, 208, 0.3)'
               }}
             >
               ← Back to Home
