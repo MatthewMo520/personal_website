@@ -1,4 +1,5 @@
-import { motion } from 'framer-motion'
+import { motion, useAnimation } from 'framer-motion'
+import { useEffect } from 'react'
 import { Atom, Rocket, Lightbulb, Star, ScatterPlot, BarChart, Cloud } from './DoodleElements'
 
 const container = {
@@ -17,6 +18,15 @@ const item = {
 }
 
 function HeroSection() {
+  const scribbleControls = useAnimation()
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      scribbleControls.start({ pathLength: 1, opacity: 1, transition: { duration: 1.1, ease: 'easeInOut' } })
+    }, 700)
+    return () => clearTimeout(timer)
+  }, [scribbleControls])
+
   const handleScroll = (id) => {
     const el = document.getElementById(id)
     if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' })
@@ -96,6 +106,21 @@ function HeroSection() {
           Matthew Mo
         </motion.h1>
 
+        {/* Scribble underline */}
+        <motion.div variants={item} className="flex justify-center mb-2 -mt-2">
+          <svg width="340" height="18" viewBox="0 0 340 18" style={{ display: 'block', maxWidth: '90%' }}>
+            <motion.path
+              d="M 4 12 C 35 5, 70 16, 105 10 C 140 4, 170 15, 200 9 C 230 3, 260 14, 295 8 C 315 4, 328 13, 336 10"
+              stroke="#4a90d9"
+              strokeWidth="3"
+              fill="none"
+              strokeLinecap="round"
+              initial={{ pathLength: 0, opacity: 0 }}
+              animate={scribbleControls}
+            />
+          </svg>
+        </motion.div>
+
         {/* Subtitle */}
         <motion.p
           variants={item}
@@ -125,10 +150,10 @@ function HeroSection() {
         >
           {/* Primary */}
           <motion.button
-            whileHover={{ scale: 1.04, y: -2 }}
-            whileTap={{ scale: 0.97 }}
+            whileHover={{ x: -2, y: -2, boxShadow: '5px 6px 0 #1a1a2e' }}
+            whileTap={{ x: 1, y: 1, boxShadow: '1px 2px 0 #1a1a2e' }}
             onClick={() => handleScroll('projects')}
-            className="font-caveat text-lg font-bold px-8 py-3 rounded-md transition-shadow duration-200"
+            className="font-caveat text-lg font-bold px-8 py-3 rounded-md"
             style={{
               backgroundColor: '#4a90d9',
               color: '#ffffff',
@@ -141,8 +166,8 @@ function HeroSection() {
 
           {/* Resume */}
           <motion.a
-            whileHover={{ scale: 1.04, y: -2 }}
-            whileTap={{ scale: 0.97 }}
+            whileHover={{ x: -2, y: -2, boxShadow: '5px 6px 0 #1a1a2e' }}
+            whileTap={{ x: 1, y: 1, boxShadow: '1px 2px 0 #1a1a2e' }}
             href="/Resume_Matthew_Mo.pdf"
             target="_blank"
             rel="noopener noreferrer"
@@ -167,8 +192,8 @@ function HeroSection() {
 
           {/* GitHub */}
           <motion.a
-            whileHover={{ scale: 1.04, y: -2 }}
-            whileTap={{ scale: 0.97 }}
+            whileHover={{ x: -2, y: -2, boxShadow: '5px 6px 0 #1a1a2e' }}
+            whileTap={{ x: 1, y: 1, boxShadow: '1px 2px 0 #1a1a2e' }}
             href="https://github.com/MatthewMo520"
             target="_blank"
             rel="noopener noreferrer"

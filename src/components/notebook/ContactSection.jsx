@@ -63,8 +63,8 @@ function ContactSection() {
 
           {/* CTA */}
           <motion.a
-            whileHover={{ scale: 1.05, y: -3 }}
-            whileTap={{ scale: 0.97 }}
+            whileHover={{ x: -2, y: -2, boxShadow: '6px 7px 0 #1a1a2e' }}
+            whileTap={{ x: 1, y: 1, boxShadow: '2px 3px 0 #1a1a2e' }}
             href="mailto:mzmo@uwaterloo.ca"
             className="font-caveat text-xl font-bold inline-block px-10 py-4 rounded-md mb-10"
             style={{
@@ -88,7 +88,7 @@ function ContactSection() {
             {/* LinkedIn */}
             <motion.a
               whileHover={{ scale: 1.15, y: -3 }}
-              href="https://www.linkedin.com/in/matthewtmo/"
+              href="https://www.linkedin.com/in/matthew-mo520/"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="LinkedIn"

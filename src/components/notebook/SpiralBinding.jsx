@@ -8,6 +8,18 @@ function SpiralBinding() {
       className="fixed top-0 left-0 h-full z-50 pointer-events-none"
       style={{ width: '44px' }}
     >
+      {/* Red margin line — just right of the binding */}
+      <div
+        style={{
+          position: 'fixed',
+          top: 0,
+          left: '56px',
+          width: '2px',
+          height: '100vh',
+          backgroundColor: 'rgba(220, 80, 80, 0.28)',
+          pointerEvents: 'none'
+        }}
+      />
       {/* Binding strip background */}
       <div
         className="absolute inset-0"

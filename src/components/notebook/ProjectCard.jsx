@@ -22,8 +22,17 @@ const techColors = {
 
 const rotations = [-1.5, 0, 1.5, -1, 1]
 
+const tapeVariants = [
+  { left: '28%', transform: 'translateX(-50%) rotate(-2deg)' },
+  { left: '52%', transform: 'translateX(-50%) rotate(0.5deg)' },
+  { left: '68%', transform: 'translateX(-50%) rotate(2.5deg)' },
+  { left: '38%', transform: 'translateX(-50%) rotate(-1.5deg)' },
+  { left: '60%', transform: 'translateX(-50%) rotate(1.5deg)' },
+]
+
 function ProjectCard({ project, index, onClick }) {
   const rotation = rotations[index % rotations.length]
+  const tape = tapeVariants[index % tapeVariants.length]
 
   return (
     <motion.div
@@ -37,7 +46,7 @@ function ProjectCard({ project, index, onClick }) {
         boxShadow: '6px 12px 40px rgba(74, 144, 217, 0.18)',
         transition: { duration: 0.25 }
       }}
-      onClick={onClick}
+      onClick={() => onClick(project)}
       className="sketch-card cursor-pointer"
       style={{
         rotate: rotation,
@@ -52,12 +61,12 @@ function ProjectCard({ project, index, onClick }) {
       onKeyDown={e => {
         if (e.key === 'Enter' || e.key === ' ') {
           e.preventDefault()
-          onClick()
+          onClick(project)
         }
       }}
     >
-      {/* Tape strip */}
-      <div className="tape-strip" />
+      {/* Tape strip — varied position per card */}
+      <div className="tape-strip" style={tape} />
 
       {/* Project image */}
       <div className="overflow-hidden" style={{ borderRadius: '3px 3px 0 0', margin: '0' }}>

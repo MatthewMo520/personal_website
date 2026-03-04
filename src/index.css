@@ -59,9 +59,13 @@ body {
 .notebook-bg {
   background-color: #fafaf7;
   background-image:
-    linear-gradient(rgba(74, 144, 217, 0.08) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(74, 144, 217, 0.08) 1px, transparent 1px);
-  background-size: 28px 28px;
+    /* Major lines every 140px (5×28) — slightly bolder */
+    linear-gradient(rgba(74, 144, 217, 0.13) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(74, 144, 217, 0.13) 1px, transparent 1px),
+    /* Micro lines every 28px — subtle */
+    linear-gradient(rgba(74, 144, 217, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(74, 144, 217, 0.06) 1px, transparent 1px);
+  background-size: 140px 140px, 140px 140px, 28px 28px, 28px 28px;
   min-height: 100vh;
   position: relative;
 }

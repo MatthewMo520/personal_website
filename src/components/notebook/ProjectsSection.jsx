@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { motion } from 'framer-motion'
 import ProjectCard from './ProjectCard'
+import ProjectModal from '../ProjectModal'
 import { BarChart, Star } from './DoodleElements'
 
 const projects = [
@@ -99,7 +100,19 @@ const projects = [
 
 function ProjectsSection() {
   const [showAll, setShowAll] = useState(false)
+  const [selectedProject, setSelectedProject] = useState(null)
+  const [isModalOpen, setIsModalOpen] = useState(false)
   const displayedProjects = showAll ? projects : projects.slice(0, 3)
+
+  const handleOpenModal = (project) => {
+    setSelectedProject(project)
+    setIsModalOpen(true)
+  }
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false)
+    setSelectedProject(null)
+  }
 
   return (
     <section
@@ -144,7 +157,7 @@ function ProjectsSection() {
               key={project.title}
               project={project}
               index={index}
-              onClick={() => {}} // modal handled externally if needed
+              onClick={handleOpenModal}
             />
           ))}
         </div>
@@ -158,8 +171,8 @@ function ProjectsSection() {
           className="text-center mt-12"
         >
           <motion.button
-            whileHover={{ scale: 1.04, y: -2 }}
-            whileTap={{ scale: 0.97 }}
+            whileHover={{ x: -2, y: -2, boxShadow: '5px 6px 0 #1a1a2e' }}
+            whileTap={{ x: 1, y: 1, boxShadow: '1px 2px 0 #1a1a2e' }}
             onClick={() => setShowAll(!showAll)}
             className="font-caveat text-lg font-bold px-8 py-3 rounded-md transition-all duration-200"
             style={{
@@ -173,6 +186,12 @@ function ProjectsSection() {
           </motion.button>
         </motion.div>
       </div>
+
+      <ProjectModal
+        project={selectedProject}
+        isOpen={isModalOpen}
+        onClose={handleCloseModal}
+      />
     </section>
   )
 }
