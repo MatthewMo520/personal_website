@@ -1,95 +1,70 @@
 import { Link } from 'react-router-dom'
-import Navigation from '../components/Navigation'
-import Footer from '../components/Footer'
+import { motion } from 'framer-motion'
+import SpiralBinding from '../components/notebook/SpiralBinding'
+import { Star } from '../components/notebook/DoodleElements'
 
 function NotFound() {
   return (
-    <div className="min-h-screen" style={{ backgroundColor: '#060d1b' }}>
-      <Navigation />
+    <div className="min-h-screen notebook-bg flex items-center justify-center relative overflow-hidden">
+      <SpiralBinding />
 
-      <main className="flex items-center justify-center min-h-[calc(100vh-200px)]">
-        <div className="container mx-auto px-6 py-20 text-center">
-          {/* Large 404 */}
-          <h1
-            className="text-9xl md:text-[200px] font-black mb-4 tracking-tight"
-            style={{
-              color: '#4e86d0',
-              textShadow: '0 4px 20px rgba(78, 134, 208, 0.3)',
-              animation: 'fadeInUp 0.6s ease-out'
-            }}
-          >
-            404
-          </h1>
+      <Star style={{ position: 'absolute', top: '18%', left: '20%' }} size={20} color="#f0a86f" />
+      <Star style={{ position: 'absolute', bottom: '20%', right: '18%' }} size={24} />
 
-          {/* Error message */}
-          <h2
-            className="text-3xl md:text-4xl font-bold text-white mb-4"
-            style={{ animation: 'fadeInUp 0.6s ease-out 0.1s both' }}
-          >
-            Page Not Found
-          </h2>
+      <motion.main
+        initial={{ opacity: 0, y: 24 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.55, ease: [0.25, 0.46, 0.45, 0.94] }}
+        className="text-center px-6 py-20 relative z-10"
+        style={{ paddingLeft: 'var(--gutter)' }}
+      >
+        <h1
+          className="font-caveat font-bold leading-none mb-2"
+          style={{ fontSize: 'clamp(110px, 22vw, 200px)', color: '#1a1a2e', letterSpacing: '-0.02em' }}
+        >
+          404
+        </h1>
 
-          <p
-            className="text-lg md:text-xl mb-8 max-w-2xl mx-auto leading-relaxed"
-            style={{
-              color: '#E5E7EB',
-              animation: 'fadeInUp 0.6s ease-out 0.2s both'
-            }}
-          >
-            The page you're looking for doesn't exist or has been moved.
-          </p>
+        <h2 className="font-caveat font-bold mb-3" style={{ fontSize: 'clamp(28px, 5vw, 44px)', color: '#4a90d9' }}>
+          <span className="highlight-underline">This page got erased</span>
+        </h2>
 
-          {/* Navigation buttons */}
-          <div
-            className="flex flex-col sm:flex-row gap-4 justify-center"
-            style={{ animation: 'fadeInUp 0.6s ease-out 0.3s both' }}
-          >
-            {/* Primary CTA - Back to Home */}
+        <p
+          className="text-base md:text-lg mb-10 max-w-md mx-auto leading-relaxed"
+          style={{ color: '#4a5568', fontFamily: "'Nunito', sans-serif" }}
+        >
+          Looks like this page isn&apos;t in the notebook. Let&apos;s flip back to a page that is.
+        </p>
+
+        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+          <motion.div whileHover={{ x: -2, y: -2 }} whileTap={{ x: 1, y: 1 }}>
             <Link
               to="/"
-              className="px-8 py-4 rounded-lg font-semibold min-w-[200px] transition-all duration-300 transform hover:scale-105"
-              style={{
-                backgroundColor: '#4e86d0',
-                color: '#ffffff',
-                boxShadow: '0 4px 15px rgba(78, 134, 208, 0.3)'
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.backgroundColor = '#3d74bc'
-                e.currentTarget.style.boxShadow = '0 6px 20px rgba(78, 134, 208, 0.4)'
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.backgroundColor = '#4e86d0'
-                e.currentTarget.style.boxShadow = '0 4px 15px rgba(78, 134, 208, 0.3)'
-              }}
+              className="inline-block font-caveat text-lg font-bold px-8 py-3 rounded-md"
+              style={{ backgroundColor: '#4a90d9', color: '#ffffff', boxShadow: '3px 4px 0 #1a1a2e', minWidth: '180px' }}
             >
               ← Back to Home
             </Link>
+          </motion.div>
 
-            {/* Secondary CTA - View Projects */}
+          <motion.div whileHover={{ x: -2, y: -2 }} whileTap={{ x: 1, y: 1 }}>
             <Link
               to="/#projects"
-              className="px-8 py-4 rounded-lg font-semibold min-w-[200px] transition-all duration-300 transform hover:scale-105"
+              className="inline-block font-caveat text-lg font-bold px-8 py-3 rounded-md"
               style={{
-                border: '2px solid #5B8FB9',
-                color: '#FFFFFF',
-                backgroundColor: 'transparent'
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.backgroundColor = '#5B8FB9'
-                e.currentTarget.style.borderColor = '#5B8FB9'
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.backgroundColor = 'transparent'
-                e.currentTarget.style.borderColor = '#5B8FB9'
+                border: '2px solid #1a1a2e',
+                color: '#1a1a2e',
+                backgroundColor: 'transparent',
+                boxShadow: '3px 4px 0 #1a1a2e',
+                minWidth: '180px',
+                textAlign: 'center',
               }}
             >
               View Projects →
             </Link>
-          </div>
+          </motion.div>
         </div>
-      </main>
-
-      <Footer />
+      </motion.main>
     </div>
   )
 }

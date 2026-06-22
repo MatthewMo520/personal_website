@@ -1,13 +1,16 @@
 import NotebookNav from '../components/notebook/NotebookNav'
 import SpiralBinding from '../components/notebook/SpiralBinding'
+import ScrollProgress from '../components/notebook/ScrollProgress'
+import FlyingPaperPlane from '../components/notebook/FlyingPaperPlane'
 import HeroSection from '../components/notebook/HeroSection'
 import AboutSection from '../components/notebook/AboutSection'
+import ExperienceSection from '../components/notebook/ExperienceSection'
 import ProjectsSection from '../components/notebook/ProjectsSection'
 import ContactSection from '../components/notebook/ContactSection'
 import NotebookFooter from '../components/notebook/NotebookFooter'
 function WavyDivider() {
   return (
-    <div style={{ paddingLeft: '56px', overflow: 'hidden' }} aria-hidden="true">
+    <div style={{ paddingLeft: 'var(--gutter)', overflow: 'hidden' }} aria-hidden="true">
       <svg
         width="100%"
         height="28"
@@ -33,6 +36,12 @@ function HomePage() {
       className="min-h-screen notebook-bg"
       style={{ position: 'relative' }}
     >
+      {/* Scroll progress bar */}
+      <ScrollProgress />
+
+      {/* Paper airplane that flies down the page as you scroll */}
+      <FlyingPaperPlane />
+
       {/* Fixed spiral binding on left */}
       <SpiralBinding />
 
@@ -44,6 +53,8 @@ function HomePage() {
         <HeroSection />
         <WavyDivider />
         <AboutSection />
+        <WavyDivider />
+        <ExperienceSection />
         <WavyDivider />
         <ProjectsSection />
         <WavyDivider />

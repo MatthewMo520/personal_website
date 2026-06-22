@@ -212,4 +212,123 @@ function Pencil({ style }) {
   )
 }
 
-export { Atom, Rocket, Lightbulb, Star, BarChart, PaperPlane, Gear, ScatterPlot, Cloud, Arrow, Pencil }
+/* ---- Personal hobby doodles ---- */
+
+/* Badminton shuttlecock */
+function Shuttlecock({ style, size = 50 }) {
+  return (
+    <motion.svg
+      width={size} height={size * 1.15} viewBox="0 0 48 56" fill="none"
+      style={{ opacity: 0.5, ...style }}
+      {...floatSlow}
+    >
+      <path d="M16 40 L6 10 Q24 2 42 10 L32 40 Z" fill="white" stroke="#1a1a2e" strokeWidth="1.5" strokeLinejoin="round" />
+      <path d="M20 40 L14 10 M24 41 L24 6 M28 40 L34 10" stroke="#4a90d9" strokeWidth="1" />
+      <path d="M13 24 Q24 20 35 24" stroke="#1a1a2e" strokeWidth="1" fill="none" strokeDasharray="2 2" />
+      <path d="M16 40 Q24 52 32 40 Z" fill="#f0a86f" stroke="#1a1a2e" strokeWidth="1.5" strokeLinejoin="round" />
+    </motion.svg>
+  )
+}
+
+/* Volleyball */
+function Volleyball({ style, size = 54 }) {
+  return (
+    <motion.svg
+      width={size} height={size} viewBox="0 0 56 56" fill="none"
+      style={{ opacity: 0.5, ...style }}
+      {...float}
+    >
+      <circle cx="28" cy="28" r="23" fill="white" stroke="#1a1a2e" strokeWidth="1.6" />
+      {/* 3 spokes from center + 3 rim arcs = woven volleyball panels */}
+      <g stroke="#1a1a2e" strokeWidth="1.4" fill="none" strokeLinecap="round" transform="rotate(-18 28 28)">
+        <path d="M28 28 C 26 18, 26 11, 28 5" />
+        <path d="M28 28 C 26 18, 26 11, 28 5" transform="rotate(120 28 28)" />
+        <path d="M28 28 C 26 18, 26 11, 28 5" transform="rotate(240 28 28)" />
+        <path d="M28 5 C 42 8, 51 22, 48 40" />
+        <path d="M28 5 C 42 8, 51 22, 48 40" transform="rotate(120 28 28)" />
+        <path d="M28 5 C 42 8, 51 22, 48 40" transform="rotate(240 28 28)" />
+      </g>
+    </motion.svg>
+  )
+}
+
+/* Ultimate frisbee disc */
+function Frisbee({ style, size = 60 }) {
+  return (
+    <motion.svg
+      width={size} height={size * 0.6} viewBox="0 0 64 38" fill="none"
+      style={{ opacity: 0.5, ...style }}
+      animate={{ y: [0, -6, 0], rotate: [0, 4, -3, 0] }}
+      transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
+    >
+      <path d="M4 17 Q4 23 6 25 Q32 35 58 25 Q60 23 60 17" fill="#5ab06a" stroke="#1a1a2e" strokeWidth="1.5" strokeLinejoin="round" />
+      <ellipse cx="32" cy="16" rx="28" ry="11" fill="#6bc47a" stroke="#1a1a2e" strokeWidth="1.5" />
+      <ellipse cx="32" cy="14" rx="19" ry="6.5" fill="none" stroke="#ffffff" strokeWidth="1.5" opacity="0.6" />
+    </motion.svg>
+  )
+}
+
+/* Swimming goggles */
+function Goggles({ style, size = 58 }) {
+  return (
+    <motion.svg
+      width={size} height={size * 0.55} viewBox="0 0 60 32" fill="none"
+      style={{ opacity: 0.5, ...style }}
+      {...wiggle}
+    >
+      {/* straps */}
+      <path d="M10 16 L1 12 M54 16 L63 12" stroke="#1a1a2e" strokeWidth="1.6" fill="none" strokeLinecap="round" />
+      {/* lenses */}
+      <ellipse cx="20" cy="16" rx="10" ry="8.5" fill="#7ab3e8" stroke="#1a1a2e" strokeWidth="1.6" opacity="0.85" />
+      <ellipse cx="44" cy="16" rx="10" ry="8.5" fill="#7ab3e8" stroke="#1a1a2e" strokeWidth="1.6" opacity="0.85" />
+      {/* nose bridge */}
+      <path d="M30 16 Q32 20 34 16" stroke="#1a1a2e" strokeWidth="1.6" fill="none" />
+      {/* shine */}
+      <ellipse cx="16" cy="12" rx="2.5" ry="1.6" fill="white" opacity="0.75" />
+      <ellipse cx="40" cy="12" rx="2.5" ry="1.6" fill="white" opacity="0.75" />
+    </motion.svg>
+  )
+}
+
+/* Coffee cup (cafés) */
+function Coffee({ style, size = 50 }) {
+  return (
+    <motion.svg
+      width={size} height={size * 1.1} viewBox="0 0 52 56" fill="none"
+      style={{ opacity: 0.5, ...style }}
+      {...float}
+    >
+      <path d="M20 6 Q24 11 20 15 M29 4 Q33 9 29 13" stroke="#c0c0c0" strokeWidth="2" fill="none" strokeLinecap="round" />
+      <path d="M12 22 L40 22 L36 48 L16 48 Z" fill="white" stroke="#1a1a2e" strokeWidth="1.5" strokeLinejoin="round" />
+      <path d="M14 26 L38 26 L37 31 L15 31 Z" fill="#f0a86f" />
+      <path d="M40 26 Q50 28 46 38 Q44 42 37 41" fill="none" stroke="#1a1a2e" strokeWidth="1.5" />
+      <path d="M8 50 L44 50" stroke="#1a1a2e" strokeWidth="2" strokeLinecap="round" />
+    </motion.svg>
+  )
+}
+
+/* Boba / bubble tea (food) */
+function Boba({ style, size = 40 }) {
+  return (
+    <motion.svg
+      width={size} height={size * 1.4} viewBox="0 0 40 56" fill="none"
+      style={{ opacity: 0.5, ...style }}
+      {...floatSlow}
+    >
+      <path d="M22 2 L26 18" stroke="#f09696" strokeWidth="3" strokeLinecap="round" />
+      <path d="M8 12 L32 12 L30 16 L10 16 Z" fill="#7ab3e8" stroke="#1a1a2e" strokeWidth="1.5" strokeLinejoin="round" />
+      <path d="M10 16 L30 16 L27 52 L13 52 Z" fill="white" stroke="#1a1a2e" strokeWidth="1.5" strokeLinejoin="round" />
+      <path d="M12 38 L28 38 L27 52 L13 52 Z" fill="#f5c842" opacity="0.45" />
+      <circle cx="16" cy="48" r="2" fill="#1a1a2e" />
+      <circle cx="21" cy="50" r="2" fill="#1a1a2e" />
+      <circle cx="25" cy="48" r="2" fill="#1a1a2e" />
+      <circle cx="19" cy="45" r="2" fill="#1a1a2e" />
+      <circle cx="24" cy="44" r="2" fill="#1a1a2e" />
+    </motion.svg>
+  )
+}
+
+export {
+  Atom, Rocket, Lightbulb, Star, BarChart, PaperPlane, Gear, ScatterPlot, Cloud, Arrow, Pencil,
+  Shuttlecock, Volleyball, Frisbee, Goggles, Coffee, Boba,
+}

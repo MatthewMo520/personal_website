@@ -1,17 +1,37 @@
-import { useState } from 'react'
-import { Link, useLocation } from 'react-router-dom'
+import { useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
+
+const links = [
+  { label: 'Home', href: '#home' },
+  { label: 'About', href: '#about' },
+  { label: 'Experience', href: '#experience' },
+  { label: 'Projects', href: '#projects' },
+  { label: 'Contact', href: '#contact' },
+]
 
 function NotebookNav() {
   const [menuOpen, setMenuOpen] = useState(false)
-  const location = useLocation()
+  const [active, setActive] = useState('home')
 
-  const links = [
-    { label: 'Home', href: '#home' },
-    { label: 'About', href: '#about' },
-    { label: 'Projects', href: '#projects' },
-    { label: 'Contact', href: '#contact' },
-  ]
+  // Scroll-spy: highlight the link for whichever section is centered in view.
+  useEffect(() => {
+    const sections = links
+      .map(({ href }) => document.getElementById(href.replace('#', '')))
+      .filter(Boolean)
+    if (!sections.length) return
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const visible = entries
+          .filter((e) => e.isIntersecting)
+          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)
+        if (visible[0]) setActive(visible[0].target.id)
+      },
+      { rootMargin: '-45% 0px -45% 0px', threshold: [0, 0.25, 0.5, 1] }
+    )
+    sections.forEach((s) => observer.observe(s))
+    return () => observer.disconnect()
+  }, [])
 
   const scrollTo = (id) => {
     const el = document.getElementById(id.replace('#', ''))
@@ -29,7 +49,7 @@ function NotebookNav() {
         backgroundColor: 'rgba(250, 250, 247, 0.92)',
         backdropFilter: 'blur(12px)',
         borderBottom: '1px solid rgba(74, 144, 217, 0.15)',
-        paddingLeft: '56px' // offset for spiral binding
+        paddingLeft: 'var(--gutter)' // offset for spiral binding
       }}
     >
       <div className="max-w-5xl mx-auto px-6 py-4 flex items-center justify-between">
@@ -45,28 +65,32 @@ function NotebookNav() {
 
         {/* Desktop links */}
         <div className="hidden md:flex items-center gap-8">
-          {links.map(({ label, href }) => (
-            <button
-              key={label}
-              onClick={() => scrollTo(href)}
-              className="font-caveat text-lg font-semibold relative group transition-colors duration-200"
-              style={{ color: '#1a1a2e' }}
-            >
-              {label}
-              <span
-                className="absolute bottom-0 left-0 w-0 h-0.5 group-hover:w-full transition-all duration-300"
-                style={{ backgroundColor: '#f5c842', height: '3px', bottom: '-3px' }}
-              />
-            </button>
-          ))}
+          {links.map(({ label, href }) => {
+            const isActive = active === href.replace('#', '')
+            return (
+              <button
+                key={label}
+                onClick={() => scrollTo(href)}
+                className="text-[15px] font-bold relative group transition-colors duration-200"
+                style={{ color: isActive ? '#4a90d9' : '#1a1a2e', fontFamily: "'Nunito', sans-serif" }}
+              >
+                {label}
+                <span
+                  className="absolute left-0 group-hover:w-full transition-all duration-300"
+                  style={{ backgroundColor: '#f5c842', height: '3px', bottom: '-3px', width: isActive ? '100%' : '0' }}
+                />
+              </button>
+            )
+          })}
 
           <a
             href="mailto:mzmo@uwaterloo.ca"
-            className="font-caveat text-base font-bold px-5 py-2 rounded-md transition-all duration-200"
+            className="text-sm font-bold px-5 py-2 rounded-md transition-all duration-200"
             style={{
               backgroundColor: '#4a90d9',
               color: '#ffffff',
-              boxShadow: '2px 3px 0 #1a1a2e'
+              boxShadow: '2px 3px 0 #1a1a2e',
+              fontFamily: "'Nunito', sans-serif"
             }}
             onMouseEnter={e => {
               e.currentTarget.style.transform = 'translate(-1px, -1px)'
@@ -111,16 +135,16 @@ function NotebookNav() {
             <button
               key={label}
               onClick={() => scrollTo(href)}
-              className="font-caveat text-xl font-bold text-left"
-              style={{ color: '#1a1a2e' }}
+              className="font-bold text-left"
+              style={{ color: '#1a1a2e', fontFamily: "'Nunito', sans-serif" }}
             >
               {label}
             </button>
           ))}
           <a
             href="mailto:mzmo@uwaterloo.ca"
-            className="font-caveat text-xl font-bold"
-            style={{ color: '#4a90d9' }}
+            className="font-bold"
+            style={{ color: '#4a90d9', fontFamily: "'Nunito', sans-serif" }}
           >
             Get in Touch →
           </a>

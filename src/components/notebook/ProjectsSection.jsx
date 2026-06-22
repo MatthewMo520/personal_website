@@ -2,7 +2,8 @@ import { useState } from 'react'
 import { motion } from 'framer-motion'
 import ProjectCard from './ProjectCard'
 import ProjectModal from '../ProjectModal'
-import { BarChart, Star } from './DoodleElements'
+import { BarChart, Star, Frisbee, Volleyball } from './DoodleElements'
+import PageMarker from './PageMarker'
 
 const projects = [
   {
@@ -118,11 +119,18 @@ function ProjectsSection() {
     <section
       id="projects"
       className="py-20 relative overflow-hidden"
-      style={{ paddingLeft: '56px' }}
+      style={{ paddingLeft: 'var(--gutter)', backgroundColor: 'rgba(240,168,111,0.05)' }}
     >
+      <PageMarker number={3} label="projects" color="#f0a86f" />
       {/* Decorative doodles */}
       <div className="absolute pointer-events-none" style={{ top: '5%', right: '3%' }}>
         <BarChart />
+      </div>
+      <div className="absolute pointer-events-none" style={{ top: '45%', left: '2%' }}>
+        <Frisbee size={48} />
+      </div>
+      <div className="absolute pointer-events-none" style={{ bottom: '8%', left: '6%' }}>
+        <Volleyball size={42} />
       </div>
       <Star style={{ position: 'absolute', top: '8%', left: '8%' }} size={16} />
       <Star style={{ position: 'absolute', bottom: '10%', right: '8%' }} size={20} color="#f0a86f" />

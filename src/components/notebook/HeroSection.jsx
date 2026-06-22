@@ -1,6 +1,7 @@
-import { motion, useAnimation } from 'framer-motion'
+import { motion, useAnimation, useScroll, useTransform } from 'framer-motion'
 import { useEffect } from 'react'
-import { Atom, Rocket, Lightbulb, Star, ScatterPlot, BarChart, Cloud } from './DoodleElements'
+import { Atom, Rocket, Lightbulb, Star, ScatterPlot, BarChart, Cloud, Shuttlecock, Volleyball, Frisbee, Goggles, Coffee, Boba } from './DoodleElements'
+import PencilWriter from './PencilWriter'
 
 const container = {
   hidden: {},
@@ -20,6 +21,11 @@ const item = {
 function HeroSection() {
   const scribbleControls = useAnimation()
 
+  // Parallax: doodles drift up and fade slightly as you scroll past the hero.
+  const { scrollY } = useScroll()
+  const doodleY = useTransform(scrollY, [0, 700], [0, -130])
+  const doodleOpacity = useTransform(scrollY, [0, 500], [1, 0.3])
+
   useEffect(() => {
     const timer = setTimeout(() => {
       scribbleControls.start({ pathLength: 1, opacity: 1, transition: { duration: 1.1, ease: 'easeInOut' } })
@@ -36,10 +42,13 @@ function HeroSection() {
     <section
       id="home"
       className="relative min-h-screen flex items-center justify-center overflow-hidden"
-      style={{ paddingLeft: '56px' }} // account for spiral binding
+      style={{ paddingLeft: 'var(--gutter)' }} // account for spiral binding
     >
       {/* Decorative doodles */}
-      <div className="absolute inset-0 pointer-events-none overflow-hidden">
+      <motion.div
+        className="absolute inset-0 pointer-events-none overflow-hidden hide-mobile"
+        style={{ y: doodleY, opacity: doodleOpacity }}
+      >
         {/* Top left */}
         <div className="absolute" style={{ top: '10%', left: '6%' }}>
           <Atom />
@@ -64,13 +73,33 @@ function HeroSection() {
         <div className="absolute" style={{ top: '30%', right: '16%' }}>
           <Lightbulb />
         </div>
+
+        {/* Personal hobby doodles */}
+        <div className="absolute" style={{ top: '22%', left: '13%' }}>
+          <Shuttlecock />
+        </div>
+        <div className="absolute" style={{ top: '60%', right: '9%' }}>
+          <Volleyball />
+        </div>
+        <div className="absolute" style={{ bottom: '20%', right: '20%' }}>
+          <Frisbee />
+        </div>
+        <div className="absolute" style={{ bottom: '14%', left: '16%' }}>
+          <Coffee />
+        </div>
+        <div className="absolute" style={{ top: '46%', left: '8%' }}>
+          <Boba />
+        </div>
+        <div className="absolute" style={{ top: '14%', right: '22%' }}>
+          <Goggles />
+        </div>
         {/* Stars scattered */}
         <Star style={{ position: 'absolute', top: '20%', left: '22%' }} size={18} />
         <Star style={{ position: 'absolute', top: '15%', right: '28%' }} size={14} color="#f0a86f" />
         <Star style={{ position: 'absolute', bottom: '25%', right: '14%' }} size={22} />
         <Star style={{ position: 'absolute', bottom: '18%', left: '28%' }} size={16} color="#4a90d9" />
         <Star style={{ position: 'absolute', top: '52%', left: '14%' }} size={12} color="#f0a86f" />
-      </div>
+      </motion.div>
 
       {/* Hero content */}
       <motion.div
@@ -131,7 +160,16 @@ function HeroSection() {
             letterSpacing: '0.01em'
           }}
         >
-          ★ Data Scientist &amp; Machine Learning Engineer
+          ★ I&apos;m a{' '}
+          <PencilWriter
+            color="#4a90d9"
+            words={[
+              'Data Scientist',
+              'ML Engineer',
+              'Full-Stack Dev',
+              'Problem Solver',
+            ]}
+          />
         </motion.p>
 
         {/* Description */}
@@ -168,7 +206,7 @@ function HeroSection() {
           <motion.a
             whileHover={{ x: -2, y: -2, boxShadow: '5px 6px 0 #1a1a2e' }}
             whileTap={{ x: 1, y: 1, boxShadow: '1px 2px 0 #1a1a2e' }}
-            href="/Resume_Matthew_Mo.pdf"
+            href="/Resume_Matthew_Mo_Fall26.pdf"
             target="_blank"
             rel="noopener noreferrer"
             className="font-caveat text-lg font-bold px-8 py-3 rounded-md transition-all duration-200"
@@ -227,7 +265,7 @@ function HeroSection() {
           animate={{ y: [0, 8, 0] }}
           transition={{ duration: 1.8, repeat: Infinity, ease: 'easeInOut' }}
         >
-          <div className="flex flex-col items-center gap-1" style={{ color: '#a0aec0' }}>
+          <div className="flex flex-col items-center gap-1" style={{ color: '#718096' }}>
             <span className="font-caveat text-sm">scroll down</span>
             <svg width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />

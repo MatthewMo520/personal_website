@@ -1,13 +1,15 @@
 import { motion } from 'framer-motion'
-import { PaperPlane, Gear, Star } from './DoodleElements'
+import { PaperPlane, Gear, Star, Boba, Goggles } from './DoodleElements'
+import PageMarker from './PageMarker'
 
 function ContactSection() {
   return (
     <section
       id="contact"
       className="py-24 relative overflow-hidden"
-      style={{ paddingLeft: '56px' }}
+      style={{ paddingLeft: 'var(--gutter)', backgroundColor: 'rgba(245,200,66,0.05)' }}
     >
+      <PageMarker number={4} label="contact" color="#b8860b" />
       {/* Doodles */}
       <div className="absolute pointer-events-none" style={{ top: '10%', left: '6%' }}>
         <PaperPlane />
@@ -17,6 +19,12 @@ function ContactSection() {
       </div>
       <div className="absolute pointer-events-none" style={{ top: '20%', right: '8%' }}>
         <Gear size={36} style={{ animationDuration: '8s' }} />
+      </div>
+      <div className="absolute pointer-events-none" style={{ bottom: '12%', left: '7%' }}>
+        <Boba size={36} />
+      </div>
+      <div className="absolute pointer-events-none" style={{ top: '14%', right: '24%' }}>
+        <Goggles size={48} />
       </div>
       <Star style={{ position: 'absolute', top: '12%', right: '22%' }} size={18} />
       <Star style={{ position: 'absolute', bottom: '20%', left: '12%' }} size={14} color="#f0a86f" />
@@ -79,7 +87,7 @@ function ContactSection() {
           {/* Divider */}
           <div className="flex items-center gap-3 my-8">
             <div className="flex-1 h-px" style={{ background: 'repeating-linear-gradient(90deg, #a8c4e0 0 4px, transparent 4px 8px)' }} />
-            <span className="font-caveat text-sm" style={{ color: '#9ca3af' }}>or find me on</span>
+            <span className="font-caveat text-sm" style={{ color: '#6b7280' }}>or find me on</span>
             <div className="flex-1 h-px" style={{ background: 'repeating-linear-gradient(90deg, #a8c4e0 0 4px, transparent 4px 8px)' }} />
           </div>
 

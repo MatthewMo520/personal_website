@@ -68,15 +68,35 @@ function ProjectCard({ project, index, onClick }) {
       {/* Tape strip — varied position per card */}
       <div className="tape-strip" style={tape} />
 
-      {/* Project image */}
-      <div className="overflow-hidden" style={{ borderRadius: '3px 3px 0 0', margin: '0' }}>
-        <img
-          src={project.image}
-          alt={project.title}
-          loading="lazy"
-          className="w-full h-44 object-cover"
-          style={{ borderBottom: '2px dashed #a8c4e0' }}
-        />
+      {/* Project image — polaroid photo treatment */}
+      <div style={{ padding: '14px 14px 4px' }}>
+        <div
+          style={{
+            background: '#ffffff',
+            padding: '7px 7px 12px',
+            border: '1px solid #e6e1d8',
+            borderRadius: '3px',
+            boxShadow: '0 2px 8px rgba(26,26,46,0.12)',
+            transform: 'rotate(-1deg)',
+          }}
+        >
+          <div className="overflow-hidden" style={{ borderRadius: '2px', background: '#f0ede6' }}>
+            <img
+              src={project.image}
+              alt={project.title}
+              loading="lazy"
+              className="w-full h-40 object-cover"
+              style={{ display: 'block' }}
+            />
+          </div>
+          {/* handwritten caption strip */}
+          <p
+            className="font-caveat font-bold text-center mt-2"
+            style={{ fontSize: '15px', color: '#4a5568', lineHeight: 1 }}
+          >
+            {project.category}
+          </p>
+        </div>
       </div>
 
       {/* Card content */}

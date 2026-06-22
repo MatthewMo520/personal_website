@@ -6,14 +6,14 @@ function SpiralBinding() {
   return (
     <div
       className="fixed top-0 left-0 h-full z-50 pointer-events-none"
-      style={{ width: '44px' }}
+      style={{ width: 'var(--binding-w)' }}
     >
       {/* Red margin line — just right of the binding */}
       <div
         style={{
           position: 'fixed',
           top: 0,
-          left: '56px',
+          left: 'calc(var(--gutter) - 4px)',
           width: '2px',
           height: '100vh',
           backgroundColor: 'rgba(220, 80, 80, 0.28)',
@@ -44,8 +44,8 @@ function SpiralBinding() {
               damping: 15
             }}
             style={{
-              width: '22px',
-              height: '22px',
+              width: 'var(--ring)',
+              height: 'var(--ring)',
               borderRadius: '50%',
               background: 'linear-gradient(135deg, #b0b0b0 0%, #e8e8e8 40%, #888 60%, #c0c0c0 100%)',
               boxShadow: '2px 2px 4px rgba(0,0,0,0.25), inset 1px 1px 2px rgba(255,255,255,0.4)',

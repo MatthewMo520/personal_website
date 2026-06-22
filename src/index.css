@@ -16,6 +16,21 @@
   --color-pink: #f09696;
 }
 
+/* Layout tokens — one place to control the notebook gutter/binding */
+:root {
+  --gutter: 56px;     /* left padding so content clears the spiral binding */
+  --binding-w: 44px;  /* width of the spiral binding strip */
+  --ring: 22px;       /* spiral ring diameter */
+}
+
+@media (max-width: 640px) {
+  :root {
+    --gutter: 34px;
+    --binding-w: 26px;
+    --ring: 18px;
+  }
+}
+
 /* Base styles */
 html {
   scroll-behavior: smooth;
@@ -68,6 +83,39 @@ body {
   background-size: 140px 140px, 140px 140px, 28px 28px, 28px 28px;
   min-height: 100vh;
   position: relative;
+}
+
+/* Subtle paper grain so the page reads as paper, not flat color */
+.notebook-bg::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.5;
+  mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.045'/%3E%3C/svg%3E");
+}
+
+/* Page-number tab that sits in the margin of each section */
+.page-marker {
+  font-family: 'Caveat', cursive;
+  font-weight: 700;
+  font-size: 15px;
+  letter-spacing: 0.02em;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 2px 12px;
+  border-radius: 0 0 8px 8px;
+  border: 1.5px dashed currentColor;
+  border-top: none;
+  opacity: 0.75;
+}
+
+/* Hide decorative bits on small screens */
+@media (max-width: 640px) {
+  .hide-mobile { display: none !important; }
 }
 
 /* Caveat font utility */

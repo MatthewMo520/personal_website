@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion'
-import { Lightbulb, Star } from './DoodleElements'
+import { Lightbulb, Star, Shuttlecock, Coffee } from './DoodleElements'
+import PageMarker from './PageMarker'
 
 const skillSets = [
   {
@@ -39,11 +40,18 @@ function AboutSection() {
     <section
       id="about"
       className="py-20 relative overflow-hidden"
-      style={{ paddingLeft: '56px' }}
+      style={{ paddingLeft: 'var(--gutter)', backgroundColor: 'rgba(107,196,122,0.045)' }}
     >
+      <PageMarker number={1} label="about" color="#6bc47a" />
       {/* Decorative doodles */}
       <div className="absolute pointer-events-none" style={{ top: '8%', right: '4%' }}>
         <Lightbulb />
+      </div>
+      <div className="absolute pointer-events-none" style={{ bottom: '10%', left: '4%' }}>
+        <Coffee size={44} />
+      </div>
+      <div className="absolute pointer-events-none" style={{ top: '40%', right: '3%' }}>
+        <Shuttlecock size={44} />
       </div>
       <Star style={{ position: 'absolute', top: '12%', left: '8%' }} size={16} color="#f5c842" />
       <Star style={{ position: 'absolute', bottom: '15%', right: '10%' }} size={18} />
