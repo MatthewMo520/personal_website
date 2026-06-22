@@ -1,4 +1,22 @@
 import { motion } from 'framer-motion'
+import {
+  Volleyball as LuVolleyball,
+  Coffee as LuCoffee,
+  CupSoda as LuCupSoda,
+  RectangleGoggles as LuGoggles,
+} from 'lucide-react'
+
+/* Wraps a lucide icon in the notebook doodle style: ink stroke, soft opacity, gentle float. */
+function LucideDoodle({ Icon, size = 50, anim, style }) {
+  return (
+    <motion.div
+      style={{ opacity: 0.5, color: '#1a1a2e', display: 'inline-block', lineHeight: 0, ...style }}
+      {...anim}
+    >
+      <Icon size={size} strokeWidth={1.6} absoluteStrokeWidth />
+    </motion.div>
+  )
+}
 
 const float = {
   animate: {
