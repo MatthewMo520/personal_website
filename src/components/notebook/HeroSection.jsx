@@ -128,7 +128,7 @@ function HeroSection() {
           className="font-caveat font-bold leading-none mb-4"
           style={{
             fontSize: 'clamp(72px, 12vw, 110px)',
-            color: '#1a1a2e',
+            color: 'var(--ink)',
             letterSpacing: '-0.02em'
           }}
         >
@@ -176,7 +176,7 @@ function HeroSection() {
         <motion.p
           variants={item}
           className="text-base md:text-lg mb-10 max-w-xl mx-auto leading-relaxed"
-          style={{ color: '#4a5568', fontFamily: "'Nunito', sans-serif" }}
+          style={{ color: 'var(--body)', fontFamily: "'Nunito', sans-serif" }}
         >
           University of Waterloo · Building ML systems, predictive models, and data-driven products.
         </motion.p>
@@ -212,7 +212,7 @@ function HeroSection() {
             className="font-caveat text-lg font-bold px-8 py-3 rounded-md transition-all duration-200"
             style={{
               border: '2px solid #1a1a2e',
-              color: '#1a1a2e',
+              color: 'var(--ink)',
               backgroundColor: 'transparent',
               boxShadow: '3px 4px 0 #1a1a2e',
               minWidth: '170px',
@@ -238,7 +238,7 @@ function HeroSection() {
             className="font-caveat text-lg font-bold px-8 py-3 rounded-md transition-all duration-200 flex items-center gap-2 justify-center"
             style={{
               border: '2px solid #1a1a2e',
-              color: '#1a1a2e',
+              color: 'var(--ink)',
               backgroundColor: 'transparent',
               boxShadow: '3px 4px 0 #1a1a2e',
               minWidth: '170px',

@@ -67,7 +67,7 @@ function AboutSection() {
         >
           <h2
             className="font-caveat font-bold inline-block"
-            style={{ fontSize: 'clamp(40px, 6vw, 60px)', color: '#1a1a2e' }}
+            style={{ fontSize: 'clamp(40px, 6vw, 60px)', color: 'var(--ink)' }}
           >
             <span className="highlight-underline">About Me</span>
           </h2>
@@ -86,8 +86,8 @@ function AboutSection() {
             <div
               className="relative p-8"
               style={{
-                background: '#ffffff',
-                border: '2px dashed #a8c4e0',
+                background: 'var(--card)',
+                border: '2px dashed var(--line)',
                 borderRadius: '6px',
                 boxShadow: '4px 5px 0 rgba(74,144,217,0.12)',
                 paddingTop: '28px'
@@ -98,22 +98,22 @@ function AboutSection() {
 
               <p
                 className="text-base leading-relaxed mb-4"
-                style={{ color: '#4a5568', fontFamily: "'Nunito', sans-serif" }}
+                style={{ color: 'var(--body)', fontFamily: "'Nunito', sans-serif" }}
               >
-                Hey! I'm <strong style={{ color: '#1a1a2e' }}>Matthew Mo</strong>, a second-year student at the{' '}
+                Hey! I'm <strong style={{ color: 'var(--ink)' }}>Matthew Mo</strong>, a second-year student at the{' '}
                 <strong style={{ color: '#4a90d9' }}>University of Waterloo</strong> studying Data Science.
               </p>
               <p
                 className="text-base leading-relaxed mb-4"
-                style={{ color: '#4a5568', fontFamily: "'Nunito', sans-serif" }}
+                style={{ color: 'var(--body)', fontFamily: "'Nunito', sans-serif" }}
               >
-                I'm passionate about <strong style={{ color: '#1a1a2e' }}>machine learning</strong> and{' '}
-                <strong style={{ color: '#1a1a2e' }}>data analysis</strong> — building models that turn raw data
+                I'm passionate about <strong style={{ color: 'var(--ink)' }}>machine learning</strong> and{' '}
+                <strong style={{ color: 'var(--ink)' }}>data analysis</strong> — building models that turn raw data
                 into meaningful insights, and web apps that bring those insights to life.
               </p>
               <p
                 className="text-base leading-relaxed"
-                style={{ color: '#4a5568', fontFamily: "'Nunito', sans-serif" }}
+                style={{ color: 'var(--body)', fontFamily: "'Nunito', sans-serif" }}
               >
                 When I'm not training models or debugging APIs, you'll find me at hackathons (we won{' '}
                 <strong style={{ color: '#f0a86f' }}>GeeseHacks 2024</strong>!), experimenting with new
@@ -128,8 +128,8 @@ function AboutSection() {
                     className="font-caveat text-sm font-semibold px-3 py-1 rounded-full"
                     style={{
                       backgroundColor: 'rgba(74,144,217,0.08)',
-                      color: '#4a5568',
-                      border: '1.5px dashed #a8c4e0'
+                      color: 'var(--body)',
+                      border: '1.5px dashed var(--line)'
                     }}
                   >
                     {fact}
@@ -188,7 +188,7 @@ function AboutSection() {
                     <span
                       key={skill}
                       className="text-xs"
-                      style={{ color: '#4a5568', fontFamily: "'Nunito', sans-serif" }}
+                      style={{ color: 'var(--body)', fontFamily: "'Nunito', sans-serif" }}
                     >
                       · {skill}
                     </span>

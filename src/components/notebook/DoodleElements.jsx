@@ -10,7 +10,7 @@ import {
 function LucideDoodle({ Icon, size = 50, anim, style }) {
   return (
     <motion.div
-      style={{ opacity: 0.5, color: '#1a1a2e', display: 'inline-block', lineHeight: 0, ...style }}
+      style={{ opacity: 0.5, color: 'var(--ink)', display: 'inline-block', lineHeight: 0, ...style }}
       {...anim}
     >
       <Icon size={size} strokeWidth={1.6} absoluteStrokeWidth />

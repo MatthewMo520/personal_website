@@ -137,13 +137,13 @@ function ProjectsSection() {
         >
           <h2
             className="font-caveat font-bold inline-block"
-            style={{ fontSize: 'clamp(40px, 6vw, 60px)', color: '#1a1a2e' }}
+            style={{ fontSize: 'clamp(40px, 6vw, 60px)', color: 'var(--ink)' }}
           >
             <span className="highlight-underline">Featured Projects</span>
           </h2>
           <p
             className="mt-4 text-base md:text-lg max-w-xl mx-auto"
-            style={{ color: '#4a5568', fontFamily: "'Nunito', sans-serif" }}
+            style={{ color: 'var(--body)', fontFamily: "'Nunito', sans-serif" }}
           >
             Hackathon wins, ML experiments, and web apps I've built to solve real problems
           </p>
@@ -175,7 +175,7 @@ function ProjectsSection() {
             className="font-caveat text-lg font-bold px-8 py-3 rounded-md transition-all duration-200"
             style={{
               border: '2px solid #1a1a2e',
-              color: '#1a1a2e',
+              color: 'var(--ink)',
               backgroundColor: 'transparent',
               boxShadow: '3px 4px 0 #1a1a2e'
             }}

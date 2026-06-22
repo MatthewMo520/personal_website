@@ -74,6 +74,9 @@
     </script>
   </head>
   <body>
+    <script>
+      try { if (localStorage.getItem('theme') === 'chalk') document.documentElement.dataset.theme = 'chalk' } catch (e) {}
+    </script>
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
   </body>

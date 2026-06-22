@@ -73,7 +73,7 @@ function FlyingPaperPlane() {
             {/* plane body */}
             <path d="M4 28 L60 4 L44 52 L28 34 L4 28Z" fill="#ffffff" stroke="#4a90d9" strokeWidth="1.8" strokeLinejoin="round" />
             <path d="M28 34 L36 28 L60 4" stroke="#4a90d9" strokeWidth="1.5" strokeDasharray="3 2" />
-            <path d="M28 34 L32 48 L44 52" stroke="#a8c4e0" strokeWidth="1.2" />
+            <path d="M28 34 L32 48 L44 52" stroke="var(--line)" strokeWidth="1.2" />
           </svg>
         </motion.div>
       </motion.div>

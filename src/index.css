@@ -21,6 +21,26 @@
   --gutter: 56px;     /* left padding so content clears the spiral binding */
   --binding-w: 44px;  /* width of the spiral binding strip */
   --ring: 22px;       /* spiral ring diameter */
+
+  /* Day theme (notebook paper) — color tokens swapped wholesale at night */
+  --ink: #1a1a2e;     /* primary text / headings */
+  --body: #4a5568;    /* body copy */
+  --paper: #fafaf7;   /* page paper */
+  --card: #ffffff;    /* raised paper cards */
+  --line: #a8c4e0;    /* dashed borders / hairlines */
+  --nav-bg: rgba(250, 250, 247, 0.92);
+  --footer-bg: rgba(240, 237, 230, 0.4);
+}
+
+/* Night theme (chalkboard) */
+[data-theme='chalk'] {
+  --ink: #f2efe6;
+  --body: #bcb8ad;
+  --paper: #1f282b;
+  --card: #28332f;
+  --line: #5b6d6a;
+  --nav-bg: rgba(28, 36, 39, 0.92);
+  --footer-bg: rgba(28, 36, 39, 0.55);
 }
 
 @media (max-width: 640px) {
@@ -83,7 +103,21 @@ body {
   background-size: 140px 140px, 140px 140px, 28px 28px, 28px 28px;
   min-height: 100vh;
   position: relative;
+  transition: background-color 0.4s ease;
 }
+
+/* Chalkboard: dark slate page with faint chalk grid */
+[data-theme='chalk'] .notebook-bg {
+  background-color: #1f282b;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.08) 1px, transparent 1px),
+    linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+}
+[data-theme='chalk'] .notebook-bg::before { opacity: 0.25; mix-blend-mode: screen; }
+[data-theme='chalk'] ::-webkit-scrollbar-track { background: #28332f; }
+[data-theme='chalk'] ::-webkit-scrollbar-thumb { background: #5b6d6a; }
 
 /* Subtle paper grain so the page reads as paper, not flat color */
 .notebook-bg::before {

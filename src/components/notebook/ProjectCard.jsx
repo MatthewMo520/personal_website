@@ -36,8 +36,8 @@ const faceBase = {
   inset: 0,
   backfaceVisibility: 'hidden',
   WebkitBackfaceVisibility: 'hidden',
-  background: '#ffffff',
-  border: '2px dashed #a8c4e0',
+  background: 'var(--card)',
+  border: '2px dashed var(--line)',
   borderRadius: '6px',
   overflow: 'hidden',
 }
@@ -105,17 +105,17 @@ function ProjectCard({ project, index }) {
               <div className="overflow-hidden" style={{ borderRadius: '2px', background: '#f0ede6' }}>
                 <img src={project.image} alt={project.title} loading="lazy" className="w-full h-40 object-cover" style={{ display: 'block' }} />
               </div>
-              <p className="font-caveat font-bold text-center mt-2" style={{ fontSize: '15px', color: '#4a5568', lineHeight: 1 }}>
+              <p className="font-caveat font-bold text-center mt-2" style={{ fontSize: '15px', color: 'var(--body)', lineHeight: 1 }}>
                 {project.category}
               </p>
             </div>
           </div>
 
           <div className="px-5 pt-1">
-            <h3 className="font-caveat font-bold mb-1" style={{ fontSize: '22px', color: '#1a1a2e', lineHeight: 1.2 }}>
+            <h3 className="font-caveat font-bold mb-1" style={{ fontSize: '22px', color: 'var(--ink)', lineHeight: 1.2 }}>
               {project.title}
             </h3>
-            <p className="text-sm leading-relaxed" style={{ color: '#4a5568', fontFamily: "'Nunito', sans-serif", lineHeight: 1.55 }}>
+            <p className="text-sm leading-relaxed" style={{ color: 'var(--body)', fontFamily: "'Nunito', sans-serif", lineHeight: 1.55 }}>
               {project.description.length > 96 ? project.description.slice(0, 96) + '…' : project.description}
             </p>
           </div>
@@ -131,7 +131,7 @@ function ProjectCard({ project, index }) {
           {project.featured && (
             <div
               className="absolute top-3 right-3 font-caveat font-bold text-xs px-2 py-1 rounded"
-              style={{ backgroundColor: '#f5c842', color: '#1a1a2e', transform: 'rotate(2deg)' }}
+              style={{ backgroundColor: '#f5c842', color: 'var(--ink)', transform: 'rotate(2deg)' }}
             >
               ★ Featured
             </div>
@@ -143,7 +143,7 @@ function ProjectCard({ project, index }) {
           style={{
             ...faceBase,
             transform: 'rotateY(180deg)',
-            background: '#fffdf7',
+            background: 'var(--card)',
             borderColor: '#e0c9a0',
             display: 'flex',
             flexDirection: 'column',
@@ -152,7 +152,7 @@ function ProjectCard({ project, index }) {
         >
           <div className="tape-strip" style={{ left: '50%', transform: 'translateX(-50%) rotate(-1deg)', background: 'rgba(224,201,160,0.6)' }} />
 
-          <h3 className="font-caveat font-bold mb-1" style={{ fontSize: '24px', color: '#1a1a2e', lineHeight: 1.1 }}>
+          <h3 className="font-caveat font-bold mb-1" style={{ fontSize: '24px', color: 'var(--ink)', lineHeight: 1.1 }}>
             {project.title}
           </h3>
           {project.impact && (
@@ -163,7 +163,7 @@ function ProjectCard({ project, index }) {
 
           <p
             className="text-sm leading-relaxed mb-3"
-            style={{ color: '#4a5568', fontFamily: "'Nunito', sans-serif", lineHeight: 1.55, overflowY: 'auto', flex: '1 1 auto', minHeight: 0 }}
+            style={{ color: 'var(--body)', fontFamily: "'Nunito', sans-serif", lineHeight: 1.55, overflowY: 'auto', flex: '1 1 auto', minHeight: 0 }}
           >
             {project.detailedDescription || project.description}
           </p>

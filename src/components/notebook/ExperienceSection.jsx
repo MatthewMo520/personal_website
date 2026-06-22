@@ -105,7 +105,7 @@ function ExperienceCard({ exp }) {
           height: '20px',
           marginLeft: '-10px',
           borderRadius: '50%',
-          background: '#fafaf7',
+          background: 'var(--paper)',
           border: `3px solid ${exp.color}`,
           zIndex: 2,
         }}
@@ -123,8 +123,8 @@ function ExperienceCard({ exp }) {
         className="relative"
         style={{
           marginLeft: '56px',
-          background: '#ffffff',
-          border: '2px dashed #a8c4e0',
+          background: 'var(--card)',
+          border: '2px dashed var(--line)',
           borderRadius: '6px',
           boxShadow: `4px 5px 0 ${exp.color}22`,
           padding: '24px 26px 22px',
@@ -143,15 +143,15 @@ function ExperienceCard({ exp }) {
             top: '18px',
             width: '14px',
             height: '14px',
-            background: '#ffffff',
-            borderLeft: '2px dashed #a8c4e0',
-            borderBottom: '2px dashed #a8c4e0',
+            background: 'var(--card)',
+            borderLeft: '2px dashed var(--line)',
+            borderBottom: '2px dashed var(--line)',
             transform: 'rotate(45deg)',
           }}
         />
 
         <motion.div variants={lineIn} className="flex flex-wrap items-baseline justify-between gap-x-3 gap-y-1 mb-1">
-          <h3 className="font-caveat font-bold" style={{ fontSize: '28px', color: '#1a1a2e', lineHeight: 1.1 }}>
+          <h3 className="font-caveat font-bold" style={{ fontSize: '28px', color: 'var(--ink)', lineHeight: 1.1 }}>
             {exp.role}
           </h3>
           <motion.span
@@ -173,7 +173,7 @@ function ExperienceCard({ exp }) {
               key={i}
               variants={lineIn}
               className="flex gap-2 text-sm leading-relaxed"
-              style={{ color: '#4a5568', fontFamily: "'Nunito', sans-serif", lineHeight: 1.6 }}
+              style={{ color: 'var(--body)', fontFamily: "'Nunito', sans-serif", lineHeight: 1.6 }}
             >
               <motion.span
                 aria-hidden="true"
@@ -251,12 +251,12 @@ function ExperienceSection() {
           transition={{ duration: 0.5 }}
           className="text-center mb-14"
         >
-          <h2 className="font-caveat font-bold inline-block" style={{ fontSize: 'clamp(40px, 6vw, 60px)', color: '#1a1a2e' }}>
+          <h2 className="font-caveat font-bold inline-block" style={{ fontSize: 'clamp(40px, 6vw, 60px)', color: 'var(--ink)' }}>
             <span className="highlight-underline">Where I&apos;ve Worked</span>
           </h2>
           <p
             className="mt-4 text-base md:text-lg max-w-xl mx-auto"
-            style={{ color: '#4a5568', fontFamily: "'Nunito', sans-serif" }}
+            style={{ color: 'var(--body)', fontFamily: "'Nunito', sans-serif" }}
           >
             Internships and roles building ML systems and data products
           </p>

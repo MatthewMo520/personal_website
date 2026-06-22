@@ -54,7 +54,7 @@ function ContactSection() {
           {/* Heading */}
           <h2
             className="font-caveat font-bold mb-4"
-            style={{ fontSize: 'clamp(48px, 8vw, 80px)', color: '#1a1a2e', lineHeight: 1.1 }}
+            style={{ fontSize: 'clamp(48px, 8vw, 80px)', color: 'var(--ink)', lineHeight: 1.1 }}
           >
             Get In Touch
           </h2>
@@ -62,7 +62,7 @@ function ContactSection() {
           {/* Subtitle */}
           <p
             className="text-base md:text-lg mb-10 leading-relaxed"
-            style={{ color: '#4a5568', fontFamily: "'Nunito', sans-serif" }}
+            style={{ color: 'var(--body)', fontFamily: "'Nunito', sans-serif" }}
           >
             Have a project in mind? Want to collaborate or just say hi?
             <br />
@@ -86,9 +86,9 @@ function ContactSection() {
 
           {/* Divider */}
           <div className="flex items-center gap-3 my-8">
-            <div className="flex-1 h-px" style={{ background: 'repeating-linear-gradient(90deg, #a8c4e0 0 4px, transparent 4px 8px)' }} />
+            <div className="flex-1 h-px" style={{ background: 'repeating-linear-gradient(90deg, var(--line) 0 4px, transparent 4px 8px)' }} />
             <span className="font-caveat text-sm" style={{ color: '#6b7280' }}>or find me on</span>
-            <div className="flex-1 h-px" style={{ background: 'repeating-linear-gradient(90deg, #a8c4e0 0 4px, transparent 4px 8px)' }} />
+            <div className="flex-1 h-px" style={{ background: 'repeating-linear-gradient(90deg, var(--line) 0 4px, transparent 4px 8px)' }} />
           </div>
 
           {/* Social icons */}
@@ -103,8 +103,8 @@ function ContactSection() {
               className="w-12 h-12 rounded-full flex items-center justify-center transition-all duration-200"
               style={{
                 backgroundColor: '#ffffff',
-                border: '2px solid #a8c4e0',
-                boxShadow: '2px 3px 0 #a8c4e0',
+                border: '2px solid var(--line)',
+                boxShadow: '2px 3px 0 var(--line)',
                 color: '#4a90d9'
               }}
             >
@@ -124,9 +124,9 @@ function ContactSection() {
               className="w-12 h-12 rounded-full flex items-center justify-center transition-all duration-200"
               style={{
                 backgroundColor: '#ffffff',
-                border: '2px solid #a8c4e0',
-                boxShadow: '2px 3px 0 #a8c4e0',
-                color: '#1a1a2e'
+                border: '2px solid var(--line)',
+                boxShadow: '2px 3px 0 var(--line)',
+                color: 'var(--ink)'
               }}
             >
               <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
@@ -142,8 +142,8 @@ function ContactSection() {
               className="w-12 h-12 rounded-full flex items-center justify-center transition-all duration-200"
               style={{
                 backgroundColor: '#ffffff',
-                border: '2px solid #a8c4e0',
-                boxShadow: '2px 3px 0 #a8c4e0',
+                border: '2px solid var(--line)',
+                boxShadow: '2px 3px 0 var(--line)',
                 color: '#f0a86f'
               }}
             >

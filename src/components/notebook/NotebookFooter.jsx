@@ -17,7 +17,7 @@ function NotebookFooter() {
       style={{
         paddingLeft: 'var(--gutter)',
         borderTop: '2px dashed rgba(74,144,217,0.2)',
-        backgroundColor: 'rgba(240, 237, 230, 0.4)',
+        backgroundColor: 'var(--footer-bg)',
       }}
     >
       {/* Quick links */}
@@ -27,9 +27,9 @@ function NotebookFooter() {
             key={id}
             onClick={() => scrollTo(id)}
             className="font-caveat text-base font-semibold transition-colors duration-200"
-            style={{ color: '#4a5568' }}
+            style={{ color: 'var(--body)' }}
             onMouseEnter={(e) => { e.currentTarget.style.color = '#4a90d9' }}
-            onMouseLeave={(e) => { e.currentTarget.style.color = '#4a5568' }}
+            onMouseLeave={(e) => { e.currentTarget.style.color = 'var(--body)' }}
           >
             {label}
           </button>
@@ -37,9 +37,9 @@ function NotebookFooter() {
         <button
           onClick={() => scrollTo('home')}
           className="font-caveat text-base font-semibold transition-colors duration-200"
-          style={{ color: '#4a5568' }}
+          style={{ color: 'var(--body)' }}
           onMouseEnter={(e) => { e.currentTarget.style.color = '#4a90d9' }}
-          onMouseLeave={(e) => { e.currentTarget.style.color = '#4a5568' }}
+          onMouseLeave={(e) => { e.currentTarget.style.color = 'var(--body)' }}
         >
           ↑ Back to top
         </button>

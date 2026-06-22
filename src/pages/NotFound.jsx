@@ -20,7 +20,7 @@ function NotFound() {
       >
         <h1
           className="font-caveat font-bold leading-none mb-2"
-          style={{ fontSize: 'clamp(110px, 22vw, 200px)', color: '#1a1a2e', letterSpacing: '-0.02em' }}
+          style={{ fontSize: 'clamp(110px, 22vw, 200px)', color: 'var(--ink)', letterSpacing: '-0.02em' }}
         >
           404
         </h1>
@@ -31,7 +31,7 @@ function NotFound() {
 
         <p
           className="text-base md:text-lg mb-10 max-w-md mx-auto leading-relaxed"
-          style={{ color: '#4a5568', fontFamily: "'Nunito', sans-serif" }}
+          style={{ color: 'var(--body)', fontFamily: "'Nunito', sans-serif" }}
         >
           Looks like this page isn&apos;t in the notebook. Let&apos;s flip back to a page that is.
         </p>
@@ -53,7 +53,7 @@ function NotFound() {
               className="inline-block font-caveat text-lg font-bold px-8 py-3 rounded-md"
               style={{
                 border: '2px solid #1a1a2e',
-                color: '#1a1a2e',
+                color: 'var(--ink)',
                 backgroundColor: 'transparent',
                 boxShadow: '3px 4px 0 #1a1a2e',
                 minWidth: '180px',
