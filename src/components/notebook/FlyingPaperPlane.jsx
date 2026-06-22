@@ -25,9 +25,11 @@ function FlyingPaperPlane() {
   const smooth = useSpring(scrollYProgress, { stiffness: 55, damping: 18, restDelta: 0.0001 })
 
   // Vertical travel down the right margin as the page scrolls.
-  const top = useTransform(smooth, [0, 1], ['10vh', '86vh'])
+  const top = useTransform(smooth, [0, 1], ['13vh', '85vh'])
+  // The dashed contrail "draws" itself behind the plane as it descends.
+  const trailHeight = useTransform(smooth, [0, 1], ['0vh', '72vh'])
   // Gentle horizontal sway so it reads as flight, not an elevator.
-  const x = useTransform(smooth, [0, 0.25, 0.5, 0.75, 1], [0, -22, 16, -12, 0])
+  const x = useTransform(smooth, [0, 0.25, 0.5, 0.75, 1], [0, -18, 14, -10, 0])
 
   // Bank the plane based on how fast (and which way) you're scrolling.
   const velocity = useVelocity(smooth)
@@ -37,37 +39,45 @@ function FlyingPaperPlane() {
   if (!enabled) return null
 
   return (
-    <motion.div
-      aria-hidden="true"
-      style={{
-        position: 'fixed',
-        right: 'max(18px, 3vw)',
-        top,
-        x,
-        zIndex: 30,
-        pointerEvents: 'none',
-        willChange: 'transform, top',
-      }}
-    >
-      <motion.div style={{ rotate: bank }}>
-        <svg width="46" height="42" viewBox="0 0 64 56" fill="none" style={{ overflow: 'visible' }}>
-          {/* dashed contrail trailing behind */}
-          <path
-            d="M60 4 C 90 -2, 108 14, 132 8"
-            stroke="#4a90d9"
-            strokeWidth="1.5"
-            strokeDasharray="4 5"
-            strokeLinecap="round"
-            opacity="0.4"
-            transform="translate(-72 24) scale(0.9)"
-          />
-          {/* plane body */}
-          <path d="M4 28 L60 4 L44 52 L28 34 L4 28Z" fill="#ffffff" stroke="#4a90d9" strokeWidth="1.8" strokeLinejoin="round" />
-          <path d="M28 34 L36 28 L60 4" stroke="#4a90d9" strokeWidth="1.5" strokeDasharray="3 2" />
-          <path d="M28 34 L32 48 L44 52" stroke="#a8c4e0" strokeWidth="1.2" />
-        </svg>
+    <>
+      {/* Dashed flight path the plane leaves behind */}
+      <motion.div
+        aria-hidden="true"
+        style={{
+          position: 'fixed',
+          right: 'max(40px, calc(3vw + 21px))',
+          top: '13vh',
+          width: '2px',
+          height: trailHeight,
+          zIndex: 29,
+          pointerEvents: 'none',
+          background:
+            'repeating-linear-gradient(to bottom, rgba(74,144,217,0.4) 0 5px, transparent 5px 11px)',
+        }}
+      />
+
+      <motion.div
+        aria-hidden="true"
+        style={{
+          position: 'fixed',
+          right: 'max(18px, 3vw)',
+          top,
+          x,
+          zIndex: 30,
+          pointerEvents: 'none',
+          willChange: 'transform, top',
+        }}
+      >
+        <motion.div style={{ rotate: bank }}>
+          <svg width="46" height="42" viewBox="0 0 64 56" fill="none" style={{ overflow: 'visible' }}>
+            {/* plane body */}
+            <path d="M4 28 L60 4 L44 52 L28 34 L4 28Z" fill="#ffffff" stroke="#4a90d9" strokeWidth="1.8" strokeLinejoin="round" />
+            <path d="M28 34 L36 28 L60 4" stroke="#4a90d9" strokeWidth="1.5" strokeDasharray="3 2" />
+            <path d="M28 34 L32 48 L44 52" stroke="#a8c4e0" strokeWidth="1.2" />
+          </svg>
+        </motion.div>
       </motion.div>
-    </motion.div>
+    </>
   )
 }
 

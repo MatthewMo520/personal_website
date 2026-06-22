@@ -248,24 +248,9 @@ function Shuttlecock({ style, size = 50 }) {
   )
 }
 
-/* Volleyball — based on Tabler's ball-volleyball icon (24x24) */
-function Volleyball({ style, size = 54 }) {
-  return (
-    <motion.svg
-      width={size} height={size} viewBox="0 0 24 24" fill="none"
-      stroke="#1a1a2e" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"
-      style={{ opacity: 0.5, ...style }}
-      {...float}
-    >
-      <circle cx="12" cy="12" r="9" fill="white" />
-      <path d="M12 12a8 8 0 0 0 8 4" />
-      <path d="M7.5 13.5a12 12 0 0 0 8.5 6.5" />
-      <path d="M12 12a8 8 0 0 0 -7.464 4.928" />
-      <path d="M12.951 7.353a12 12 0 0 0 -9.88 4.111" />
-      <path d="M12 12a8 8 0 0 0 -.536 -8.928" />
-      <path d="M15.549 15.147a12 12 0 0 0 1.38 -10.611" />
-    </motion.svg>
-  )
+/* Volleyball (lucide) */
+function Volleyball({ style, size = 50 }) {
+  return <LucideDoodle Icon={LuVolleyball} size={size} anim={float} style={style} />
 }
 
 /* Ultimate frisbee disc */
@@ -284,64 +269,19 @@ function Frisbee({ style, size = 60 }) {
   )
 }
 
-/* Swimming goggles */
-function Goggles({ style, size = 58 }) {
-  return (
-    <motion.svg
-      width={size} height={size * 0.55} viewBox="0 0 60 32" fill="none"
-      style={{ opacity: 0.5, ...style }}
-      {...wiggle}
-    >
-      {/* straps */}
-      <path d="M10 16 L1 12 M54 16 L63 12" stroke="#1a1a2e" strokeWidth="1.6" fill="none" strokeLinecap="round" />
-      {/* lenses */}
-      <ellipse cx="20" cy="16" rx="10" ry="8.5" fill="#7ab3e8" stroke="#1a1a2e" strokeWidth="1.6" opacity="0.85" />
-      <ellipse cx="44" cy="16" rx="10" ry="8.5" fill="#7ab3e8" stroke="#1a1a2e" strokeWidth="1.6" opacity="0.85" />
-      {/* nose bridge */}
-      <path d="M30 16 Q32 20 34 16" stroke="#1a1a2e" strokeWidth="1.6" fill="none" />
-      {/* shine */}
-      <ellipse cx="16" cy="12" rx="2.5" ry="1.6" fill="white" opacity="0.75" />
-      <ellipse cx="40" cy="12" rx="2.5" ry="1.6" fill="white" opacity="0.75" />
-    </motion.svg>
-  )
+/* Swimming goggles (lucide) */
+function Goggles({ style, size = 52 }) {
+  return <LucideDoodle Icon={LuGoggles} size={size} anim={wiggle} style={style} />
 }
 
-/* Coffee cup (cafés) */
-function Coffee({ style, size = 50 }) {
-  return (
-    <motion.svg
-      width={size} height={size * 1.1} viewBox="0 0 52 56" fill="none"
-      style={{ opacity: 0.5, ...style }}
-      {...float}
-    >
-      <path d="M20 6 Q24 11 20 15 M29 4 Q33 9 29 13" stroke="#c0c0c0" strokeWidth="2" fill="none" strokeLinecap="round" />
-      <path d="M12 22 L40 22 L36 48 L16 48 Z" fill="white" stroke="#1a1a2e" strokeWidth="1.5" strokeLinejoin="round" />
-      <path d="M14 26 L38 26 L37 31 L15 31 Z" fill="#f0a86f" />
-      <path d="M40 26 Q50 28 46 38 Q44 42 37 41" fill="none" stroke="#1a1a2e" strokeWidth="1.5" />
-      <path d="M8 50 L44 50" stroke="#1a1a2e" strokeWidth="2" strokeLinecap="round" />
-    </motion.svg>
-  )
+/* Coffee cup / cafés (lucide) */
+function Coffee({ style, size = 48 }) {
+  return <LucideDoodle Icon={LuCoffee} size={size} anim={float} style={style} />
 }
 
-/* Boba / bubble tea (food) */
-function Boba({ style, size = 40 }) {
-  return (
-    <motion.svg
-      width={size} height={size * 1.4} viewBox="0 0 40 56" fill="none"
-      style={{ opacity: 0.5, ...style }}
-      {...floatSlow}
-    >
-      <path d="M22 2 L26 18" stroke="#f09696" strokeWidth="3" strokeLinecap="round" />
-      <path d="M8 12 L32 12 L30 16 L10 16 Z" fill="#7ab3e8" stroke="#1a1a2e" strokeWidth="1.5" strokeLinejoin="round" />
-      <path d="M10 16 L30 16 L27 52 L13 52 Z" fill="white" stroke="#1a1a2e" strokeWidth="1.5" strokeLinejoin="round" />
-      <path d="M12 38 L28 38 L27 52 L13 52 Z" fill="#f5c842" opacity="0.45" />
-      <circle cx="16" cy="48" r="2" fill="#1a1a2e" />
-      <circle cx="21" cy="50" r="2" fill="#1a1a2e" />
-      <circle cx="25" cy="48" r="2" fill="#1a1a2e" />
-      <circle cx="19" cy="45" r="2" fill="#1a1a2e" />
-      <circle cx="24" cy="44" r="2" fill="#1a1a2e" />
-    </motion.svg>
-  )
+/* Boba / bubble tea / food (lucide) */
+function Boba({ style, size = 44 }) {
+  return <LucideDoodle Icon={LuCupSoda} size={size} anim={floatSlow} style={style} />
 }
 
 export {
