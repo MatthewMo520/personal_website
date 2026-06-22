@@ -1,7 +1,6 @@
 import { useState } from 'react'
 import { motion } from 'framer-motion'
 import ProjectCard from './ProjectCard'
-import ProjectModal from '../ProjectModal'
 import { BarChart, Star, Frisbee, Volleyball } from './DoodleElements'
 import PageMarker from './PageMarker'
 import Annotation from './Annotation'
@@ -102,19 +101,7 @@ const projects = [
 
 function ProjectsSection() {
   const [showAll, setShowAll] = useState(false)
-  const [selectedProject, setSelectedProject] = useState(null)
-  const [isModalOpen, setIsModalOpen] = useState(false)
   const displayedProjects = showAll ? projects : projects.slice(0, 3)
-
-  const handleOpenModal = (project) => {
-    setSelectedProject(project)
-    setIsModalOpen(true)
-  }
-
-  const handleCloseModal = () => {
-    setIsModalOpen(false)
-    setSelectedProject(null)
-  }
 
   return (
     <section
@@ -124,7 +111,7 @@ function ProjectsSection() {
     >
       <PageMarker number={3} label="projects" color="#f0a86f" />
       <Annotation arrow="down" color="#6bc47a" rotate={4} style={{ top: '16%', left: '6%' }}>
-        hackathon winners!
+        psst — click to flip!
       </Annotation>
       {/* Decorative doodles */}
       <div className="absolute pointer-events-none" style={{ top: '5%', right: '3%' }}>
@@ -169,7 +156,6 @@ function ProjectsSection() {
               key={project.title}
               project={project}
               index={index}
-              onClick={handleOpenModal}
             />
           ))}
         </div>
@@ -198,12 +184,6 @@ function ProjectsSection() {
           </motion.button>
         </motion.div>
       </div>
-
-      <ProjectModal
-        project={selectedProject}
-        isOpen={isModalOpen}
-        onClose={handleCloseModal}
-      />
     </section>
   )
 }

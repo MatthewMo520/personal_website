@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { motion } from 'framer-motion'
 
 const techColors = {
@@ -30,7 +31,32 @@ const tapeVariants = [
   { left: '60%', transform: 'translateX(-50%) rotate(1.5deg)' },
 ]
 
-function ProjectCard({ project, index, onClick }) {
+const faceBase = {
+  position: 'absolute',
+  inset: 0,
+  backfaceVisibility: 'hidden',
+  WebkitBackfaceVisibility: 'hidden',
+  background: '#ffffff',
+  border: '2px dashed #a8c4e0',
+  borderRadius: '6px',
+  overflow: 'hidden',
+}
+
+function TechBadge({ tech }) {
+  const c = techColors[tech] || '#4a90d9'
+  return (
+    <span
+      className="text-xs font-semibold px-2 py-0.5 rounded-full flex items-center gap-1"
+      style={{ backgroundColor: `${c}18`, color: c, border: `1px solid ${c}40`, fontFamily: "'Nunito', sans-serif" }}
+    >
+      <span className="inline-block rounded-full" style={{ width: '6px', height: '6px', backgroundColor: c, flexShrink: 0 }} />
+      {tech}
+    </span>
+  )
+}
+
+function ProjectCard({ project, index }) {
+  const [flipped, setFlipped] = useState(false)
   const rotation = rotations[index % rotations.length]
   const tape = tapeVariants[index % tapeVariants.length]
 
@@ -40,170 +66,132 @@ function ProjectCard({ project, index, onClick }) {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: '-60px' }}
       transition={{ duration: 0.55, delay: index * 0.1, ease: [0.25, 0.46, 0.45, 0.94] }}
-      whileHover={{
-        y: -8,
-        rotate: 0,
-        boxShadow: '6px 12px 40px rgba(74, 144, 217, 0.18)',
-        transition: { duration: 0.25 }
-      }}
-      onClick={() => onClick(project)}
-      className="sketch-card cursor-pointer"
-      style={{
-        rotate: rotation,
-        position: 'relative',
-        paddingTop: '20px',
-        background: '#ffffff',
-        border: '2px dashed #a8c4e0',
-        borderRadius: '6px',
+      whileHover={{ y: -8, transition: { duration: 0.25 } }}
+      onClick={() => setFlipped((f) => !f)}
+      onKeyDown={(e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault()
+          setFlipped((f) => !f)
+        }
       }}
       role="button"
       tabIndex={0}
-      onKeyDown={e => {
-        if (e.key === 'Enter' || e.key === ' ') {
-          e.preventDefault()
-          onClick(project)
-        }
-      }}
+      aria-pressed={flipped}
+      aria-label={`${project.title} — click to ${flipped ? 'see photo' : 'read details'}`}
+      className="cursor-pointer"
+      style={{ rotate: rotation, position: 'relative', height: '430px', perspective: '1500px' }}
     >
-      {/* Tape strip — varied position per card */}
-      <div className="tape-strip" style={tape} />
+      <motion.div
+        animate={{ rotateY: flipped ? 180 : 0 }}
+        transition={{ type: 'spring', stiffness: 260, damping: 26 }}
+        style={{ position: 'relative', width: '100%', height: '100%', transformStyle: 'preserve-3d' }}
+      >
+        {/* ---------- FRONT ---------- */}
+        <div style={{ ...faceBase, paddingTop: '20px' }}>
+          <div className="tape-strip" style={tape} />
 
-      {/* Project image — polaroid photo treatment */}
-      <div style={{ padding: '14px 14px 4px' }}>
-        <div
-          style={{
-            background: '#ffffff',
-            padding: '7px 7px 12px',
-            border: '1px solid #e6e1d8',
-            borderRadius: '3px',
-            boxShadow: '0 2px 8px rgba(26,26,46,0.12)',
-            transform: 'rotate(-1deg)',
-          }}
-        >
-          <div className="overflow-hidden" style={{ borderRadius: '2px', background: '#f0ede6' }}>
-            <img
-              src={project.image}
-              alt={project.title}
-              loading="lazy"
-              className="w-full h-40 object-cover"
-              style={{ display: 'block' }}
-            />
-          </div>
-          {/* handwritten caption strip */}
-          <p
-            className="font-caveat font-bold text-center mt-2"
-            style={{ fontSize: '15px', color: '#4a5568', lineHeight: 1 }}
-          >
-            {project.category}
-          </p>
-        </div>
-      </div>
-
-      {/* Card content */}
-      <div className="p-5">
-        {/* Title */}
-        <h3
-          className="font-caveat font-bold mb-2"
-          style={{ fontSize: '22px', color: '#1a1a2e', lineHeight: 1.2 }}
-        >
-          {project.title}
-        </h3>
-
-        {/* Description */}
-        <p
-          className="text-sm mb-4 leading-relaxed"
-          style={{ color: '#4a5568', fontFamily: "'Nunito', sans-serif", lineHeight: 1.6 }}
-        >
-          {project.description.length > 120
-            ? project.description.slice(0, 120) + '…'
-            : project.description}
-        </p>
-
-        {/* Tech badges */}
-        <div className="flex flex-wrap gap-2 mb-4">
-          {project.tech.slice(0, 5).map((tech, i) => (
-            <span
-              key={i}
-              className="text-xs font-semibold px-2 py-0.5 rounded-full flex items-center gap-1"
+          {/* Polaroid photo */}
+          <div style={{ padding: '14px 14px 4px' }}>
+            <div
               style={{
-                backgroundColor: `${techColors[tech] || '#4a90d9'}18`,
-                color: techColors[tech] || '#4a90d9',
-                border: `1px solid ${techColors[tech] || '#4a90d9'}40`,
-                fontFamily: "'Nunito', sans-serif"
+                background: '#ffffff',
+                padding: '7px 7px 12px',
+                border: '1px solid #e6e1d8',
+                borderRadius: '3px',
+                boxShadow: '0 2px 8px rgba(26,26,46,0.12)',
+                transform: 'rotate(-1deg)',
               }}
             >
-              <span
-                className="inline-block rounded-full"
-                style={{
-                  width: '6px',
-                  height: '6px',
-                  backgroundColor: techColors[tech] || '#4a90d9',
-                  flexShrink: 0
-                }}
-              />
-              {tech}
-            </span>
-          ))}
-        </div>
-
-        {/* Links */}
-        <div className="flex flex-wrap gap-4 text-sm font-semibold items-center">
-          <a
-            href={project.link}
-            target="_blank"
-            rel="noopener noreferrer"
-            onClick={e => e.stopPropagation()}
-            className="font-caveat text-base transition-colors duration-200 flex items-center gap-1"
-            style={{ color: '#4a90d9' }}
-            onMouseEnter={e => { e.currentTarget.style.color = '#1a1a2e' }}
-            onMouseLeave={e => { e.currentTarget.style.color = '#4a90d9' }}
-          >
-            View on GitHub →
-          </a>
-          {project.liveLink && (
-            <a
-              href={project.liveLink}
-              target="_blank"
-              rel="noopener noreferrer"
-              onClick={e => e.stopPropagation()}
-              className="font-caveat text-base transition-colors duration-200"
-              style={{ color: '#6bc47a' }}
-              onMouseEnter={e => { e.currentTarget.style.color = '#1a1a2e' }}
-              onMouseLeave={e => { e.currentTarget.style.color = '#6bc47a' }}
-            >
-              Live Demo →
-            </a>
-          )}
-          {project.devpost && (
-            <a
-              href={project.devpost}
-              target="_blank"
-              rel="noopener noreferrer"
-              onClick={e => e.stopPropagation()}
-              className="font-caveat text-base transition-colors duration-200"
-              style={{ color: '#f0a86f' }}
-              onMouseEnter={e => { e.currentTarget.style.color = '#1a1a2e' }}
-              onMouseLeave={e => { e.currentTarget.style.color = '#f0a86f' }}
-            >
-              Devpost →
-            </a>
-          )}
-        </div>
-
-        {/* Featured badge */}
-        {project.featured && (
-          <div
-            className="absolute top-3 right-3 font-caveat font-bold text-xs px-2 py-1 rounded"
-            style={{
-              backgroundColor: '#f5c842',
-              color: '#1a1a2e',
-              transform: 'rotate(2deg)'
-            }}
-          >
-            ★ Featured
+              <div className="overflow-hidden" style={{ borderRadius: '2px', background: '#f0ede6' }}>
+                <img src={project.image} alt={project.title} loading="lazy" className="w-full h-40 object-cover" style={{ display: 'block' }} />
+              </div>
+              <p className="font-caveat font-bold text-center mt-2" style={{ fontSize: '15px', color: '#4a5568', lineHeight: 1 }}>
+                {project.category}
+              </p>
+            </div>
           </div>
-        )}
-      </div>
+
+          <div className="px-5 pt-1">
+            <h3 className="font-caveat font-bold mb-1" style={{ fontSize: '22px', color: '#1a1a2e', lineHeight: 1.2 }}>
+              {project.title}
+            </h3>
+            <p className="text-sm leading-relaxed" style={{ color: '#4a5568', fontFamily: "'Nunito', sans-serif", lineHeight: 1.55 }}>
+              {project.description.length > 96 ? project.description.slice(0, 96) + '…' : project.description}
+            </p>
+          </div>
+
+          {/* flip hint */}
+          <div
+            className="absolute font-caveat font-bold flex items-center gap-1"
+            style={{ bottom: '12px', right: '16px', color: '#4a90d9', fontSize: '15px' }}
+          >
+            flip ↻
+          </div>
+
+          {project.featured && (
+            <div
+              className="absolute top-3 right-3 font-caveat font-bold text-xs px-2 py-1 rounded"
+              style={{ backgroundColor: '#f5c842', color: '#1a1a2e', transform: 'rotate(2deg)' }}
+            >
+              ★ Featured
+            </div>
+          )}
+        </div>
+
+        {/* ---------- BACK ---------- */}
+        <div
+          style={{
+            ...faceBase,
+            transform: 'rotateY(180deg)',
+            background: '#fffdf7',
+            borderColor: '#e0c9a0',
+            display: 'flex',
+            flexDirection: 'column',
+            padding: '22px 20px 16px',
+          }}
+        >
+          <div className="tape-strip" style={{ left: '50%', transform: 'translateX(-50%) rotate(-1deg)', background: 'rgba(224,201,160,0.6)' }} />
+
+          <h3 className="font-caveat font-bold mb-1" style={{ fontSize: '24px', color: '#1a1a2e', lineHeight: 1.1 }}>
+            {project.title}
+          </h3>
+          {project.impact && (
+            <p className="font-caveat font-bold mb-2" style={{ fontSize: '15px', color: '#f0a86f' }}>
+              ★ {project.impact}
+            </p>
+          )}
+
+          <p
+            className="text-sm leading-relaxed mb-3"
+            style={{ color: '#4a5568', fontFamily: "'Nunito', sans-serif", lineHeight: 1.55, overflowY: 'auto', flex: '1 1 auto', minHeight: 0 }}
+          >
+            {project.detailedDescription || project.description}
+          </p>
+
+          <div className="flex flex-wrap gap-1.5 mb-3">
+            {project.tech.map((t) => <TechBadge key={t} tech={t} />)}
+          </div>
+
+          {/* dashed rule */}
+          <div className="mb-2" style={{ height: '1px', background: 'repeating-linear-gradient(90deg, #e0c9a0 0 5px, transparent 5px 10px)' }} />
+
+          <div className="flex flex-wrap gap-4 items-center" onClick={(e) => e.stopPropagation()}>
+            <a href={project.link} target="_blank" rel="noopener noreferrer" className="font-caveat font-bold text-base" style={{ color: '#4a90d9' }}>
+              GitHub →
+            </a>
+            {project.liveLink && (
+              <a href={project.liveLink} target="_blank" rel="noopener noreferrer" className="font-caveat font-bold text-base" style={{ color: '#6bc47a' }}>
+                Live Demo →
+              </a>
+            )}
+            {project.devpost && (
+              <a href={project.devpost} target="_blank" rel="noopener noreferrer" className="font-caveat font-bold text-base" style={{ color: '#f0a86f' }}>
+                Devpost →
+              </a>
+            )}
+          </div>
+        </div>
+      </motion.div>
     </motion.div>
   )
 }
