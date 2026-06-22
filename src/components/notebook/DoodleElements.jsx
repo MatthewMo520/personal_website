@@ -230,24 +230,22 @@ function Shuttlecock({ style, size = 50 }) {
   )
 }
 
-/* Volleyball */
+/* Volleyball — based on Tabler's ball-volleyball icon (24x24) */
 function Volleyball({ style, size = 54 }) {
   return (
     <motion.svg
-      width={size} height={size} viewBox="0 0 56 56" fill="none"
+      width={size} height={size} viewBox="0 0 24 24" fill="none"
+      stroke="#1a1a2e" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"
       style={{ opacity: 0.5, ...style }}
       {...float}
     >
-      <circle cx="28" cy="28" r="23" fill="white" stroke="#1a1a2e" strokeWidth="1.6" />
-      {/* 3 spokes from center + 3 rim arcs = woven volleyball panels */}
-      <g stroke="#1a1a2e" strokeWidth="1.4" fill="none" strokeLinecap="round" transform="rotate(-18 28 28)">
-        <path d="M28 28 C 26 18, 26 11, 28 5" />
-        <path d="M28 28 C 26 18, 26 11, 28 5" transform="rotate(120 28 28)" />
-        <path d="M28 28 C 26 18, 26 11, 28 5" transform="rotate(240 28 28)" />
-        <path d="M28 5 C 42 8, 51 22, 48 40" />
-        <path d="M28 5 C 42 8, 51 22, 48 40" transform="rotate(120 28 28)" />
-        <path d="M28 5 C 42 8, 51 22, 48 40" transform="rotate(240 28 28)" />
-      </g>
+      <circle cx="12" cy="12" r="9" fill="white" />
+      <path d="M12 12a8 8 0 0 0 8 4" />
+      <path d="M7.5 13.5a12 12 0 0 0 8.5 6.5" />
+      <path d="M12 12a8 8 0 0 0 -7.464 4.928" />
+      <path d="M12.951 7.353a12 12 0 0 0 -9.88 4.111" />
+      <path d="M12 12a8 8 0 0 0 -.536 -8.928" />
+      <path d="M15.549 15.147a12 12 0 0 0 1.38 -10.611" />
     </motion.svg>
   )
 }

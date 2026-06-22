@@ -41,14 +41,47 @@ const experiences = [
   },
 ]
 
-/* Variants so each card's internals cascade in once the row scrolls into view. */
+/* The whole card slides in from the timeline and settles with a springy
+   overshoot — like a photo being placed down — then its contents cascade in. */
 const cardVariants = {
-  hidden: {},
-  show: { transition: { staggerChildren: 0.07, delayChildren: 0.08 } },
+  hidden: { opacity: 0, x: -52, y: 10, rotate: -5, scale: 0.94 },
+  show: {
+    opacity: 1,
+    x: 0,
+    y: 0,
+    rotate: -0.6,
+    scale: 1,
+    transition: {
+      type: 'spring',
+      stiffness: 75,
+      damping: 13,
+      mass: 0.9,
+      staggerChildren: 0.07,
+      delayChildren: 0.18,
+    },
+  },
 }
-const fadeUp = {
-  hidden: { opacity: 0, y: 16 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.45, ease: [0.25, 0.46, 0.45, 0.94] } },
+
+/* Each line lifts up and slides off the spine a touch. */
+const lineIn = {
+  hidden: { opacity: 0, y: 14, x: -8 },
+  show: { opacity: 1, y: 0, x: 0, transition: { duration: 0.4, ease: [0.25, 0.46, 0.45, 0.94] } },
+}
+
+/* The date chip "stamps" down. */
+const stampIn = {
+  hidden: { opacity: 0, scale: 1.5, rotate: -10 },
+  show: { opacity: 1, scale: 1, rotate: 0, transition: { type: 'spring', stiffness: 320, damping: 12 } },
+}
+
+/* Tags pop individually. */
+const tagsWrap = {
+  hidden: {},
+  show: { transition: { staggerChildren: 0.05 } },
+}
+const tagPop = {
+  hidden: { opacity: 0, scale: 0.4 },
+  show: { opacity: 1, scale: 1, transition: { type: 'spring', stiffness: 420, damping: 15 } },
 }
 
 function ExperienceCard({ exp }) {
@@ -89,7 +122,6 @@ function ExperienceCard({ exp }) {
         className="relative"
         style={{
           marginLeft: '56px',
-          rotate: -0.6,
           background: '#ffffff',
           border: '2px dashed #a8c4e0',
           borderRadius: '6px',
@@ -117,40 +149,51 @@ function ExperienceCard({ exp }) {
           }}
         />
 
-        <motion.div variants={fadeUp} className="flex flex-wrap items-baseline justify-between gap-x-3 gap-y-1 mb-1">
+        <motion.div variants={lineIn} className="flex flex-wrap items-baseline justify-between gap-x-3 gap-y-1 mb-1">
           <h3 className="font-caveat font-bold" style={{ fontSize: '28px', color: '#1a1a2e', lineHeight: 1.1 }}>
             {exp.role}
           </h3>
-          <span
+          <motion.span
+            variants={stampIn}
             className="font-caveat font-semibold text-sm px-3 py-0.5 rounded-full whitespace-nowrap"
-            style={{ backgroundColor: `${exp.color}18`, color: exp.color, border: `1.5px dashed ${exp.color}66` }}
+            style={{ backgroundColor: `${exp.color}18`, color: exp.color, border: `1.5px dashed ${exp.color}66`, transformOrigin: 'center' }}
           >
             {exp.period}
-          </span>
+          </motion.span>
         </motion.div>
 
-        <motion.p variants={fadeUp} className="font-caveat font-bold mb-4" style={{ fontSize: '19px', color: exp.color }}>
+        <motion.p variants={lineIn} className="font-caveat font-bold mb-4" style={{ fontSize: '19px', color: exp.color }}>
           {exp.company} <span style={{ color: '#718096', fontWeight: 400 }}>· {exp.location}</span>
         </motion.p>
 
-        <ul className="space-y-2 mb-4">
+        <motion.ul variants={tagsWrap} className="space-y-2 mb-4">
           {exp.bullets.map((b, i) => (
             <motion.li
               key={i}
-              variants={fadeUp}
+              variants={lineIn}
               className="flex gap-2 text-sm leading-relaxed"
               style={{ color: '#4a5568', fontFamily: "'Nunito', sans-serif", lineHeight: 1.6 }}
             >
-              <span style={{ color: exp.color, flexShrink: 0 }}>✦</span>
+              <motion.span
+                aria-hidden="true"
+                style={{ color: exp.color, flexShrink: 0, display: 'inline-block' }}
+                initial={{ rotate: -90, opacity: 0 }}
+                whileInView={{ rotate: 0, opacity: 1 }}
+                viewport={{ once: true }}
+                transition={{ type: 'spring', stiffness: 300, damping: 14, delay: 0.2 + i * 0.07 }}
+              >
+                ✦
+              </motion.span>
               <span>{b}</span>
             </motion.li>
           ))}
-        </ul>
+        </motion.ul>
 
-        <motion.div variants={fadeUp} className="flex flex-wrap gap-2">
+        <motion.div variants={tagsWrap} className="flex flex-wrap gap-2">
           {exp.tags.map((t) => (
-            <span
+            <motion.span
               key={t}
+              variants={tagPop}
               className="text-xs font-semibold px-2 py-0.5 rounded-full"
               style={{
                 backgroundColor: `${exp.color}14`,
@@ -160,7 +203,7 @@ function ExperienceCard({ exp }) {
               }}
             >
               {t}
-            </span>
+            </motion.span>
           ))}
         </motion.div>
       </motion.div>
