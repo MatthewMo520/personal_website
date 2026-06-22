@@ -2,6 +2,7 @@ import { useRef } from 'react'
 import { motion, useScroll, useSpring, useTransform } from 'framer-motion'
 import { Rocket, Star, Volleyball, Boba } from './DoodleElements'
 import PageMarker from './PageMarker'
+import Annotation from './Annotation'
 
 const experiences = [
   {
@@ -225,6 +226,9 @@ function ExperienceSection() {
   return (
     <section id="experience" className="py-20 relative overflow-hidden" style={{ paddingLeft: 'var(--gutter)' }}>
       <PageMarker number={2} label="experience" color="#4a90d9" />
+      <Annotation arrow="left" color="#e07a5f" rotate={-6} style={{ top: '30%', right: '5%' }}>
+        current role!
+      </Annotation>
       {/* Decorative doodles */}
       <div className="absolute pointer-events-none" style={{ top: '6%', right: '5%' }}>
         <Rocket />

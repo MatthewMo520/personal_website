@@ -4,6 +4,7 @@ import ProjectCard from './ProjectCard'
 import ProjectModal from '../ProjectModal'
 import { BarChart, Star, Frisbee, Volleyball } from './DoodleElements'
 import PageMarker from './PageMarker'
+import Annotation from './Annotation'
 
 const projects = [
   {
@@ -122,6 +123,9 @@ function ProjectsSection() {
       style={{ paddingLeft: 'var(--gutter)', backgroundColor: 'rgba(240,168,111,0.05)' }}
     >
       <PageMarker number={3} label="projects" color="#f0a86f" />
+      <Annotation arrow="down" color="#6bc47a" rotate={4} style={{ top: '16%', left: '6%' }}>
+        hackathon winners!
+      </Annotation>
       {/* Decorative doodles */}
       <div className="absolute pointer-events-none" style={{ top: '5%', right: '3%' }}>
         <BarChart />
